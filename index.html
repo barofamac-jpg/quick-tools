@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>바로Fam 퀵툴</title>
+  <meta name="description" content="바로Fam에서 만든 작고 유용한 웹 도구 모음입니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      background: #f4f5f7;
+      color: #222;
+    }
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    header h1 {
+      font-size: 26px;
+      margin: 0 0 8px;
+    }
+    .subtitle {
+      color: #666;
+      margin: 0;
+    }
+    .tool-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .tool-card {
+      display: block;
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      transition: transform 0.1s ease, box-shadow 0.2s ease;
+    }
+    .tool-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+    .tool-title {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .tool-desc {
+      display: block;
+      font-size: 13px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>바로Fam 퀵툴</h1>
+      <p class="subtitle">일상에 쓸모 있는 작은 웹 도구 모음이에요.</p>
+    </header>
+
+    <ul class="tool-list">
+      <li>
+        <a class="tool-card" href="/pixel-art-converter/">
+          <span class="tool-title">이미지 → 픽셀아트 변환기</span>
+          <span class="tool-desc">사진을 올리면 자동으로 픽셀아트로 변환해드려요.</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
