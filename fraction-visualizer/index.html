@@ -3,20 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>분수 시각화 도구</title>
-  <meta name="description" content="분수를 그림으로 보여주고 최대 3개까지 비교할 수 있는 무료 온라인 도구입니다." />
+  <title>🍕 분수 시각화 도구 - 초등학생을 위한 분수 비교</title>
+  <meta name="description" content="분수를 그림으로 보여주고 최대 6개까지 비교할 수 있는 초등학생용 무료 온라인 도구입니다." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://quick-tools.barofam.com/fraction-visualizer/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://quick-tools.barofam.com/fraction-visualizer/" />
   <meta property="og:title" content="분수 시각화 도구" />
-  <meta property="og:description" content="분수를 그림으로 보여주고 최대 3개까지 비교할 수 있는 무료 온라인 도구입니다." />
+  <meta property="og:description" content="분수를 그림으로 보여주고 최대 6개까지 비교할 수 있는 초등학생용 무료 온라인 도구입니다." />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="분수 시각화 도구" />
-  <meta name="twitter:description" content="분수를 그림으로 보여주고 최대 3개까지 비교할 수 있는 무료 온라인 도구입니다." />
+  <meta name="twitter:description" content="분수를 그림으로 보여주고 최대 6개까지 비교할 수 있는 초등학생용 무료 온라인 도구입니다." />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
 
@@ -25,7 +29,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "분수 시각화 도구",
-    "description": "분수를 그림으로 보여주고 최대 3개까지 비교할 수 있는 무료 온라인 도구입니다.",
+    "description": "분수를 그림으로 보여주고 최대 6개까지 비교할 수 있는 초등학생용 무료 온라인 도구입니다.",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -33,37 +37,57 @@
   </script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1 data-i18n="appTitle">분수 시각화 도구</h1>
-      <p class="subtitle" data-i18n="appSubtitle">분수를 눈으로 보고 비교해보세요.</p>
-    </header>
+  <section class="tools_header">
+    <h1>🍕 분수 시각화 도구</h1>
+    <p>분수를 입력하면 그림으로 쉽게 비교할 수 있어요!</p>
+  </section>
 
-    <!-- 상단 광고 영역 -->
-    <div class="ad-slot ad-slot-top">
-      <span class="ad-label">Advertisement</span>
-    </div>
+  <!-- 상단 광고 영역 -->
+  <div class="ad-slot ad-slot-top">
+    <span class="ad-label">Advertisement</span>
+  </div>
 
-    <div class="fraction-cards" id="fractionCards"></div>
-
-    <button id="addFractionBtn" class="btn-add" data-i18n="addFractionBtn">+ 분수 추가</button>
-
-    <div class="presets">
-      <p class="presets-label" data-i18n="presetsLabel">추천 분수</p>
-      <div class="presets-buttons">
-        <button class="preset-btn" data-num="1" data-den="2">1/2</button>
-        <button class="preset-btn" data-num="1" data-den="3">1/3</button>
-        <button class="preset-btn" data-num="2" data-den="3">2/3</button>
-        <button class="preset-btn" data-num="1" data-den="4">1/4</button>
-        <button class="preset-btn" data-num="3" data-den="4">3/4</button>
-        <button class="preset-btn" data-num="1" data-den="5">1/5</button>
+  <section class="tools_main">
+    <section class="input-section">
+      <h2>✏️ 분수를 입력해 보세요</h2>
+      <div class="fraction-inputs" id="fracInputs"></div>
+      <div class="error-msg" id="errorMsg">⚠️ 분자와 분모를 모두 올바르게 입력해 주세요. (분모는 1 이상)</div>
+      <div class="actions">
+        <button class="btn-visualize" onclick="visualize()">🎨 그림으로 보기!</button>
+        <button class="btn-reset" onclick="resetAll()">초기화</button>
       </div>
-    </div>
+      <div class="quick-examples">
+        <span>예시:</span>
+        <button class="chip" onclick="loadExample([{n:1,d:2},{n:1,d:3}])">1/2 vs 1/3</button>
+        <button class="chip" onclick="loadExample([{n:1,d:4},{n:2,d:4},{n:3,d:4}])">1/4, 2/4, 3/4</button>
+        <button class="chip" onclick="loadExample([{n:1,d:2},{n:2,d:3},{n:3,d:4}])">1/2, 2/3, 3/4</button>
+        <button class="chip" onclick="loadExample([{n:1,d:3},{n:1,d:6},{n:1,d:8}])">단위분수 비교</button>
+      </div>
+    </section>
 
-    <!-- 하단 광고 영역 -->
-    <div class="ad-slot ad-slot-bottom">
-      <span class="ad-label">Advertisement</span>
-    </div>
+    <section id="result">
+      <div class="result-title">📊 분수 시각화 결과</div>
+      <div class="fraction-cards" id="fracCards"></div>
+      <div class="comparison-section">
+        <h3>📏 크기 비교 막대</h3>
+        <div class="comp-bar-wrap" id="compBars"></div>
+      </div>
+      <div class="rank-section">
+        <h3>🏆 크기 순서</h3>
+        <div class="rank-display" id="rankDisplay"></div>
+        <div class="tip-box" id="tipBox"></div>
+        <div class="common-denom-box" id="commonDenomBox" style="display:none"></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="tools_footer">
+    초등학생을 위한 분수 학습 도구 · 분수의 개념과 크기 비교를 시각적으로 쉽게 이해해요
+  </section>
+
+  <!-- 하단 광고 영역 -->
+  <div class="ad-slot ad-slot-bottom">
+    <span class="ad-label">Advertisement</span>
   </div>
 
   <script src="script.js"></script>

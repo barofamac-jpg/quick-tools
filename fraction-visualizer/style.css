@@ -1,33 +1,25 @@
-* {
-  box-sizing: border-box;
+:root {
+  --sky: #e8f4fd;
+  --yellow: #FFD93D;
+  --coral: #FF6B6B;
+  --mint: #6BCB77;
+  --blue: #4D96FF;
+  --purple: #C77DFF;
+  --orange: #FF9A3C;
+  --bg: #fef9f0;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --sub: #888;
+  --border: #e0d6c8;
 }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  margin: 0;
-  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  background: #f4f5f7;
-  color: #222;
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px 80px;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-header h1 {
-  font-size: 28px;
-  margin: 0 0 8px;
-}
-
-.subtitle {
-  color: #666;
-  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
 }
 
 /* 광고 영역 */
@@ -36,216 +28,622 @@ header h1 {
   align-items: center;
   justify-content: center;
   min-height: 90px;
-  margin-bottom: 24px;
-  border: 1px dashed #c7cad2;
-  border-radius: 8px;
-  background: #fafafc;
-}
-
-.ad-slot-bottom {
-  margin-top: 32px;
-  margin-bottom: 0;
+  margin: 16px auto;
+  max-width: 780px;
+  border: 1px dashed #d8cdb9;
+  border-radius: 12px;
+  background: #fffdf8;
 }
 
 .ad-label {
   font-size: 12px;
   letter-spacing: 0.05em;
-  color: #aaa;
+  color: #bbb;
 }
 
-/* 분수 카드 목록 */
-.fraction-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.fraction-card {
+/* HEADER */
+.tools_header {
+  background: linear-gradient(135deg, #FFD93D 0%, #FF9A3C 100%);
+  padding: 36px 20px 28px;
+  text-align: center;
   position: relative;
-  background: #fff;
+  overflow: hidden;
+}
+.tools_header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+}
+.tools_header::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -30px;
+  width: 220px; height: 220px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+}
+.tools_header h1 {
+  font-family: 'Gaegu', cursive;
+  font-size: 2.6rem;
+  color: #fff;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.12);
+  position: relative; z-index:1;
+  letter-spacing: -0.5px;
+}
+.tools_header p {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  margin-top: 6px;
+  position: relative; z-index:1;
+}
+
+/* MAIN */
+.tools_main {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 28px 16px 0;
+}
+
+/* INPUT SECTION */
+.input-section {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  border: 2px solid var(--border);
+}
+
+.input-section h2 {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+  color: #444;
+}
+
+.fraction-inputs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.fraction-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 100px;
+  align-items: center;
+}
+
+.fraction-slot label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--sub);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.fraction-entry {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fraction-entry:focus-within .frac-stack {
+  box-shadow: 0 0 0 3px rgba(255,217,61,0.3);
+  border-color: var(--yellow);
+}
+
+/* 세로 분수 입력 박스 */
+.frac-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fafafa;
+  border: 2px solid var(--border);
   border-radius: 16px;
-  padding: 24px 20px;
-  width: 240px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border-top: 6px solid var(--card-color, #6c7cff);
+  padding: 6px 10px 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-width: 72px;
+}
+
+.frac-stack .fs-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #bbb;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.frac-stack input {
+  width: 54px;
+  height: 38px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-family: 'Gaegu', cursive;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  outline: none;
+  -moz-appearance: textfield;
+  line-height: 1;
+  padding: 0;
+}
+.frac-stack input::-webkit-inner-spin-button { display: none; }
+
+.frac-hline {
+  width: 44px;
+  height: 3px;
+  background: #555;
+  border-radius: 2px;
+  margin: 2px 0;
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 14px;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.85rem;
+  color: #888;
+  flex: 0 0 auto; min-width: 90px; height: 52px;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.btn-add:hover { background: #e8e8e8; border-color: #aaa; color: #555; }
+
+.btn-remove {
+  background: none; border: none; cursor: pointer;
+  font-size: 1rem; color: #ccc; padding: 0 8px;
+  transition: color 0.2s;
+}
+.btn-remove:hover { color: var(--coral); }
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-visualize {
+  flex: 1;
+  background: linear-gradient(135deg, #FF9A3C, #FF6B6B);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-family: 'Gaegu', cursive;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255,107,107,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-visualize:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,107,0.4); }
+.btn-visualize:active { transform: translateY(0); }
+
+.btn-reset {
+  background: #f0f0f0; border: 2px solid #e0e0e0;
+  color: #888; border-radius: 14px; padding: 14px 18px;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 0.9rem;
+  cursor: pointer; transition: all 0.2s;
+}
+.btn-reset:hover { background: #e8e8e8; }
+
+/* QUICK EXAMPLES */
+.quick-examples {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.quick-examples span {
+  font-size: 0.8rem; color: var(--sub); white-space: nowrap;
+}
+.chip {
+  background: #f4f4f4; border: 1px solid #e0e0e0;
+  border-radius: 20px; padding: 5px 12px;
+  cursor: pointer;
+  transition: all 0.15s; color: #555;
+  font-family: 'Gaegu', cursive; font-size: 0.95rem;
+}
+.chip:hover { background: var(--yellow); border-color: var(--yellow); color: #333; }
+
+/* RESULT SECTION */
+#result {
+  margin-top: 28px;
+  display: none;
+}
+
+.result-title {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+  color: #444;
   text-align: center;
 }
 
-.remove-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 28px;
-  height: 28px;
-  border: none;
-  border-radius: 50%;
-  background: #f0f0f0;
-  color: #888;
-  font-size: 16px;
-  line-height: 1;
-  cursor: pointer;
+/* FRACTION CARDS */
+.fraction-cards {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
 }
 
-.remove-btn:hover {
-  background: #e5e5e5;
+.frac-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 20px 18px;
+  flex: 1; min-width: 140px; max-width: 200px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+  border-top: 5px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.frac-label {
+  font-family: 'Gaegu', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  gap: 2px;
+}
+.frac-bar {
+  width: 28px; height: 3px; border-radius: 2px;
+  background: var(--accent);
+}
+
+.frac-desc {
+  font-size: 0.78rem;
+  color: var(--sub);
+  text-align: center;
+  line-height: 1.5;
 }
 
 .pie-wrap {
-  width: 140px;
-  margin: 0 auto 16px;
+  width: 90px; height: 90px;
 }
 
-.pie-wrap svg {
+.pie-explain {
+  background: #fffbe6;
+  border: 2px dashed #FFD93D;
+  border-radius: 14px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.6;
   width: 100%;
-  height: auto;
-  display: block;
+  position: relative;
 }
-
-.bar-wrap {
-  margin-bottom: 20px;
+.pie-explain::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #FFD93D;
 }
+.pie-explain strong { color: #e67e00; }
 
-.frac-bar {
-  display: flex;
-  height: 36px;
-  border-radius: 8px;
+/* BAR VISUAL */
+.bar-track {
+  width: 100%;
+  height: 22px;
+  background: #f0f0f0;
+  border-radius: 11px;
   overflow: hidden;
-  border: 2px solid #ddd;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 11px;
+  background: var(--accent);
+  transition: width 0.6s cubic-bezier(0.34, 1.2, 0.64, 1);
+  position: relative;
+  min-width: 4px;
 }
 
-.bar-segment {
-  flex: 1;
-  border-right: 2px solid #ddd;
+/* COMPARISON SECTION */
+.comparison-section {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 24px 22px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+  border: 2px solid var(--border);
+  margin-bottom: 24px;
 }
 
-.bar-segment:last-child {
-  border-right: none;
+.comparison-section h3 {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  color: #444;
+  text-align: center;
 }
 
-/* 분수 입력 (분자/분모 + 버튼) */
-.frac-editor {
+.comp-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comp-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.4s ease both;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.comp-label {
+  min-width: 52px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 세로 분수 — 공용 컴포넌트 */
+.kr-frac {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  font-family: 'Gaegu', cursive;
+  font-weight: 700;
+  line-height: 1;
+  gap: 1px;
+}
+.kr-frac .kf-num  { font-size: 1.05rem; }
+.kr-frac .kf-line { width: 22px; height: 2.5px; background: currentColor; border-radius: 2px; margin: 1px 0; }
+.kr-frac .kf-den  { font-size: 1.05rem; }
+
+.rank-item .kr-frac .kf-num,
+.rank-item .kr-frac .kf-den { font-size: 1.25rem; }
+.rank-item .kr-frac .kf-line { width: 28px; height: 3px; }
+
+.comp-track {
+  flex: 1;
+  height: 28px;
+  background: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
 }
 
-.frac-row {
+.comp-fill {
+  height: 100%;
+  border-radius: 8px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  font-size: 0.78rem;
+  color: white;
+  font-weight: 700;
+  transition: width 0.7s cubic-bezier(0.34, 1.1, 0.64, 1);
+  min-width: 4px;
+}
+
+.comp-pct {
+  min-width: 50px;
+  font-size: 0.85rem;
+  color: #888;
+  font-weight: 700;
+}
+
+/* RANK SECTION */
+.rank-section {
+  background: linear-gradient(135deg, #e8f4fd, #fff9e6);
+  border-radius: 20px;
+  padding: 22px 22px;
+  border: 2px solid var(--border);
+  text-align: center;
+  animation: fadeUp 0.5s ease both 0.2s;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.rank-section h3 {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.rank-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: 'Gaegu', cursive;
+  font-size: 1.5rem;
+}
+
+.rank-item {
+  display: inline-flex;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  padding: 8px 16px;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.rank-sign {
+  font-size: 1.1rem;
+  color: #999;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.tip-box {
+  margin-top: 14px;
+  background: white;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.7;
+  border-left: 4px solid var(--yellow);
+  text-align: left;
+}
+.tip-box strong { color: #333; }
+
+/* 통분 설명 박스 */
+.common-denom-box {
+  margin-top: 16px;
+  background: #f0f7ff;
+  border: 2px solid #c0dff8;
+  border-radius: 16px;
+  padding: 18px 18px 16px;
+  text-align: left;
+}
+.cd-title {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.15rem;
+  color: #2a6db5;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cd-intro {
+  font-size: 0.85rem;
+  color: #444;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.cd-intro strong { color: #2a6db5; }
+
+.cd-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cd-step {
+  background: white;
+  border-radius: 12px;
+  padding: 12px 14px;
+  border-left: 4px solid #4D96FF;
+  font-size: 0.84rem;
+  color: #333;
+  line-height: 1.7;
+}
+.cd-step-num {
+  display: inline-block;
+  background: #4D96FF;
+  color: white;
+  font-family: 'Gaegu', cursive;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  line-height: 22px;
+  text-align: center;
+  margin-right: 6px;
+}
+.cd-step strong { color: #e06c00; }
+.cd-step .cd-frac-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+.cd-arrow { color: #aaa; font-size: 1rem; }
+.cd-highlight {
+  background: #fff3cd;
+  border-radius: 8px;
+  padding: 2px 8px;
+  border: 1.5px solid #ffc107;
+  display: inline-flex;
+  align-items: center;
+}
+.cd-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+.cd-bar-row {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
-.frac-divider {
-  width: 48px;
-  height: 3px;
-  background: var(--card-color, #6c7cff);
-  border-radius: 2px;
+.cd-bar-label {
+  min-width: 40px;
+  font-family: 'Gaegu', cursive;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: right;
+}
+.cd-bar-track {
+  flex: 1;
+  height: 22px;
+  background: #eee;
+  border-radius: 6px;
+  position: relative;
+  overflow: visible;
+}
+.cd-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  position: absolute; top: 0; left: 0;
+}
+.cd-bar-divider {
+  position: absolute; top: 0; bottom: 0;
+  width: 2px; background: rgba(255,255,255,0.8);
+  z-index: 2;
 }
 
-.stepper {
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: 50%;
-  background: #f0f0f0;
-  color: #444;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  line-height: 1;
+/* ERROR */
+.error-msg {
+  color: var(--coral);
+  font-size: 0.85rem;
+  margin-top: 10px;
+  display: none;
 }
 
-.stepper:hover {
-  background: #e5e5e5;
-}
-
-.frac-input {
-  width: 48px;
-  height: 36px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+/* FOOTER */
+.tools_footer {
   text-align: center;
-  font-size: 20px;
-  font-weight: 700;
-  -moz-appearance: textfield;
+  padding: 40px 20px 20px;
+  font-size: 0.8rem;
+  color: #bbb;
 }
 
-.frac-input::-webkit-outer-spin-button,
-.frac-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.frac-input:focus {
-  outline: none;
-  border-color: var(--card-color, #6c7cff);
-}
-
-/* 분수 추가 버튼 */
-.btn-add {
-  display: block;
-  margin: 0 auto 32px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 999px;
-  background: #6c7cff;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.1s ease;
-}
-
-.btn-add:hover:not(:disabled) {
-  opacity: 0.9;
-}
-
-.btn-add:active:not(:disabled) {
-  transform: scale(0.97);
-}
-
-.btn-add:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-/* 추천 분수 프리셋 */
-.presets {
-  text-align: center;
-}
-
-.presets-label {
-  font-size: 14px;
-  color: #888;
-  margin: 0 0 12px;
-}
-
-.presets-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.preset-btn {
-  padding: 10px 18px;
-  border: 2px solid #e0e2e8;
-  border-radius: 999px;
-  background: #fff;
-  color: #444;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: border-color 0.15s ease, transform 0.1s ease;
-}
-
-.preset-btn:hover {
-  border-color: #6c7cff;
-}
-
-.preset-btn:active {
-  transform: scale(0.95);
+/* RESPONSIVE */
+@media (max-width: 520px) {
+  .tools_header h1 { font-size: 2rem; }
+  .frac-card { min-width: 120px; }
+  .fraction-inputs { gap: 8px; }
 }
