@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✖️ 곱셈 배열 시각화 - 초등학생을 위한 곱셈 개념</title>
+  <meta name="description" content="곱셈을 점 배열 그림으로 보여주는 초등학생용 무료 온라인 도구입니다. 교환법칙과 스킵 카운팅도 함께 배워요." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/multiplication-array/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quick-tools.barofam.com/multiplication-array/" />
+  <meta property="og:title" content="곱셈 배열 시각화" />
+  <meta property="og:description" content="곱셈을 점 배열 그림으로 보여주는 초등학생용 무료 온라인 도구입니다. 교환법칙과 스킵 카운팅도 함께 배워요." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="곱셈 배열 시각화" />
+  <meta name="twitter:description" content="곱셈을 점 배열 그림으로 보여주는 초등학생용 무료 온라인 도구입니다. 교환법칙과 스킵 카운팅도 함께 배워요." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "곱셈 배열 시각화",
+    "description": "곱셈을 점 배열 그림으로 보여주는 초등학생용 무료 온라인 도구입니다.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+  <section class="tools_header">
+    <h1>✖️ 곱셈 배열 시각화</h1>
+    <p>곱셈을 점 배열로 그림처럼 이해해요!</p>
+  </section>
+
+  <!-- 상단 광고 영역 -->
+  <div class="ad-slot ad-slot-top">
+    <span class="ad-label">Advertisement</span>
+  </div>
+
+  <section class="tools_main">
+    <section class="input-section">
+      <h2>✏️ 곱할 두 수를 입력해 보세요</h2>
+
+      <div class="num-input-row">
+        <div class="num-box">
+          <label>첫 번째 수 (행)</label>
+          <input type="number" id="numA" min="1" max="12" value="3">
+        </div>
+        <span class="op-sign">×</span>
+        <div class="num-box">
+          <label>두 번째 수 (열)</label>
+          <input type="number" id="numB" min="1" max="12" value="4">
+        </div>
+        <span class="eq-sign">=</span>
+        <div class="result-badge" id="resultBadge">12</div>
+      </div>
+
+      <div class="error-msg" id="errorMsg">⚠️ 1~12 사이의 수를 입력해 주세요.</div>
+
+      <div class="actions">
+        <button class="btn-visualize" id="btnVisualize">🎨 그림으로 보기!</button>
+        <button class="btn-reset" id="btnReset">초기화</button>
+      </div>
+
+      <div class="quick-examples">
+        <span>예시:</span>
+        <button class="chip" data-a="2" data-b="3">2×3</button>
+        <button class="chip" data-a="3" data-b="4">3×4</button>
+        <button class="chip" data-a="4" data-b="5">4×5</button>
+        <button class="chip" data-a="6" data-b="7">6×7</button>
+        <button class="chip" data-a="9" data-b="9">9×9</button>
+      </div>
+    </section>
+
+    <section id="result">
+      <div class="result-title">📊 곱셈 시각화 결과</div>
+      <div class="summary-card" id="summaryCard"></div>
+
+      <div class="array-section">
+        <h3>🔵 점 배열로 보기</h3>
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="basic">기본 배열</button>
+          <button class="mode-tab" data-mode="color">행별 색깔</button>
+          <button class="mode-tab" data-mode="group">묶음으로 보기</button>
+        </div>
+        <div id="arrayDisplay"></div>
+        <div class="array-legend" id="arrayLegend"></div>
+      </div>
+
+      <div class="commutative-section" id="commSection"></div>
+      <div class="multiples-section" id="multiplesSection"></div>
+    </section>
+  </section>
+
+  <section class="tools_footer">
+    초등학생을 위한 곱셈 학습 도구 · 배열로 곱셈의 의미를 시각적으로 이해해요
+  </section>
+
+  <!-- 하단 광고 영역 -->
+  <div class="ad-slot ad-slot-bottom">
+    <span class="ad-label">Advertisement</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
