@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>픽셀아트 변환기</title>
+  <meta name="description" content="이미지를 업로드하면 무료로 즉시 픽셀아트로 변환해주는 온라인 도구입니다." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- 소셜 공유 시 보이는 미리보기 (카카오톡, 페이스북, 트위터 등) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="이미지 → 픽셀아트 변환기" />
+  <meta property="og:description" content="이미지를 업로드하면 무료로 즉시 픽셀아트로 변환해주는 온라인 도구입니다." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="이미지 → 픽셀아트 변환기" />
+  <meta name="twitter:description" content="이미지를 업로드하면 무료로 즉시 픽셀아트로 변환해주는 온라인 도구입니다." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- 검색엔진에게 이 페이지가 어떤 서비스인지 알려주는 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "이미지 → 픽셀아트 변환기",
+    "description": "이미지를 업로드하면 무료로 즉시 픽셀아트로 변환해주는 온라인 도구입니다.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 data-i18n="appTitle">이미지 → 픽셀아트 변환기</h1>
+      <p class="subtitle" data-i18n="appSubtitle">이미지를 올리면 자동으로 픽셀아트를 만들어드려요. 슬라이더로 느낌을 직접 조절해보세요.</p>
+    </header>
+
+    <!-- 상단 광고 영역: 애드센스 발행자 ID가 준비되면 이 안에 광고 코드를 넣는다 -->
+    <div class="ad-slot ad-slot-top">
+      <span class="ad-label">Advertisement</span>
+    </div>
+
+    <!-- 이미지 업로드 영역: 클릭 또는 드래그앤드롭으로 파일 선택 -->
+    <div class="upload-area" id="dropZone">
+      <input type="file" id="fileInput" accept="image/*" hidden />
+      <p data-i18n="uploadText">여기를 클릭하거나 이미지를 끌어다 놓으세요</p>
+      <span class="upload-hint" data-i18n="uploadHint">PNG, JPG 등 이미지 파일</span>
+    </div>
+
+    <!-- 변환 작업 영역: 이미지 업로드 전에는 숨김 -->
+    <section class="workspace" id="workspace" hidden>
+      <div class="preview-panel">
+        <div class="preview-box">
+          <h2 data-i18n="originalLabel">원본</h2>
+          <canvas id="originalCanvas"></canvas>
+        </div>
+        <div class="preview-box">
+          <h2 data-i18n="resultLabel">픽셀아트 결과</h2>
+          <canvas id="resultCanvas"></canvas>
+          <p class="grid-info" id="gridInfo"></p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control-row">
+          <label for="pixelRange" data-i18n="pixelSizeLabel">픽셀 크기 (도트 굵기)</label>
+          <input type="range" id="pixelRange" min="1" max="100" step="1" />
+          <span class="control-value" id="pixelValue"></span>
+        </div>
+
+        <div class="control-row">
+          <label for="scaleRange" data-i18n="outputScaleLabel">출력 크기 (배율)</label>
+          <input type="range" id="scaleRange" min="1" max="20" step="1" />
+          <span class="control-value" id="scaleValue"></span>
+        </div>
+
+        <div class="control-row">
+          <label for="simplifyRange" data-i18n="simplifyLabel">색상 단순화 (비슷한 색 합치기)</label>
+          <input type="range" id="simplifyRange" min="0" max="100" step="1" value="0" />
+          <span class="control-value" id="simplifyValue">0%</span>
+        </div>
+
+        <!-- 다운로드 버튼 위 광고 영역: 애드센스 발행자 ID가 준비되면 이 안에 광고 코드를 넣는다 -->
+        <div class="ad-slot ad-slot-inline">
+          <span class="ad-label">Advertisement</span>
+        </div>
+
+        <div class="button-row">
+          <button id="downloadBtn" class="btn btn-primary" data-i18n="downloadBtn">PNG로 다운로드</button>
+          <button id="resetBtn" class="btn btn-secondary" data-i18n="resetBtn">다른 이미지 올리기</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 하단 광고 영역: 애드센스 발행자 ID가 준비되면 이 안에 광고 코드를 넣는다 -->
+    <div class="ad-slot ad-slot-bottom">
+      <span class="ad-label">Advertisement</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
