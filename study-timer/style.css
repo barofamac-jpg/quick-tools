@@ -37,39 +37,6 @@ body {
   color: #bbb;
 }
 
-/* 도구 간 이동 네비게이션 */
-.tool-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  max-width: 600px;
-  margin: 16px auto 0;
-  padding: 0 16px;
-}
-.tool-nav-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: #fff;
-  border: 1.5px solid #ccc;
-  color: #888;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.15s;
-}
-.tool-nav-item:hover {
-  border-color: #666;
-  color: #444;
-}
-.tool-nav-item.active {
-  border-color: #222;
-  color: #222;
-}
-
 .tools_header {
   background: linear-gradient(135deg, #C77DFF 0%, #4D96FF 100%);
   padding: 36px 20px 28px;
