@@ -280,3 +280,148 @@ resetBtn.addEventListener('click', resetTimer);
 readSettings();
 updateStatusText();
 render();
+
+/**
+ * 할 일 목록
+ * 텍스트를 입력해 항목을 추가하고, 체크박스로 완료 처리(취소선+회색)하며,
+ * 최대 15개까지 담을 수 있다.
+ */
+const MAX_TODOS = 15;
+
+const todoInput = document.getElementById('todoInput');
+const todoAddBtn = document.getElementById('todoAddBtn');
+const todoListEl = document.getElementById('todoList');
+const todoCountEl = document.getElementById('todoCount');
+const todoClearBtn = document.getElementById('todoClearBtn');
+
+let todos = []; // { id, text, done }
+let todoIdSeq = 0;
+let dragId = null; // 드래그로 순서를 옮기는 중인 항목의 id
+
+const DRAG_HANDLE_SVG = `
+  <svg width="10" height="16" viewBox="0 0 10 16" fill="currentColor">
+    <circle cx="2" cy="2" r="1.5" /><circle cx="8" cy="2" r="1.5" />
+    <circle cx="2" cy="8" r="1.5" /><circle cx="8" cy="8" r="1.5" />
+    <circle cx="2" cy="14" r="1.5" /><circle cx="8" cy="14" r="1.5" />
+  </svg>`;
+
+/**
+ * 할 일 목록 배열을 화면에 다시 그린다.
+ */
+function renderTodos() {
+  todoListEl.innerHTML = '';
+
+  if (todos.length === 0) {
+    const empty = document.createElement('li');
+    empty.className = 'todo-empty';
+    empty.textContent = '할 일을 추가해보세요';
+    todoListEl.appendChild(empty);
+  } else {
+    todos.forEach((todo) => {
+      const li = document.createElement('li');
+      li.className = 'todo-item' + (todo.done ? ' completed' : '') + (todo.id === dragId ? ' dragging' : '');
+      li.innerHTML = `
+        <span class="todo-drag" title="순서 변경">${DRAG_HANDLE_SVG}</span>
+        <label class="todo-toggle">
+          <input type="checkbox" class="todo-check" ${todo.done ? 'checked' : ''} />
+          <span class="todo-text"></span>
+        </label>
+        <button class="todo-remove" title="삭제">✕</button>
+      `;
+      li.querySelector('.todo-text').textContent = todo.text;
+      li.querySelector('.todo-check').addEventListener('change', () => toggleTodo(todo.id));
+      li.querySelector('.todo-remove').addEventListener('click', () => removeTodo(todo.id));
+      li.querySelector('.todo-drag').addEventListener('pointerdown', (e) => startTodoDrag(todo.id, e));
+      todoListEl.appendChild(li);
+    });
+  }
+
+  const atMax = todos.length >= MAX_TODOS;
+  todoCountEl.textContent = `${todos.length}/${MAX_TODOS}`;
+  todoInput.disabled = atMax;
+  todoAddBtn.disabled = atMax;
+}
+
+/**
+ * 입력창의 텍스트를 새 할 일로 추가한다. 빈 값이거나 최대 개수에 도달하면 무시한다.
+ */
+function addTodo() {
+  const text = todoInput.value.trim();
+  if (!text || todos.length >= MAX_TODOS) return;
+  todos.push({ id: todoIdSeq++, text, done: false });
+  todoInput.value = '';
+  renderTodos();
+}
+
+/**
+ * 할 일의 완료 상태를 토글한다.
+ */
+function toggleTodo(id) {
+  const todo = todos.find((item) => item.id === id);
+  if (todo) todo.done = !todo.done;
+  renderTodos();
+}
+
+/**
+ * 할 일 하나를 목록에서 삭제한다.
+ */
+function removeTodo(id) {
+  todos = todos.filter((item) => item.id !== id);
+  renderTodos();
+}
+
+/**
+ * 드래그 손잡이를 눌렀을 때 순서 변경을 시작한다.
+ */
+function startTodoDrag(id, e) {
+  e.preventDefault();
+  dragId = id;
+  renderTodos();
+  window.addEventListener('pointermove', onTodoDragMove);
+  window.addEventListener('pointerup', onTodoDragEnd);
+}
+
+/**
+ * 드래그 중인 항목이 다른 항목의 세로 중앙선을 넘으면 배열 순서를 맞바꾼다.
+ */
+function onTodoDragMove(e) {
+  if (dragId === null) return;
+  const draggedIndex = todos.findIndex((item) => item.id === dragId);
+  if (draggedIndex === -1) return;
+
+  const items = Array.from(todoListEl.querySelectorAll('.todo-item'));
+  for (let i = 0; i < items.length; i++) {
+    if (i === draggedIndex) continue;
+    const rect = items[i].getBoundingClientRect();
+    const midY = rect.top + rect.height / 2;
+    const crossedUp = i < draggedIndex && e.clientY < midY;
+    const crossedDown = i > draggedIndex && e.clientY > midY;
+    if (crossedUp || crossedDown) {
+      const [moved] = todos.splice(draggedIndex, 1);
+      todos.splice(i, 0, moved);
+      renderTodos();
+      break;
+    }
+  }
+}
+
+/**
+ * 드래그를 끝내고 상태를 정리한다.
+ */
+function onTodoDragEnd() {
+  dragId = null;
+  window.removeEventListener('pointermove', onTodoDragMove);
+  window.removeEventListener('pointerup', onTodoDragEnd);
+  renderTodos();
+}
+
+todoAddBtn.addEventListener('click', addTodo);
+todoInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') addTodo();
+});
+todoClearBtn.addEventListener('click', () => {
+  todos = [];
+  renderTodos();
+});
+
+renderTodos();

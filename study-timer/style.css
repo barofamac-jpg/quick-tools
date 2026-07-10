@@ -100,9 +100,34 @@ body {
 }
 
 .game-main {
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 16px;
+}
+
+.layout-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.timer-panel {
+  flex: 1 1 380px;
+}
+
+.todo-panel {
+  flex: 1 1 300px;
+}
+
+@media (max-width: 720px) {
+  .layout-row {
+    flex-direction: column;
+  }
+  .timer-panel,
+  .todo-panel {
+    flex: 1 1 auto;
+    width: 100%;
+  }
 }
 
 .panel {
@@ -228,6 +253,145 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
 }
 .btn-secondary:hover { background: #e5e5e5; }
+
+/* 할 일 목록 */
+.todo-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.todo-input-row input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.btn-add-todo {
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.btn-add-todo:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.todo-count {
+  text-align: right;
+  font-size: 12px;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  max-height: 360px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #fafafa;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+}
+
+.todo-item.completed {
+  background: #f2f2f2;
+}
+
+.todo-item.dragging {
+  opacity: 0.5;
+}
+
+.todo-drag {
+  display: flex;
+  align-items: center;
+  color: #ccc;
+  cursor: grab;
+  flex-shrink: 0;
+  touch-action: none;
+}
+.todo-drag:active {
+  cursor: grabbing;
+}
+
+.todo-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.todo-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--mint);
+}
+
+.todo-text {
+  font-size: 14px;
+  color: #333;
+  word-break: break-word;
+}
+
+.todo-item.completed .todo-text {
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.todo-remove {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 6px;
+  flex-shrink: 0;
+}
+.todo-remove:hover {
+  color: var(--coral);
+}
+
+.todo-empty {
+  font-size: 13px;
+  color: #bbb;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.todo-clear-btn {
+  width: 100%;
+  margin-top: auto;
+}
 
 .tools_footer {
   text-align: center;

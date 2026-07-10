@@ -55,38 +55,51 @@
   </div>
 
   <main class="game-main">
-    <section class="panel">
-      <h2>시간을 정해보세요</h2>
-      <div class="size-row">
-        <label for="studyInput">공부 시간(분)</label>
-        <input type="number" id="studyInput" min="1" max="180" value="50" />
-        <label for="breakInput">쉬는 시간(분)</label>
-        <input type="number" id="breakInput" min="1" max="180" value="10" />
-      </div>
-      <div class="lock-row">
-        <label class="lock-label">
-          <input type="checkbox" id="repeatCheck" />
-          <span>반복하기</span>
-        </label>
-      </div>
-
-      <div class="timer-stage">
-        <canvas id="timerCanvas" width="280" height="280"></canvas>
-        <div class="timer-status">
-          <div class="phase-label" id="phaseLabel">시작을 눌러주세요</div>
-          <div class="time-label" id="timeLabel">50:00</div>
+    <div class="layout-row">
+      <section class="panel timer-panel">
+        <h2>시간을 정해보세요</h2>
+        <div class="size-row">
+          <label for="studyInput">공부 시간(분)</label>
+          <input type="number" id="studyInput" min="1" max="180" value="50" />
+          <label for="breakInput">쉬는 시간(분)</label>
+          <input type="number" id="breakInput" min="1" max="180" value="10" />
         </div>
-      </div>
+        <div class="lock-row">
+          <label class="lock-label">
+            <input type="checkbox" id="repeatCheck" />
+            <span>반복하기</span>
+          </label>
+        </div>
 
-      <div class="ad-slot ad-slot-inline">
-        <span class="ad-label">Advertisement</span>
-      </div>
+        <div class="timer-stage">
+          <canvas id="timerCanvas" width="280" height="280"></canvas>
+          <div class="timer-status">
+            <div class="phase-label" id="phaseLabel">시작을 눌러주세요</div>
+            <div class="time-label" id="timeLabel">50:00</div>
+          </div>
+        </div>
 
-      <div class="button-row">
-        <button id="toggleBtn" class="btn btn-primary">시작</button>
-        <button id="resetBtn" class="btn btn-secondary" hidden>초기화</button>
-      </div>
-    </section>
+        <div class="ad-slot ad-slot-inline">
+          <span class="ad-label">Advertisement</span>
+        </div>
+
+        <div class="button-row">
+          <button id="toggleBtn" class="btn btn-primary">시작</button>
+          <button id="resetBtn" class="btn btn-secondary" hidden>초기화</button>
+        </div>
+      </section>
+
+      <section class="panel todo-panel">
+        <h2>할 일 목록</h2>
+        <div class="todo-input-row">
+          <input type="text" id="todoInput" placeholder="할 일을 입력하세요" maxlength="60" />
+          <button id="todoAddBtn" class="btn-add-todo">추가</button>
+        </div>
+        <p class="todo-count" id="todoCount">0/15</p>
+        <ul class="todo-list" id="todoList"></ul>
+        <button id="todoClearBtn" class="btn btn-secondary todo-clear-btn">모두 지우기</button>
+      </section>
+    </div>
   </main>
 
   <section class="tools_footer">
