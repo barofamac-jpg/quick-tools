@@ -58,10 +58,12 @@
       gap: 12px;
     }
     .tool-card {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 14px;
       background: #fff;
       border-radius: 12px;
-      padding: 18px 20px;
+      padding: 16px 20px;
       text-decoration: none;
       color: inherit;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -71,13 +73,26 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     }
+    .tool-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .tool-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
     .tool-title {
-      display: block;
       font-weight: 600;
-      margin-bottom: 4px;
     }
     .tool-desc {
-      display: block;
       font-size: 13px;
       color: #888;
     }
@@ -96,32 +111,47 @@
       <ul class="tool-list">
         <li>
           <a class="tool-card" href="/en/multiplication-array/">
-            <span class="tool-title">Multiplication Array Visualizer</span>
-            <span class="tool-desc">Shows multiplication as a dot array and teaches the commutative property.</span>
+            <span class="tool-icon" style="background:#e5efff">✖️</span>
+            <span class="tool-text">
+              <span class="tool-title">Multiplication Array Visualizer</span>
+              <span class="tool-desc">Shows multiplication as a dot array and teaches the commutative property.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/en/multiplication-game/">
-            <span class="tool-title">Multiplication Practice Game</span>
-            <span class="tool-desc">Practice multiplication by solving problems across 5 difficulty levels.</span>
+            <span class="tool-icon" style="background:#e5f8e7">🎮</span>
+            <span class="tool-text">
+              <span class="tool-title">Multiplication Practice Game</span>
+              <span class="tool-desc">Practice multiplication by solving problems across 5 difficulty levels.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/en/fraction-visualizer/">
-            <span class="tool-title">Fraction Visualizer</span>
-            <span class="tool-desc">Shows fractions as pictures and lets you compare up to 6 at once.</span>
+            <span class="tool-icon" style="background:#fffce5">🍕</span>
+            <span class="tool-text">
+              <span class="tool-title">Fraction Visualizer</span>
+              <span class="tool-desc">Shows fractions as pictures and lets you compare up to 6 at once.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/en/fraction-game/">
-            <span class="tool-title">Fraction Practice Game</span>
-            <span class="tool-desc">Build your fraction sense by picking the bigger fraction, across 5 difficulty levels.</span>
+            <span class="tool-icon" style="background:#fff0e0">🍕</span>
+            <span class="tool-text">
+              <span class="tool-title">Fraction Practice Game</span>
+              <span class="tool-desc">Build your fraction sense by picking the bigger fraction, across 5 difficulty levels.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/en/study-timer/">
-            <span class="tool-title">Study Timer</span>
-            <span class="tool-desc">Set your study and break time and watch progress on a circular clock face.</span>
+            <span class="tool-icon" style="background:#f3e5ff">⏱️</span>
+            <span class="tool-text">
+              <span class="tool-title">Study Timer</span>
+              <span class="tool-desc">Set your study and break time and watch progress on a circular clock face.</span>
+            </span>
           </a>
         </li>
       </ul>
@@ -132,20 +162,29 @@
       <ul class="tool-list">
         <li>
           <a class="tool-card" href="/en/pixel-art-converter/">
-            <span class="tool-title">Image → Pixel Art Converter</span>
-            <span class="tool-desc">Upload a photo and it's automatically turned into pixel art.</span>
+            <span class="tool-icon" style="background:#ffe5e5">🎨</span>
+            <span class="tool-text">
+              <span class="tool-title">Image → Pixel Art Converter</span>
+              <span class="tool-desc">Upload a photo and it's automatically turned into pixel art.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/en/image-format-converter/">
-            <span class="tool-title">Image Format & Size Converter</span>
-            <span class="tool-desc">Convert to PNG, JPG, or WebP and shrink the file size with a quality slider.</span>
+            <span class="tool-icon" style="background:#e5efff">🔄</span>
+            <span class="tool-text">
+              <span class="tool-title">Image Format & Size Converter</span>
+              <span class="tool-desc">Convert to PNG, JPG, or WebP and shrink the file size with a quality slider.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/en/image-resizer/">
-            <span class="tool-title">Image Resize & Crop Tool</span>
-            <span class="tool-desc">Crop the area you want and resize it before downloading.</span>
+            <span class="tool-icon" style="background:#e5f8e7">✂️</span>
+            <span class="tool-text">
+              <span class="tool-title">Image Resize & Crop Tool</span>
+              <span class="tool-desc">Crop the area you want and resize it before downloading.</span>
+            </span>
           </a>
         </li>
       </ul>

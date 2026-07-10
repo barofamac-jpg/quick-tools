@@ -58,10 +58,12 @@
       gap: 12px;
     }
     .tool-card {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 14px;
       background: #fff;
       border-radius: 12px;
-      padding: 18px 20px;
+      padding: 16px 20px;
       text-decoration: none;
       color: inherit;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -71,13 +73,26 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     }
+    .tool-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .tool-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
     .tool-title {
-      display: block;
       font-weight: 600;
-      margin-bottom: 4px;
     }
     .tool-desc {
-      display: block;
       font-size: 13px;
       color: #888;
     }
@@ -96,32 +111,47 @@
       <ul class="tool-list">
         <li>
           <a class="tool-card" href="/multiplication-array/">
-            <span class="tool-title">곱셈 배열 시각화</span>
-            <span class="tool-desc">곱셈을 점 배열 그림으로 보여주고 교환법칙까지 배워요.</span>
+            <span class="tool-icon" style="background:#e5efff">✖️</span>
+            <span class="tool-text">
+              <span class="tool-title">곱셈 배열 시각화</span>
+              <span class="tool-desc">곱셈을 점 배열 그림으로 보여주고 교환법칙까지 배워요.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/multiplication-game/">
-            <span class="tool-title">곱셈 연습게임</span>
-            <span class="tool-desc">문제를 풀면서 곱셈을 연습하는 5단계 난이도 게임이에요.</span>
+            <span class="tool-icon" style="background:#e5f8e7">🎮</span>
+            <span class="tool-text">
+              <span class="tool-title">곱셈 연습게임</span>
+              <span class="tool-desc">문제를 풀면서 곱셈을 연습하는 5단계 난이도 게임이에요.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/fraction-visualizer/">
-            <span class="tool-title">분수 시각화 도구</span>
-            <span class="tool-desc">분수를 그림으로 보여주고 최대 3개까지 비교해볼 수 있어요.</span>
+            <span class="tool-icon" style="background:#fffce5">🍕</span>
+            <span class="tool-text">
+              <span class="tool-title">분수 시각화 도구</span>
+              <span class="tool-desc">분수를 그림으로 보여주고 최대 3개까지 비교해볼 수 있어요.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/fraction-game/">
-            <span class="tool-title">분수 연습게임</span>
-            <span class="tool-desc">더 큰 분수를 맞히면서 분수 감각을 키우는 5단계 난이도 게임이에요.</span>
+            <span class="tool-icon" style="background:#fff0e0">🍕</span>
+            <span class="tool-text">
+              <span class="tool-title">분수 연습게임</span>
+              <span class="tool-desc">더 큰 분수를 맞히면서 분수 감각을 키우는 5단계 난이도 게임이에요.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/study-timer/">
-            <span class="tool-title">학습 타이머</span>
-            <span class="tool-desc">공부시간과 쉬는시간을 정하면 원형 시계 그림으로 보여줘요.</span>
+            <span class="tool-icon" style="background:#f3e5ff">⏱️</span>
+            <span class="tool-text">
+              <span class="tool-title">학습 타이머</span>
+              <span class="tool-desc">공부시간과 쉬는시간을 정하면 원형 시계 그림으로 보여줘요.</span>
+            </span>
           </a>
         </li>
       </ul>
@@ -132,20 +162,29 @@
       <ul class="tool-list">
         <li>
           <a class="tool-card" href="/pixel-art-converter/">
-            <span class="tool-title">이미지 → 픽셀아트 변환기</span>
-            <span class="tool-desc">사진을 올리면 자동으로 픽셀아트로 변환해드려요.</span>
+            <span class="tool-icon" style="background:#ffe5e5">🎨</span>
+            <span class="tool-text">
+              <span class="tool-title">이미지 → 픽셀아트 변환기</span>
+              <span class="tool-desc">사진을 올리면 자동으로 픽셀아트로 변환해드려요.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/image-format-converter/">
-            <span class="tool-title">이미지 포맷/용량 변환기</span>
-            <span class="tool-desc">PNG, JPG, WebP로 변환하고 화질을 조절해 용량을 줄여요.</span>
+            <span class="tool-icon" style="background:#e5efff">🔄</span>
+            <span class="tool-text">
+              <span class="tool-title">이미지 포맷/용량 변환기</span>
+              <span class="tool-desc">PNG, JPG, WebP로 변환하고 화질을 조절해 용량을 줄여요.</span>
+            </span>
           </a>
         </li>
         <li>
           <a class="tool-card" href="/image-resizer/">
-            <span class="tool-title">이미지 리사이즈/크롭 도구</span>
-            <span class="tool-desc">원하는 영역을 잘라내고 크기를 조절해서 다운로드해요.</span>
+            <span class="tool-icon" style="background:#e5f8e7">✂️</span>
+            <span class="tool-text">
+              <span class="tool-title">이미지 리사이즈/크롭 도구</span>
+              <span class="tool-desc">원하는 영역을 잘라내고 크기를 조절해서 다운로드해요.</span>
+            </span>
           </a>
         </li>
       </ul>
