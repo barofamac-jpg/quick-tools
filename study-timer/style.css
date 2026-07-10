@@ -1,0 +1,242 @@
+:root {
+  --purple: #C77DFF;
+  --blue: #4D96FF;
+  --coral: #FF6B6B;
+  --gray: #B0B0B0;
+  --mint: #6BCB77;
+  --bg: #fef9f0;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --sub: #888;
+  --border: #e0d6c8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.ad-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  margin: 16px auto;
+  max-width: 600px;
+  border: 1px dashed #d8cdb9;
+  border-radius: 12px;
+  background: #fffdf8;
+}
+.ad-label {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: #bbb;
+}
+
+/* 도구 간 이동 네비게이션 */
+.tool-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 600px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+}
+.tool-nav-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1.5px solid #ccc;
+  color: #888;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.tool-nav-item:hover {
+  border-color: #666;
+  color: #444;
+}
+.tool-nav-item.active {
+  border-color: #222;
+  color: #222;
+}
+
+.tools_header {
+  background: linear-gradient(135deg, #C77DFF 0%, #4D96FF 100%);
+  padding: 36px 20px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.tools_header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+}
+.tools_header h1 {
+  font-family: 'Gaegu', cursive;
+  font-size: 2.4rem;
+  color: #fff;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.12);
+  position: relative; z-index: 1;
+}
+.tools_header p {
+  color: rgba(255,255,255,0.92);
+  font-size: 0.95rem;
+  margin-top: 6px;
+  position: relative; z-index: 1;
+}
+
+.game-main {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.panel {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 28px 22px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  border: 2px solid var(--border);
+  text-align: center;
+}
+
+.panel h2 {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* 시간 입력 */
+.size-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.size-row label {
+  font-size: 14px;
+  color: #444;
+  font-weight: 600;
+}
+.size-row input[type="number"] {
+  width: 70px;
+  padding: 8px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.lock-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.lock-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+}
+.lock-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--purple);
+}
+
+/* 타이머 시각화 */
+.timer-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 22px 0;
+}
+
+#timerCanvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.phase-label {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #888;
+  margin-bottom: 4px;
+}
+.phase-label.phase-study { color: var(--coral); }
+.phase-label.phase-break { color: #888; }
+.phase-label.phase-paused { color: var(--purple); }
+.phase-label.phase-done { color: var(--mint); }
+
+.time-label {
+  font-family: 'Gaegu', cursive;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #333;
+  font-variant-numeric: tabular-nums;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 28px;
+  font-family: 'Gaegu', cursive;
+  font-size: 1.15rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(199,125,255,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); }
+
+.btn-secondary {
+  background: #f0f0f0;
+  border: 2px solid #e0e0e0;
+  color: #888;
+  border-radius: 14px;
+  padding: 14px 22px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.btn-secondary:hover { background: #e5e5e5; }
+
+.tools_footer {
+  text-align: center;
+  padding: 40px 20px 20px;
+  font-size: 0.8rem;
+  color: #bbb;
+}
+
+@media (max-width: 420px) {
+  .tools_header h1 { font-size: 2rem; }
+  .time-label { font-size: 2.1rem; }
+}
