@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>⏱️ 학습 타이머 - 공부시간/쉬는시간 시각화 타이머</title>
-  <meta name="description" content="공부 시간과 쉬는 시간을 정하면 원형 시계 그림으로 진행 상황을 보여주는 초등학생용 무료 학습 타이머입니다." />
+  <title>⏱️ Study Timer - Visual Study/Break Timer</title>
+  <meta name="description" content="Set your study and break time and watch progress on a circular clock face. A free study timer for elementary students, with a built-in to-do list." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://quick-tools.barofam.com/study-timer/" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/en/study-timer/" />
   <link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/study-timer/" />
   <link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/study-timer/" />
   <link rel="alternate" hreflang="x-default" href="https://quick-tools.barofam.com/study-timer/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://quick-tools.barofam.com/study-timer/" />
-  <meta property="og:title" content="학습 타이머" />
-  <meta property="og:description" content="공부 시간과 쉬는 시간을 정하면 원형 시계 그림으로 진행 상황을 보여주는 초등학생용 무료 학습 타이머입니다." />
+  <meta property="og:url" content="https://quick-tools.barofam.com/en/study-timer/" />
+  <meta property="og:title" content="Study Timer" />
+  <meta property="og:description" content="Set your study and break time and watch progress on a circular clock face. A free study timer for elementary students, with a built-in to-do list." />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="학습 타이머" />
-  <meta name="twitter:description" content="공부 시간과 쉬는 시간을 정하면 원형 시계 그림으로 진행 상황을 보여주는 초등학생용 무료 학습 타이머입니다." />
+  <meta name="twitter:title" content="Study Timer" />
+  <meta name="twitter:description" content="Set your study and break time and watch progress on a circular clock face. A free study timer for elementary students, with a built-in to-do list." />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
 
@@ -25,14 +25,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../../study-timer/style.css" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "학습 타이머",
-    "description": "공부 시간과 쉬는 시간을 정하면 원형 시계 그림으로 진행 상황을 보여주는 무료 학습 타이머입니다.",
+    "name": "Study Timer",
+    "description": "Set your study and break time and watch progress on a circular clock face.",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -41,17 +41,17 @@
 </head>
 <body>
   <section class="tools_header">
-    <h1>⏱️ 학습 타이머</h1>
-    <p>공부와 쉬는 시간을 정하고 집중해봐요!</p>
+    <h1>⏱️ Study Timer</h1>
+    <p>Set your study and break time and stay focused!</p>
   </section>
 
   <nav class="tool-nav">
-    <a href="../multiplication-array/index.html" class="tool-nav-item">곱셈 시각화</a>
-    <a href="../multiplication-game/index.html" class="tool-nav-item">곱셈 연습게임</a>
-    <a href="../fraction-visualizer/index.html" class="tool-nav-item">분수 시각화</a>
-    <a href="../fraction-game/index.html" class="tool-nav-item">분수 연습게임</a>
-    <a href="./index.html" class="tool-nav-item active">학습 타이머</a>
-    <a href="/en/study-timer/" class="tool-nav-item lang-item">EN</a>
+    <a href="../multiplication-array/index.html" class="tool-nav-item">Array Visualizer</a>
+    <a href="../multiplication-game/index.html" class="tool-nav-item">Multiplication Game</a>
+    <a href="../fraction-visualizer/index.html" class="tool-nav-item">Fraction Visualizer</a>
+    <a href="../fraction-game/index.html" class="tool-nav-item">Fraction Game</a>
+    <a href="./index.html" class="tool-nav-item active">Study Timer</a>
+    <a href="/study-timer/" class="tool-nav-item lang-item">한국어</a>
   </nav>
 
   <div class="ad-slot ad-slot-top">
@@ -61,24 +61,24 @@
   <main class="game-main">
     <div class="layout-row">
       <section class="panel timer-panel">
-        <h2>시간을 정해보세요</h2>
+        <h2>Set your time</h2>
         <div class="size-row">
-          <label for="studyInput">공부 시간(분)</label>
+          <label for="studyInput">Study time (min)</label>
           <input type="number" id="studyInput" min="1" max="180" value="50" />
-          <label for="breakInput">쉬는 시간(분)</label>
+          <label for="breakInput">Break time (min)</label>
           <input type="number" id="breakInput" min="1" max="180" value="10" />
         </div>
         <div class="lock-row">
           <label class="lock-label">
             <input type="checkbox" id="repeatCheck" />
-            <span>반복하기</span>
+            <span>Repeat</span>
           </label>
         </div>
 
         <div class="timer-stage">
           <canvas id="timerCanvas" width="280" height="280"></canvas>
           <div class="timer-status">
-            <div class="phase-label" id="phaseLabel">시작을 눌러주세요</div>
+            <div class="phase-label" id="phaseLabel">Press start</div>
             <div class="time-label" id="timeLabel">50:00</div>
           </div>
         </div>
@@ -88,26 +88,26 @@
         </div>
 
         <div class="button-row">
-          <button id="toggleBtn" class="btn btn-primary">시작</button>
-          <button id="resetBtn" class="btn btn-secondary" hidden>초기화</button>
+          <button id="toggleBtn" class="btn btn-primary">Start</button>
+          <button id="resetBtn" class="btn btn-secondary" hidden>Reset</button>
         </div>
       </section>
 
       <section class="panel todo-panel">
-        <h2>할 일 목록</h2>
+        <h2>To-do List</h2>
         <div class="todo-input-row">
-          <input type="text" id="todoInput" placeholder="할 일을 입력하세요" maxlength="60" />
-          <button id="todoAddBtn" class="btn-add-todo">추가</button>
+          <input type="text" id="todoInput" placeholder="Add a task" maxlength="60" />
+          <button id="todoAddBtn" class="btn-add-todo">Add</button>
         </div>
         <p class="todo-count" id="todoCount">0/15</p>
         <ul class="todo-list" id="todoList"></ul>
-        <button id="todoClearBtn" class="btn btn-secondary todo-clear-btn">모두 지우기</button>
+        <button id="todoClearBtn" class="btn btn-secondary todo-clear-btn">Clear All</button>
       </section>
     </div>
   </main>
 
   <section class="tools_footer">
-    초등학생을 위한 공부/쉬는시간 시각화 타이머
+    A visual study/break timer for elementary students
     <div style="margin-top:6px">© barofam</div>
   </section>
 

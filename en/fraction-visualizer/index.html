@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🍕 분수 시각화 도구 - 초등학생을 위한 분수 비교</title>
-  <meta name="description" content="분수를 그림으로 보여주고 최대 6개까지 비교할 수 있는 초등학생용 무료 온라인 도구입니다." />
+  <title>🍕 Fraction Visualizer - Compare Fractions for Elementary Students</title>
+  <meta name="description" content="A free online tool that shows fractions as pictures and lets you compare up to 6 of them, for elementary students." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://quick-tools.barofam.com/fraction-visualizer/" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/en/fraction-visualizer/" />
   <link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/fraction-visualizer/" />
   <link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/fraction-visualizer/" />
   <link rel="alternate" hreflang="x-default" href="https://quick-tools.barofam.com/fraction-visualizer/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://quick-tools.barofam.com/fraction-visualizer/" />
-  <meta property="og:title" content="분수 시각화 도구" />
-  <meta property="og:description" content="분수를 그림으로 보여주고 최대 6개까지 비교할 수 있는 초등학생용 무료 온라인 도구입니다." />
+  <meta property="og:url" content="https://quick-tools.barofam.com/en/fraction-visualizer/" />
+  <meta property="og:title" content="Fraction Visualizer" />
+  <meta property="og:description" content="A free online tool that shows fractions as pictures and lets you compare up to 6 of them, for elementary students." />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="분수 시각화 도구" />
-  <meta name="twitter:description" content="분수를 그림으로 보여주고 최대 6개까지 비교할 수 있는 초등학생용 무료 온라인 도구입니다." />
+  <meta name="twitter:title" content="Fraction Visualizer" />
+  <meta name="twitter:description" content="A free online tool that shows fractions as pictures and lets you compare up to 6 of them, for elementary students." />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
 
@@ -25,14 +25,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../../fraction-visualizer/style.css" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "분수 시각화 도구",
-    "description": "분수를 그림으로 보여주고 최대 6개까지 비교할 수 있는 초등학생용 무료 온라인 도구입니다.",
+    "name": "Fraction Visualizer",
+    "description": "A free online tool that shows fractions as pictures and lets you compare up to 6 of them.",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -41,51 +41,50 @@
 </head>
 <body>
   <section class="tools_header">
-    <h1>🍕 분수 시각화 도구</h1>
-    <p>분수를 입력하면 그림으로 쉽게 비교할 수 있어요!</p>
+    <h1>🍕 Fraction Visualizer</h1>
+    <p>Enter fractions and compare them easily with pictures!</p>
   </section>
 
   <nav class="tool-nav">
-    <a href="../multiplication-array/index.html" class="tool-nav-item">곱셈 시각화</a>
-    <a href="../multiplication-game/index.html" class="tool-nav-item">곱셈 연습게임</a>
-    <a href="./index.html" class="tool-nav-item active">분수 시각화</a>
-    <a href="../fraction-game/index.html" class="tool-nav-item">분수 연습게임</a>
-    <a href="../study-timer/index.html" class="tool-nav-item">학습 타이머</a>
-    <a href="/en/fraction-visualizer/" class="tool-nav-item lang-item">EN</a>
+    <a href="../multiplication-array/index.html" class="tool-nav-item">Array Visualizer</a>
+    <a href="../multiplication-game/index.html" class="tool-nav-item">Multiplication Game</a>
+    <a href="./index.html" class="tool-nav-item active">Fraction Visualizer</a>
+    <a href="../fraction-game/index.html" class="tool-nav-item">Fraction Game</a>
+    <a href="../study-timer/index.html" class="tool-nav-item">Study Timer</a>
+    <a href="/fraction-visualizer/" class="tool-nav-item lang-item">한국어</a>
   </nav>
 
-  <!-- 상단 광고 영역 -->
   <div class="ad-slot ad-slot-top">
     <span class="ad-label">Advertisement</span>
   </div>
 
   <section class="tools_main">
     <section class="input-section">
-      <h2>✏️ 분수를 입력해 보세요</h2>
+      <h2>✏️ Enter your fractions</h2>
       <div class="fraction-inputs" id="fracInputs"></div>
-      <div class="error-msg" id="errorMsg">⚠️ 분자와 분모를 모두 올바르게 입력해 주세요. (분모는 1 이상)</div>
+      <div class="error-msg" id="errorMsg">⚠️ Please enter a valid numerator and denominator for each fraction. (denominator must be 1 or more)</div>
       <div class="actions">
-        <button class="btn-visualize" onclick="visualize()">🎨 그림으로 보기!</button>
-        <button class="btn-reset" onclick="resetAll()">초기화</button>
+        <button class="btn-visualize" onclick="visualize()">🎨 Show me!</button>
+        <button class="btn-reset" onclick="resetAll()">Reset</button>
       </div>
       <div class="quick-examples">
-        <span>예시:</span>
+        <span>Examples:</span>
         <button class="chip" onclick="loadExample([{n:1,d:2},{n:1,d:3}])">1/2 vs 1/3</button>
         <button class="chip" onclick="loadExample([{n:1,d:4},{n:2,d:4},{n:3,d:4}])">1/4, 2/4, 3/4</button>
         <button class="chip" onclick="loadExample([{n:1,d:2},{n:2,d:3},{n:3,d:4}])">1/2, 2/3, 3/4</button>
-        <button class="chip" onclick="loadExample([{n:1,d:3},{n:1,d:6},{n:1,d:8}])">단위분수 비교</button>
+        <button class="chip" onclick="loadExample([{n:1,d:3},{n:1,d:6},{n:1,d:8}])">Unit fractions</button>
       </div>
     </section>
 
     <section id="result">
-      <div class="result-title">📊 분수 시각화 결과</div>
+      <div class="result-title">📊 Visualization Result</div>
       <div class="fraction-cards" id="fracCards"></div>
       <div class="comparison-section">
-        <h3>📏 크기 비교 막대</h3>
+        <h3>📏 Size comparison bars</h3>
         <div class="comp-bar-wrap" id="compBars"></div>
       </div>
       <div class="rank-section">
-        <h3>🏆 크기 순서</h3>
+        <h3>🏆 Ranked by size</h3>
         <div class="rank-display" id="rankDisplay"></div>
         <div class="tip-box" id="tipBox"></div>
         <div class="common-denom-box" id="commonDenomBox" style="display:none"></div>
@@ -94,11 +93,10 @@
   </section>
 
   <section class="tools_footer">
-    초등학생을 위한 분수 학습 도구 · 분수의 개념과 크기 비교를 시각적으로 쉽게 이해해요
+    A fraction learning tool for elementary students · Understand fraction concepts and size comparisons visually
     <div style="margin-top:6px">© barofam</div>
   </section>
 
-  <!-- 하단 광고 영역 -->
   <div class="ad-slot ad-slot-bottom">
     <span class="ad-label">Advertisement</span>
   </div>

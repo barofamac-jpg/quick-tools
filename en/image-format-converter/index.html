@@ -1,46 +1,47 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>이미지 포맷/용량 변환기</title>
-  <meta name="description" content="이미지를 PNG, JPG, WebP로 변환하고 화질을 조절해 용량을 줄여주는 무료 온라인 도구입니다." />
+  <title>Image Format & Size Converter</title>
+  <meta name="description" content="Convert images to PNG, JPG, or WebP and reduce file size with a quality slider, free and online." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://quick-tools.barofam.com/image-format-converter/" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/en/image-format-converter/" />
   <link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/image-format-converter/" />
   <link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/image-format-converter/" />
   <link rel="alternate" hreflang="x-default" href="https://quick-tools.barofam.com/image-format-converter/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://quick-tools.barofam.com/image-format-converter/" />
-  <meta property="og:title" content="이미지 포맷/용량 변환기" />
-  <meta property="og:description" content="이미지를 PNG, JPG, WebP로 변환하고 화질을 조절해 용량을 줄여주는 무료 온라인 도구입니다." />
+  <meta property="og:url" content="https://quick-tools.barofam.com/en/image-format-converter/" />
+  <meta property="og:title" content="Image Format & Size Converter" />
+  <meta property="og:description" content="Convert images to PNG, JPG, or WebP and reduce file size with a quality slider, free and online." />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="이미지 포맷/용량 변환기" />
-  <meta name="twitter:description" content="이미지를 PNG, JPG, WebP로 변환하고 화질을 조절해 용량을 줄여주는 무료 온라인 도구입니다." />
+  <meta name="twitter:title" content="Image Format & Size Converter" />
+  <meta name="twitter:description" content="Convert images to PNG, JPG, or WebP and reduce file size with a quality slider, free and online." />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../../image-format-converter/style.css" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "이미지 포맷/용량 변환기",
-    "description": "이미지를 PNG, JPG, WebP로 변환하고 화질을 조절해 용량을 줄여주는 무료 온라인 도구입니다.",
+    "name": "Image Format & Size Converter",
+    "description": "Convert images to PNG, JPG, or WebP and reduce file size with a quality slider, free and online.",
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
+  <script>window.FORCE_LANG = 'en';</script>
 </head>
 <body>
-  <a href="/en/image-format-converter/" class="lang-switch">EN</a>
+  <a href="/image-format-converter/" class="lang-switch">한국어</a>
   <div class="container">
     <header>
-      <h1 data-i18n="appTitle">이미지 포맷/용량 변환기</h1>
-      <p class="subtitle" data-i18n="appSubtitle">이미지를 올리고 원하는 포맷으로 바꾼 뒤, 화질을 조절해 용량도 줄여보세요.</p>
+      <h1 data-i18n="appTitle">Image Format & Size Converter</h1>
+      <p class="subtitle" data-i18n="appSubtitle">Upload an image, pick a format, and adjust quality to shrink the file size.</p>
     </header>
 
     <div class="ad-slot ad-slot-top">
@@ -49,19 +50,19 @@
 
     <div class="upload-area" id="dropZone">
       <input type="file" id="fileInput" accept="image/*" hidden />
-      <p data-i18n="uploadText">여기를 클릭하거나 이미지를 끌어다 놓으세요</p>
-      <span class="upload-hint" data-i18n="uploadHint">PNG, JPG, WebP 등 이미지 파일</span>
+      <p data-i18n="uploadText">Click here or drag and drop an image</p>
+      <span class="upload-hint" data-i18n="uploadHint">PNG, JPG, WebP, and other image files</span>
     </div>
 
     <section class="workspace" id="workspace" hidden>
       <div class="preview-panel">
         <div class="preview-box">
-          <h2 data-i18n="originalLabel">원본</h2>
+          <h2 data-i18n="originalLabel">Original</h2>
           <img id="originalPreview" alt="" />
           <p class="grid-info" id="originalInfo"></p>
         </div>
         <div class="preview-box">
-          <h2 data-i18n="resultLabel">변환 결과</h2>
+          <h2 data-i18n="resultLabel">Result</h2>
           <img id="resultPreview" alt="" />
           <p class="grid-info" id="resultInfo"></p>
         </div>
@@ -69,7 +70,7 @@
 
       <div class="controls">
         <div class="control-row format-row">
-          <label data-i18n="formatLabel">출력 포맷</label>
+          <label data-i18n="formatLabel">Output format</label>
           <div class="format-options">
             <button class="format-btn active" data-format="image/png">PNG</button>
             <button class="format-btn" data-format="image/jpeg">JPG</button>
@@ -78,7 +79,7 @@
         </div>
 
         <div class="control-row" id="qualityRow" hidden>
-          <label for="qualityRange" data-i18n="qualityLabel">화질 (용량)</label>
+          <label for="qualityRange" data-i18n="qualityLabel">Quality (size)</label>
           <input type="range" id="qualityRange" min="10" max="100" step="5" value="80" />
           <span class="control-value" id="qualityValue">80%</span>
         </div>
@@ -88,8 +89,8 @@
         </div>
 
         <div class="button-row">
-          <button id="downloadBtn" class="btn btn-primary" data-i18n="downloadBtn">다운로드</button>
-          <button id="resetBtn" class="btn btn-secondary" data-i18n="resetBtn">다른 이미지 올리기</button>
+          <button id="downloadBtn" class="btn btn-primary" data-i18n="downloadBtn">Download</button>
+          <button id="resetBtn" class="btn btn-secondary" data-i18n="resetBtn">Upload another image</button>
         </div>
       </div>
     </section>
@@ -102,6 +103,6 @@
   </div>
 
   <script src="/cookie-consent.js"></script>
-  <script src="script.js"></script>
+  <script src="../../image-format-converter/script.js"></script>
 </body>
 </html>

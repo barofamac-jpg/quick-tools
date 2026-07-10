@@ -47,10 +47,12 @@ const translations = {
 };
 
 /**
- * 브라우저에 설정된 언어를 읽어 지원하는 언어 코드로 매핑한다.
+ * 페이지가 특정 언어로 고정되어 있으면(window.FORCE_LANG) 그 언어를 쓰고,
+ * 아니면 브라우저에 설정된 언어를 읽어 지원하는 언어 코드로 매핑한다.
  * Returns: "ko" | "en"
  */
 function detectLanguage() {
+  if (window.FORCE_LANG) return window.FORCE_LANG;
   const browserLang = (navigator.language || "en").toLowerCase();
   return browserLang.startsWith("ko") ? "ko" : "en";
 }

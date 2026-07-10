@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Art Converter</title>
+  <meta name="description" content="Upload an image and instantly turn it into pixel art online, for free." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/en/pixel-art-converter/" />
+  <link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/pixel-art-converter/" />
+  <link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/pixel-art-converter/" />
+  <link rel="alternate" hreflang="x-default" href="https://quick-tools.barofam.com/pixel-art-converter/" />
+
+  <!-- Social share preview (Facebook, Twitter, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quick-tools.barofam.com/en/pixel-art-converter/" />
+  <meta property="og:title" content="Image → Pixel Art Converter" />
+  <meta property="og:description" content="Upload an image and instantly turn it into pixel art online, for free." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Image → Pixel Art Converter" />
+  <meta name="twitter:description" content="Upload an image and instantly turn it into pixel art online, for free." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="../../pixel-art-converter/style.css" />
+
+  <!-- Structured data to tell search engines what this service is -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Image to Pixel Art Converter",
+    "description": "Upload an image and instantly turn it into pixel art online, for free.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <script>window.FORCE_LANG = 'en';</script>
+</head>
+<body>
+  <a href="/pixel-art-converter/" class="lang-switch">한국어</a>
+  <div class="container">
+    <header>
+      <h1 data-i18n="appTitle">Image → Pixel Art Converter</h1>
+      <p class="subtitle" data-i18n="appSubtitle">Upload an image and it turns into pixel art automatically. Fine-tune the look with the sliders.</p>
+    </header>
+
+    <div class="ad-slot ad-slot-top">
+      <span class="ad-label">Advertisement</span>
+    </div>
+
+    <div class="upload-area" id="dropZone">
+      <input type="file" id="fileInput" accept="image/*" hidden />
+      <p data-i18n="uploadText">Click here or drag and drop an image</p>
+      <span class="upload-hint" data-i18n="uploadHint">PNG, JPG, and other image files</span>
+    </div>
+
+    <section class="workspace" id="workspace" hidden>
+      <div class="preview-panel">
+        <div class="preview-box">
+          <h2 data-i18n="originalLabel">Original</h2>
+          <canvas id="originalCanvas"></canvas>
+        </div>
+        <div class="preview-box">
+          <h2 data-i18n="resultLabel">Pixel Art Result</h2>
+          <canvas id="resultCanvas"></canvas>
+          <p class="grid-info" id="gridInfo"></p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control-row">
+          <label for="pixelRange" data-i18n="pixelSizeLabel">Pixel Size (dot thickness)</label>
+          <input type="range" id="pixelRange" min="1" max="100" step="1" />
+          <span class="control-value" id="pixelValue"></span>
+        </div>
+
+        <div class="control-row">
+          <label for="scaleRange" data-i18n="outputScaleLabel">Output Size (scale)</label>
+          <input type="range" id="scaleRange" min="1" max="20" step="1" />
+          <span class="control-value" id="scaleValue"></span>
+        </div>
+
+        <div class="control-row">
+          <label for="simplifyRange" data-i18n="simplifyLabel">Color Simplify (merge similar colors)</label>
+          <input type="range" id="simplifyRange" min="0" max="100" step="1" value="0" />
+          <span class="control-value" id="simplifyValue">0%</span>
+        </div>
+
+        <div class="ad-slot ad-slot-inline">
+          <span class="ad-label">Advertisement</span>
+        </div>
+
+        <div class="button-row">
+          <button id="downloadBtn" class="btn btn-primary" data-i18n="downloadBtn">Download PNG</button>
+          <button id="resetBtn" class="btn btn-secondary" data-i18n="resetBtn">Upload another image</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-slot ad-slot-bottom">
+      <span class="ad-label">Advertisement</span>
+    </div>
+
+    <footer class="site-footer">© barofam</footer>
+  </div>
+
+  <script src="/cookie-consent.js"></script>
+  <script src="../../pixel-art-converter/script.js"></script>
+</body>
+</html>

@@ -1,46 +1,47 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>이미지 리사이즈/크롭 도구</title>
-  <meta name="description" content="이미지를 원하는 영역만큼 자르고, 원하는 크기로 조절해서 다운로드하는 무료 온라인 도구입니다." />
+  <title>Image Resize & Crop Tool</title>
+  <meta name="description" content="Crop an image to any area and resize it to any dimensions, free and online." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://quick-tools.barofam.com/image-resizer/" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/en/image-resizer/" />
   <link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/image-resizer/" />
   <link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/image-resizer/" />
   <link rel="alternate" hreflang="x-default" href="https://quick-tools.barofam.com/image-resizer/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://quick-tools.barofam.com/image-resizer/" />
-  <meta property="og:title" content="이미지 리사이즈/크롭 도구" />
-  <meta property="og:description" content="이미지를 원하는 영역만큼 자르고, 원하는 크기로 조절해서 다운로드하는 무료 온라인 도구입니다." />
+  <meta property="og:url" content="https://quick-tools.barofam.com/en/image-resizer/" />
+  <meta property="og:title" content="Image Resize & Crop Tool" />
+  <meta property="og:description" content="Crop an image to any area and resize it to any dimensions, free and online." />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="이미지 리사이즈/크롭 도구" />
-  <meta name="twitter:description" content="이미지를 원하는 영역만큼 자르고, 원하는 크기로 조절해서 다운로드하는 무료 온라인 도구입니다." />
+  <meta name="twitter:title" content="Image Resize & Crop Tool" />
+  <meta name="twitter:description" content="Crop an image to any area and resize it to any dimensions, free and online." />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../../image-resizer/style.css" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "이미지 리사이즈/크롭 도구",
-    "description": "이미지를 원하는 영역만큼 자르고, 원하는 크기로 조절해서 다운로드하는 무료 온라인 도구입니다.",
+    "name": "Image Resize & Crop Tool",
+    "description": "Crop an image to any area and resize it to any dimensions, free and online.",
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
+  <script>window.FORCE_LANG = 'en';</script>
 </head>
 <body>
-  <a href="/en/image-resizer/" class="lang-switch">EN</a>
+  <a href="/image-resizer/" class="lang-switch">한국어</a>
   <div class="container">
     <header>
-      <h1 data-i18n="appTitle">이미지 리사이즈/크롭 도구</h1>
-      <p class="subtitle" data-i18n="appSubtitle">자를 영역을 직접 드래그로 고른 뒤, 원하는 크기로 조절해서 다운로드하세요.</p>
+      <h1 data-i18n="appTitle">Image Resize & Crop Tool</h1>
+      <p class="subtitle" data-i18n="appSubtitle">Drag to pick the area you want, then resize it to any size and download.</p>
     </header>
 
     <div class="ad-slot ad-slot-top">
@@ -49,16 +50,16 @@
 
     <div class="upload-area" id="dropZone">
       <input type="file" id="fileInput" accept="image/*" hidden />
-      <p data-i18n="uploadText">여기를 클릭하거나 이미지를 끌어다 놓으세요</p>
-      <span class="upload-hint" data-i18n="uploadHint">PNG, JPG 등 이미지 파일</span>
+      <p data-i18n="uploadText">Click here or drag and drop an image</p>
+      <span class="upload-hint" data-i18n="uploadHint">PNG, JPG, and other image files</span>
     </div>
 
-    <!-- 1단계: 자르기 화면 -->
+    <!-- Step 1: crop screen -->
     <section class="workspace" id="cropWorkspace" hidden>
-      <h2 class="step-title" data-i18n="cropStepTitle">① 자를 영역을 선택하세요</h2>
+      <h2 class="step-title" data-i18n="cropStepTitle">① Select the area to crop</h2>
 
       <div class="ratio-options" id="ratioOptions">
-        <button class="ratio-btn active" data-ratio="free" data-i18n="ratioFree">자유롭게</button>
+        <button class="ratio-btn active" data-ratio="free" data-i18n="ratioFree">Free</button>
         <button class="ratio-btn" data-ratio="1">1:1</button>
         <button class="ratio-btn" data-ratio="1.3333">4:3</button>
         <button class="ratio-btn" data-ratio="0.75">3:4</button>
@@ -84,14 +85,14 @@
       </div>
 
       <div class="button-row">
-        <button id="applyCropBtn" class="btn btn-primary" data-i18n="applyCropBtn">자르기 적용</button>
-        <button id="resetBtn" class="btn btn-secondary" data-i18n="resetBtn">다른 이미지 올리기</button>
+        <button id="applyCropBtn" class="btn btn-primary" data-i18n="applyCropBtn">Apply Crop</button>
+        <button id="resetBtn" class="btn btn-secondary" data-i18n="resetBtn">Upload another image</button>
       </div>
     </section>
 
-    <!-- 2단계: 크기 조절 및 다운로드 화면 -->
+    <!-- Step 2: resize and download screen -->
     <section class="workspace" id="resizeWorkspace" hidden>
-      <h2 class="step-title" data-i18n="resizeStepTitle">② 크기를 조절하고 다운로드하세요</h2>
+      <h2 class="step-title" data-i18n="resizeStepTitle">② Resize and download</h2>
 
       <div class="preview-box">
         <img id="resultPreview" alt="" />
@@ -100,15 +101,15 @@
 
       <div class="controls">
         <div class="control-row size-row">
-          <label for="widthInput" data-i18n="widthLabel">가로(px)</label>
+          <label for="widthInput" data-i18n="widthLabel">Width (px)</label>
           <input type="number" id="widthInput" min="1" max="8000" />
-          <label for="heightInput" data-i18n="heightLabel">세로(px)</label>
+          <label for="heightInput" data-i18n="heightLabel">Height (px)</label>
           <input type="number" id="heightInput" min="1" max="8000" />
         </div>
         <div class="control-row lock-row">
           <label class="lock-label">
             <input type="checkbox" id="lockAspect" checked />
-            <span data-i18n="lockAspectLabel">가로세로 비율 유지</span>
+            <span data-i18n="lockAspectLabel">Lock aspect ratio</span>
           </label>
         </div>
 
@@ -117,9 +118,9 @@
         </div>
 
         <div class="button-row">
-          <button id="downloadBtn" class="btn btn-primary" data-i18n="downloadBtn">다운로드</button>
-          <button id="backToCropBtn" class="btn btn-secondary" data-i18n="backToCropBtn">다시 자르기</button>
-          <button id="resetBtn2" class="btn btn-secondary" data-i18n="resetBtn">다른 이미지 올리기</button>
+          <button id="downloadBtn" class="btn btn-primary" data-i18n="downloadBtn">Download</button>
+          <button id="backToCropBtn" class="btn btn-secondary" data-i18n="backToCropBtn">Crop again</button>
+          <button id="resetBtn2" class="btn btn-secondary" data-i18n="resetBtn">Upload another image</button>
         </div>
       </div>
     </section>
@@ -132,6 +133,6 @@
   </div>
 
   <script src="/cookie-consent.js"></script>
-  <script src="script.js"></script>
+  <script src="../../image-resizer/script.js"></script>
 </body>
 </html>

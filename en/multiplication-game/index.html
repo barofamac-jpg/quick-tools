@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎮 Multiplication Practice Game - For Elementary Students</title>
+  <meta name="description" content="A free game for elementary students to practice multiplication. 5 difficulty levels, with a dot-array picture explaining every answer." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/en/multiplication-game/" />
+  <link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/multiplication-game/" />
+  <link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/multiplication-game/" />
+  <link rel="alternate" hreflang="x-default" href="https://quick-tools.barofam.com/multiplication-game/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quick-tools.barofam.com/en/multiplication-game/" />
+  <meta property="og:title" content="Multiplication Practice Game" />
+  <meta property="og:description" content="A free game for elementary students to practice multiplication. 5 difficulty levels, with a dot-array picture explaining every answer." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Multiplication Practice Game" />
+  <meta name="twitter:description" content="A free game for elementary students to practice multiplication. 5 difficulty levels, with a dot-array picture explaining every answer." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../multiplication-game/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Multiplication Practice Game",
+    "description": "A free game for elementary students to practice multiplication.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+  <section class="tools_header">
+    <h1>🎮 Multiplication Practice Game</h1>
+    <p>Learn multiplication by solving problems!</p>
+  </section>
+
+  <nav class="tool-nav">
+    <a href="../multiplication-array/index.html" class="tool-nav-item">Array Visualizer</a>
+    <a href="./index.html" class="tool-nav-item active">Multiplication Game</a>
+    <a href="../fraction-visualizer/index.html" class="tool-nav-item">Fraction Visualizer</a>
+    <a href="../fraction-game/index.html" class="tool-nav-item">Fraction Game</a>
+    <a href="../study-timer/index.html" class="tool-nav-item">Study Timer</a>
+    <a href="/multiplication-game/" class="tool-nav-item lang-item">한국어</a>
+  </nav>
+
+  <div class="ad-slot ad-slot-top">
+    <span class="ad-label">Advertisement</span>
+  </div>
+
+  <main class="game-main">
+    <!-- Level select screen -->
+    <section id="levelSelect" class="panel">
+      <h2>Choose a difficulty level</h2>
+      <div class="level-grid">
+        <button class="level-btn" data-level="1">Level 1</button>
+        <button class="level-btn" data-level="2">Level 2</button>
+        <button class="level-btn" data-level="3">Level 3</button>
+        <button class="level-btn" data-level="4">Level 4</button>
+        <button class="level-btn" data-level="5">Level 5</button>
+      </div>
+    </section>
+
+    <!-- Game screen -->
+    <section id="gameScreen" class="panel" hidden>
+      <div class="level-indicator">
+        <span id="levelLabel">Level 1</span>
+        <button class="btn-change" id="changeBtn">Change</button>
+      </div>
+      <div class="game-status">
+        <span id="progressLabel">Question 1/10</span>
+        <span id="scoreLabel">Score 0/10</span>
+      </div>
+
+      <div class="question" id="questionText">? × ? = ?</div>
+
+      <div class="choices" id="choices"></div>
+
+      <div class="explain" id="explain" hidden>
+        <div class="explain-array" id="explainArray"></div>
+        <div class="explain-text" id="explainText"></div>
+        <button class="btn-next" id="nextBtn">Next question →</button>
+      </div>
+    </section>
+
+    <!-- Result screen -->
+    <section id="resultScreen" class="panel" hidden>
+      <h2 id="resultTitle">Game Over!</h2>
+      <div class="result-score" id="resultScore">0/10</div>
+      <p class="result-message" id="resultMessage"></p>
+      <div class="actions">
+        <button class="btn-visualize" id="retryBtn">Try the same level again</button>
+        <button class="btn-next-level" id="nextLevelBtn">Try the next level</button>
+        <button class="btn-reset" id="changeLevelBtn">Choose a different level</button>
+      </div>
+    </section>
+  </main>
+
+  <section class="tools_footer">
+    A multiplication practice game for elementary students · Every answer comes with a picture explanation
+    <div style="margin-top:6px">© barofam</div>
+  </section>
+
+  <div class="ad-slot ad-slot-bottom">
+    <span class="ad-label">Advertisement</span>
+  </div>
+
+  <script src="/cookie-consent.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

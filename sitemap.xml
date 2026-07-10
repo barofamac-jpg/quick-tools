@@ -1,48 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://quick-tools.barofam.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/" />
+  </url>
+  <url>
+    <loc>https://quick-tools.barofam.com/en/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/" />
   </url>
   <url>
     <loc>https://quick-tools.barofam.com/pixel-art-converter/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/pixel-art-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/pixel-art-converter/" />
+  </url>
+  <url>
+    <loc>https://quick-tools.barofam.com/en/pixel-art-converter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/pixel-art-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/pixel-art-converter/" />
   </url>
   <url>
     <loc>https://quick-tools.barofam.com/fraction-visualizer/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/fraction-visualizer/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/fraction-visualizer/" />
+  </url>
+  <url>
+    <loc>https://quick-tools.barofam.com/en/fraction-visualizer/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/fraction-visualizer/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/fraction-visualizer/" />
   </url>
   <url>
     <loc>https://quick-tools.barofam.com/multiplication-array/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/multiplication-array/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/multiplication-array/" />
+  </url>
+  <url>
+    <loc>https://quick-tools.barofam.com/en/multiplication-array/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/multiplication-array/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/multiplication-array/" />
   </url>
   <url>
     <loc>https://quick-tools.barofam.com/multiplication-game/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/multiplication-game/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/multiplication-game/" />
+  </url>
+  <url>
+    <loc>https://quick-tools.barofam.com/en/multiplication-game/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/multiplication-game/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/multiplication-game/" />
   </url>
   <url>
     <loc>https://quick-tools.barofam.com/fraction-game/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/fraction-game/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/fraction-game/" />
+  </url>
+  <url>
+    <loc>https://quick-tools.barofam.com/en/fraction-game/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/fraction-game/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/fraction-game/" />
   </url>
   <url>
     <loc>https://quick-tools.barofam.com/image-format-converter/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/image-format-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/image-format-converter/" />
+  </url>
+  <url>
+    <loc>https://quick-tools.barofam.com/en/image-format-converter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/image-format-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/image-format-converter/" />
   </url>
   <url>
     <loc>https://quick-tools.barofam.com/image-resizer/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/image-resizer/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/image-resizer/" />
+  </url>
+  <url>
+    <loc>https://quick-tools.barofam.com/en/image-resizer/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/image-resizer/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/image-resizer/" />
   </url>
   <url>
     <loc>https://quick-tools.barofam.com/study-timer/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/study-timer/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/study-timer/" />
+  </url>
+  <url>
+    <loc>https://quick-tools.barofam.com/en/study-timer/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/study-timer/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/study-timer/" />
   </url>
 </urlset>

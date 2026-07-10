@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✖️ 곱셈 배열 시각화 - 초등학생을 위한 곱셈 개념</title>
-  <meta name="description" content="곱셈을 점 배열 그림으로 보여주는 초등학생용 무료 온라인 도구입니다. 교환법칙과 스킵 카운팅도 함께 배워요." />
+  <title>✖️ Multiplication Array Visualizer - For Elementary Students</title>
+  <meta name="description" content="A free online tool that shows multiplication as a dot array for elementary students. Also teaches the commutative property and skip counting." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://quick-tools.barofam.com/multiplication-array/" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/en/multiplication-array/" />
   <link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/multiplication-array/" />
   <link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/multiplication-array/" />
   <link rel="alternate" hreflang="x-default" href="https://quick-tools.barofam.com/multiplication-array/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://quick-tools.barofam.com/multiplication-array/" />
-  <meta property="og:title" content="곱셈 배열 시각화" />
-  <meta property="og:description" content="곱셈을 점 배열 그림으로 보여주는 초등학생용 무료 온라인 도구입니다. 교환법칙과 스킵 카운팅도 함께 배워요." />
+  <meta property="og:url" content="https://quick-tools.barofam.com/en/multiplication-array/" />
+  <meta property="og:title" content="Multiplication Array Visualizer" />
+  <meta property="og:description" content="A free online tool that shows multiplication as a dot array for elementary students. Also teaches the commutative property and skip counting." />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="곱셈 배열 시각화" />
-  <meta name="twitter:description" content="곱셈을 점 배열 그림으로 보여주는 초등학생용 무료 온라인 도구입니다. 교환법칙과 스킵 카운팅도 함께 배워요." />
+  <meta name="twitter:title" content="Multiplication Array Visualizer" />
+  <meta name="twitter:description" content="A free online tool that shows multiplication as a dot array for elementary students. Also teaches the commutative property and skip counting." />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
 
@@ -25,14 +25,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../../multiplication-array/style.css" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "곱셈 배열 시각화",
-    "description": "곱셈을 점 배열 그림으로 보여주는 초등학생용 무료 온라인 도구입니다.",
+    "name": "Multiplication Array Visualizer",
+    "description": "A free online tool that shows multiplication as a dot array for elementary students.",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -41,51 +41,50 @@
 </head>
 <body>
   <section class="tools_header">
-    <h1>✖️ 곱셈 배열 시각화</h1>
-    <p>곱셈을 점 배열로 그림처럼 이해해요!</p>
+    <h1>✖️ Multiplication Array Visualizer</h1>
+    <p>See multiplication as a picture, using a dot array!</p>
   </section>
 
   <nav class="tool-nav">
-    <a href="./index.html" class="tool-nav-item active">곱셈 시각화</a>
-    <a href="../multiplication-game/index.html" class="tool-nav-item">곱셈 연습게임</a>
-    <a href="../fraction-visualizer/index.html" class="tool-nav-item">분수 시각화</a>
-    <a href="../fraction-game/index.html" class="tool-nav-item">분수 연습게임</a>
-    <a href="../study-timer/index.html" class="tool-nav-item">학습 타이머</a>
-    <a href="/en/multiplication-array/" class="tool-nav-item lang-item">EN</a>
+    <a href="./index.html" class="tool-nav-item active">Array Visualizer</a>
+    <a href="../multiplication-game/index.html" class="tool-nav-item">Multiplication Game</a>
+    <a href="../fraction-visualizer/index.html" class="tool-nav-item">Fraction Visualizer</a>
+    <a href="../fraction-game/index.html" class="tool-nav-item">Fraction Game</a>
+    <a href="../study-timer/index.html" class="tool-nav-item">Study Timer</a>
+    <a href="/multiplication-array/" class="tool-nav-item lang-item">한국어</a>
   </nav>
 
-  <!-- 상단 광고 영역 -->
   <div class="ad-slot ad-slot-top">
     <span class="ad-label">Advertisement</span>
   </div>
 
   <section class="tools_main">
     <section class="input-section">
-      <h2>✏️ 곱할 두 수를 입력해 보세요</h2>
+      <h2>✏️ Enter two numbers to multiply</h2>
 
       <div class="num-input-row">
         <div class="num-box">
-          <label>첫 번째 수 (행)</label>
+          <label>First number (rows)</label>
           <input type="number" id="numA" min="1" max="12" value="3">
         </div>
         <span class="op-sign">×</span>
         <div class="num-box">
-          <label>두 번째 수 (열)</label>
+          <label>Second number (columns)</label>
           <input type="number" id="numB" min="1" max="12" value="4">
         </div>
         <span class="eq-sign">=</span>
         <div class="result-badge" id="resultBadge">12</div>
       </div>
 
-      <div class="error-msg" id="errorMsg">⚠️ 1~12 사이의 수를 입력해 주세요.</div>
+      <div class="error-msg" id="errorMsg">⚠️ Please enter numbers between 1 and 12.</div>
 
       <div class="actions">
-        <button class="btn-visualize" id="btnVisualize">🎨 그림으로 보기!</button>
-        <button class="btn-reset" id="btnReset">초기화</button>
+        <button class="btn-visualize" id="btnVisualize">🎨 Show me!</button>
+        <button class="btn-reset" id="btnReset">Reset</button>
       </div>
 
       <div class="quick-examples">
-        <span>예시:</span>
+        <span>Examples:</span>
         <button class="chip" data-a="2" data-b="3">2×3</button>
         <button class="chip" data-a="3" data-b="4">3×4</button>
         <button class="chip" data-a="4" data-b="5">4×5</button>
@@ -95,15 +94,15 @@
     </section>
 
     <section id="result">
-      <div class="result-title">📊 곱셈 시각화 결과</div>
+      <div class="result-title">📊 Visualization Result</div>
       <div class="summary-card" id="summaryCard"></div>
 
       <div class="array-section">
-        <h3>🔵 점 배열로 보기</h3>
+        <h3>🔵 View as a dot array</h3>
         <div class="mode-tabs">
-          <button class="mode-tab active" data-mode="basic">기본 배열</button>
-          <button class="mode-tab" data-mode="color">행별 색깔</button>
-          <button class="mode-tab" data-mode="group">묶음으로 보기</button>
+          <button class="mode-tab active" data-mode="basic">Basic array</button>
+          <button class="mode-tab" data-mode="color">Colors by row</button>
+          <button class="mode-tab" data-mode="group">View as groups</button>
         </div>
         <div id="arrayDisplay"></div>
         <div class="array-legend" id="arrayLegend"></div>
@@ -115,11 +114,10 @@
   </section>
 
   <section class="tools_footer">
-    초등학생을 위한 곱셈 학습 도구 · 배열로 곱셈의 의미를 시각적으로 이해해요
+    A multiplication learning tool for elementary students · Understand multiplication visually with dot arrays
     <div style="margin-top:6px">© barofam</div>
   </section>
 
-  <!-- 하단 광고 영역 -->
   <div class="ad-slot ad-slot-bottom">
     <span class="ad-label">Advertisement</span>
   </div>

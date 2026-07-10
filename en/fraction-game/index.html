@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🍕 분수 연습게임 - 초등학생을 위한 분수 비교 게임</title>
-  <meta name="description" content="분수 두 개 중 더 큰 쪽을 맞히는 초등학생용 무료 게임입니다. 난이도 5단계, 정답마다 파이 그림과 통분 설명으로 알려줘요." />
+  <title>🍕 Fraction Practice Game - For Elementary Students</title>
+  <meta name="description" content="A free game for elementary students that asks you to pick the bigger of two fractions. 5 difficulty levels, with a pie picture and common-denominator explanation for every answer." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://quick-tools.barofam.com/fraction-game/" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/en/fraction-game/" />
   <link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/fraction-game/" />
   <link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/fraction-game/" />
   <link rel="alternate" hreflang="x-default" href="https://quick-tools.barofam.com/fraction-game/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://quick-tools.barofam.com/fraction-game/" />
-  <meta property="og:title" content="분수 연습게임" />
-  <meta property="og:description" content="분수 두 개 중 더 큰 쪽을 맞히는 초등학생용 무료 게임입니다. 난이도 5단계, 정답마다 파이 그림과 통분 설명으로 알려줘요." />
+  <meta property="og:url" content="https://quick-tools.barofam.com/en/fraction-game/" />
+  <meta property="og:title" content="Fraction Practice Game" />
+  <meta property="og:description" content="A free game for elementary students that asks you to pick the bigger of two fractions. 5 difficulty levels, with a pie picture and common-denominator explanation for every answer." />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="분수 연습게임" />
-  <meta name="twitter:description" content="분수 두 개 중 더 큰 쪽을 맞히는 초등학생용 무료 게임입니다. 난이도 5단계, 정답마다 파이 그림과 통분 설명으로 알려줘요." />
+  <meta name="twitter:title" content="Fraction Practice Game" />
+  <meta name="twitter:description" content="A free game for elementary students that asks you to pick the bigger of two fractions. 5 difficulty levels, with a pie picture and common-denominator explanation for every answer." />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
 
@@ -25,14 +25,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../../fraction-game/style.css" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "분수 연습게임",
-    "description": "분수 두 개 중 더 큰 쪽을 맞히는 초등학생용 무료 게임입니다.",
+    "name": "Fraction Practice Game",
+    "description": "A free game for elementary students that asks you to pick the bigger of two fractions.",
     "applicationCategory": "GameApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -41,17 +41,17 @@
 </head>
 <body>
   <section class="tools_header">
-    <h1>🍕 분수 연습게임</h1>
-    <p>더 큰 분수를 골라보며 분수 감각을 키워봐요!</p>
+    <h1>🍕 Fraction Practice Game</h1>
+    <p>Pick the bigger fraction and build your number sense!</p>
   </section>
 
   <nav class="tool-nav">
-    <a href="../multiplication-array/index.html" class="tool-nav-item">곱셈 시각화</a>
-    <a href="../multiplication-game/index.html" class="tool-nav-item">곱셈 연습게임</a>
-    <a href="../fraction-visualizer/index.html" class="tool-nav-item">분수 시각화</a>
-    <a href="./index.html" class="tool-nav-item active">분수 연습게임</a>
-    <a href="../study-timer/index.html" class="tool-nav-item">학습 타이머</a>
-    <a href="/en/fraction-game/" class="tool-nav-item lang-item">EN</a>
+    <a href="../multiplication-array/index.html" class="tool-nav-item">Array Visualizer</a>
+    <a href="../multiplication-game/index.html" class="tool-nav-item">Multiplication Game</a>
+    <a href="../fraction-visualizer/index.html" class="tool-nav-item">Fraction Visualizer</a>
+    <a href="./index.html" class="tool-nav-item active">Fraction Game</a>
+    <a href="../study-timer/index.html" class="tool-nav-item">Study Timer</a>
+    <a href="/fraction-game/" class="tool-nav-item lang-item">한국어</a>
   </nav>
 
   <div class="ad-slot ad-slot-top">
@@ -59,30 +59,30 @@
   </div>
 
   <main class="game-main">
-    <!-- 난이도 선택 화면 -->
+    <!-- Level select screen -->
     <section id="levelSelect" class="panel">
-      <h2>난이도를 선택하세요</h2>
+      <h2>Choose a difficulty level</h2>
       <div class="level-grid">
-        <button class="level-btn" data-level="1">레벨 1</button>
-        <button class="level-btn" data-level="2">레벨 2</button>
-        <button class="level-btn" data-level="3">레벨 3</button>
-        <button class="level-btn" data-level="4">레벨 4</button>
-        <button class="level-btn" data-level="5">레벨 5</button>
+        <button class="level-btn" data-level="1">Level 1</button>
+        <button class="level-btn" data-level="2">Level 2</button>
+        <button class="level-btn" data-level="3">Level 3</button>
+        <button class="level-btn" data-level="4">Level 4</button>
+        <button class="level-btn" data-level="5">Level 5</button>
       </div>
     </section>
 
-    <!-- 게임 진행 화면 -->
+    <!-- Game screen -->
     <section id="gameScreen" class="panel" hidden>
       <div class="level-indicator">
-        <span id="levelLabel">레벨 1</span>
-        <button class="btn-change" id="changeBtn">변경</button>
+        <span id="levelLabel">Level 1</span>
+        <button class="btn-change" id="changeBtn">Change</button>
       </div>
       <div class="game-status">
-        <span id="progressLabel">문제 1/10</span>
-        <span id="scoreLabel">맞은 개수 0/10</span>
+        <span id="progressLabel">Question 1/10</span>
+        <span id="scoreLabel">Score 0/10</span>
       </div>
 
-      <div class="question-prompt" id="questionPrompt">알맞은 부호(&gt;, =, &lt;)를 골라보세요</div>
+      <div class="question-prompt" id="questionPrompt">Pick the correct sign (&gt;, =, &lt;)</div>
 
       <div class="compare-wrap">
         <div class="frac-display" id="leftLabel"></div>
@@ -104,25 +104,25 @@
         </div>
         <div class="explain-array" id="explainArray"></div>
         <div class="explain-text" id="explainText"></div>
-        <button class="btn-next" id="nextBtn">다음 문제 →</button>
+        <button class="btn-next" id="nextBtn">Next question →</button>
       </div>
     </section>
 
-    <!-- 결과 화면 -->
+    <!-- Result screen -->
     <section id="resultScreen" class="panel" hidden>
-      <h2 id="resultTitle">게임 종료!</h2>
-      <div class="result-score" id="resultScore">0/10점</div>
+      <h2 id="resultTitle">Game Over!</h2>
+      <div class="result-score" id="resultScore">0/10</div>
       <p class="result-message" id="resultMessage"></p>
       <div class="actions">
-        <button class="btn-visualize" id="retryBtn">같은 난이도로 다시</button>
-        <button class="btn-next-level" id="nextLevelBtn">다음 레벨 도전하기</button>
-        <button class="btn-reset" id="changeLevelBtn">난이도 다시 선택</button>
+        <button class="btn-visualize" id="retryBtn">Try the same level again</button>
+        <button class="btn-next-level" id="nextLevelBtn">Try the next level</button>
+        <button class="btn-reset" id="changeLevelBtn">Choose a different level</button>
       </div>
     </section>
   </main>
 
   <section class="tools_footer">
-    초등학생을 위한 분수 비교 연습 게임 · 정답마다 파이 그림과 통분 설명으로 알려줘요
+    A fraction comparison practice game for elementary students · Every answer comes with a pie picture and common-denominator explanation
     <div style="margin-top:6px">© barofam</div>
   </section>
 
