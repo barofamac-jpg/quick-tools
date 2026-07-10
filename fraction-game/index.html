@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍕 분수 연습게임 - 초등학생을 위한 분수 비교 게임</title>
+  <meta name="description" content="분수 두 개 중 더 큰 쪽을 맞히는 초등학생용 무료 게임입니다. 난이도 5단계, 정답마다 파이 그림과 통분 설명으로 알려줘요." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/fraction-game/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quick-tools.barofam.com/fraction-game/" />
+  <meta property="og:title" content="분수 연습게임" />
+  <meta property="og:description" content="분수 두 개 중 더 큰 쪽을 맞히는 초등학생용 무료 게임입니다. 난이도 5단계, 정답마다 파이 그림과 통분 설명으로 알려줘요." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="분수 연습게임" />
+  <meta name="twitter:description" content="분수 두 개 중 더 큰 쪽을 맞히는 초등학생용 무료 게임입니다. 난이도 5단계, 정답마다 파이 그림과 통분 설명으로 알려줘요." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "분수 연습게임",
+    "description": "분수 두 개 중 더 큰 쪽을 맞히는 초등학생용 무료 게임입니다.",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+  <section class="tools_header">
+    <h1>🍕 분수 연습게임</h1>
+    <p>더 큰 분수를 골라보며 분수 감각을 키워봐요!</p>
+  </section>
+
+  <nav class="tool-nav">
+    <a href="../multiplication-array/index.html" class="tool-nav-item">곱셈 시각화</a>
+    <a href="../multiplication-game/index.html" class="tool-nav-item">곱셈 연습게임</a>
+    <a href="../fraction-visualizer/index.html" class="tool-nav-item">분수 시각화</a>
+    <a href="./index.html" class="tool-nav-item active">분수 연습게임</a>
+  </nav>
+
+  <div class="ad-slot ad-slot-top">
+    <span class="ad-label">Advertisement</span>
+  </div>
+
+  <main class="game-main">
+    <!-- 난이도 선택 화면 -->
+    <section id="levelSelect" class="panel">
+      <h2>난이도를 선택하세요</h2>
+      <div class="level-grid">
+        <button class="level-btn" data-level="1">레벨 1</button>
+        <button class="level-btn" data-level="2">레벨 2</button>
+        <button class="level-btn" data-level="3">레벨 3</button>
+        <button class="level-btn" data-level="4">레벨 4</button>
+        <button class="level-btn" data-level="5">레벨 5</button>
+      </div>
+    </section>
+
+    <!-- 게임 진행 화면 -->
+    <section id="gameScreen" class="panel" hidden>
+      <div class="level-indicator">
+        <span id="levelLabel">레벨 1</span>
+        <button class="btn-change" id="changeBtn">변경</button>
+      </div>
+      <div class="game-status">
+        <span id="progressLabel">문제 1/10</span>
+        <span id="scoreLabel">맞은 개수 0/10</span>
+      </div>
+
+      <div class="question-prompt" id="questionPrompt">알맞은 부호(&gt;, =, &lt;)를 골라보세요</div>
+
+      <div class="compare-wrap">
+        <div class="frac-display" id="leftLabel"></div>
+        <div class="symbol-slot" id="symbolSlot">?</div>
+        <div class="frac-display" id="rightLabel"></div>
+      </div>
+
+      <div class="symbol-choices">
+        <button class="symbol-btn" id="gtBtn" data-side="left">&gt;</button>
+        <button class="symbol-btn" id="eqBtn" data-side="equal">=</button>
+        <button class="symbol-btn" id="ltBtn" data-side="right">&lt;</button>
+      </div>
+
+      <div class="explain" id="explain" hidden>
+        <div class="explain-pies" id="explainPies">
+          <div class="pie-wrap" id="leftPie"></div>
+          <span class="vs-label-small">VS</span>
+          <div class="pie-wrap" id="rightPie"></div>
+        </div>
+        <div class="explain-array" id="explainArray"></div>
+        <div class="explain-text" id="explainText"></div>
+        <button class="btn-next" id="nextBtn">다음 문제 →</button>
+      </div>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="resultScreen" class="panel" hidden>
+      <h2 id="resultTitle">게임 종료!</h2>
+      <div class="result-score" id="resultScore">0/10점</div>
+      <p class="result-message" id="resultMessage"></p>
+      <div class="actions">
+        <button class="btn-visualize" id="retryBtn">같은 난이도로 다시</button>
+        <button class="btn-next-level" id="nextLevelBtn">다음 레벨 도전하기</button>
+        <button class="btn-reset" id="changeLevelBtn">난이도 다시 선택</button>
+      </div>
+    </section>
+  </main>
+
+  <section class="tools_footer">
+    초등학생을 위한 분수 비교 연습 게임 · 정답마다 파이 그림과 통분 설명으로 알려줘요
+    <div style="margin-top:6px">© barofam</div>
+  </section>
+
+  <div class="ad-slot ad-slot-bottom">
+    <span class="ad-label">Advertisement</span>
+  </div>
+
+  <script src="/cookie-consent.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
