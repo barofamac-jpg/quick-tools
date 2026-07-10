@@ -33,6 +33,18 @@
       color: #666;
       margin: 0;
     }
+    .tool-group {
+      margin-bottom: 28px;
+    }
+    .tool-group:last-child {
+      margin-bottom: 0;
+    }
+    .group-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #888;
+      margin: 0 0 10px 4px;
+    }
     .tool-list {
       list-style: none;
       margin: 0;
@@ -80,38 +92,47 @@
       <p class="subtitle">일상에 쓸모 있는 작은 웹 도구 모음이에요.</p>
     </header>
 
-    <ul class="tool-list">
-      <li>
-        <a class="tool-card" href="/pixel-art-converter/">
-          <span class="tool-title">이미지 → 픽셀아트 변환기</span>
-          <span class="tool-desc">사진을 올리면 자동으로 픽셀아트로 변환해드려요.</span>
-        </a>
-      </li>
-      <li>
-        <a class="tool-card" href="/fraction-visualizer/">
-          <span class="tool-title">분수 시각화 도구</span>
-          <span class="tool-desc">분수를 그림으로 보여주고 최대 3개까지 비교해볼 수 있어요.</span>
-        </a>
-      </li>
-      <li>
-        <a class="tool-card" href="/multiplication-array/">
-          <span class="tool-title">곱셈 배열 시각화</span>
-          <span class="tool-desc">곱셈을 점 배열 그림으로 보여주고 교환법칙까지 배워요.</span>
-        </a>
-      </li>
-      <li>
-        <a class="tool-card" href="/multiplication-game/">
-          <span class="tool-title">곱셈 연습게임</span>
-          <span class="tool-desc">문제를 풀면서 곱셈을 연습하는 5단계 난이도 게임이에요.</span>
-        </a>
-      </li>
-      <li>
-        <a class="tool-card" href="/fraction-game/">
-          <span class="tool-title">분수 연습게임</span>
-          <span class="tool-desc">더 큰 분수를 맞히면서 분수 감각을 키우는 5단계 난이도 게임이에요.</span>
-        </a>
-      </li>
-    </ul>
+    <section class="tool-group">
+      <h2 class="group-title">초등 학습 도구</h2>
+      <ul class="tool-list">
+        <li>
+          <a class="tool-card" href="/multiplication-array/">
+            <span class="tool-title">곱셈 배열 시각화</span>
+            <span class="tool-desc">곱셈을 점 배열 그림으로 보여주고 교환법칙까지 배워요.</span>
+          </a>
+        </li>
+        <li>
+          <a class="tool-card" href="/multiplication-game/">
+            <span class="tool-title">곱셈 연습게임</span>
+            <span class="tool-desc">문제를 풀면서 곱셈을 연습하는 5단계 난이도 게임이에요.</span>
+          </a>
+        </li>
+        <li>
+          <a class="tool-card" href="/fraction-visualizer/">
+            <span class="tool-title">분수 시각화 도구</span>
+            <span class="tool-desc">분수를 그림으로 보여주고 최대 3개까지 비교해볼 수 있어요.</span>
+          </a>
+        </li>
+        <li>
+          <a class="tool-card" href="/fraction-game/">
+            <span class="tool-title">분수 연습게임</span>
+            <span class="tool-desc">더 큰 분수를 맞히면서 분수 감각을 키우는 5단계 난이도 게임이에요.</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="tool-group">
+      <h2 class="group-title">이미지 컨버터</h2>
+      <ul class="tool-list">
+        <li>
+          <a class="tool-card" href="/pixel-art-converter/">
+            <span class="tool-title">이미지 → 픽셀아트 변환기</span>
+            <span class="tool-desc">사진을 올리면 자동으로 픽셀아트로 변환해드려요.</span>
+          </a>
+        </li>
+      </ul>
+    </section>
 
     <footer class="site-footer">© barofam</footer>
   </div>
