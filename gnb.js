@@ -96,4 +96,28 @@
     </header>`;
 
   document.body.insertAdjacentHTML('afterbegin', gnbHtml);
+
+  // 메뉴 그룹 하나를 열면 다른 그룹은 자동으로 닫는다.
+  const groups = document.querySelectorAll('.gnb .menu-group');
+  groups.forEach((group) => {
+    group.addEventListener('toggle', () => {
+      if (group.open) {
+        groups.forEach((other) => {
+          if (other !== group) other.open = false;
+        });
+      }
+    });
+  });
+
+  // 공통 저작권 푸터를 페이지 맨 끝(하단 광고보다도 아래)에 삽입한다.
+  // 이 스크립트는 <body> 맨 앞에서 실행되어 아직 나머지 내용이 파싱되기 전이므로,
+  // 문서 파싱이 끝난 뒤(DOMContentLoaded)에 넣어야 진짜 맨 아래에 붙는다.
+  function appendFooter() {
+    document.body.insertAdjacentHTML('beforeend', '<footer class="site-copyright">© barofam</footer>');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', appendFooter);
+  } else {
+    appendFooter();
+  }
 })();

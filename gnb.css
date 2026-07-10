@@ -24,7 +24,7 @@
 .gnb-menu {
   display: flex;
   gap: 6px;
-  flex: 1;
+  margin-left: auto;
 }
 .gnb .menu-group {
   position: relative;
@@ -92,4 +92,13 @@
 .gnb-lang:hover {
   border-color: #6c7cff;
   color: #6c7cff;
+}
+
+/* 공통 저작권 푸터 */
+.site-copyright {
+  text-align: center;
+  padding: 20px 20px 24px;
+  font-size: 12px;
+  color: #bbb;
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
 }
