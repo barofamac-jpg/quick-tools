@@ -13,6 +13,7 @@
       brand: 'Quick-Tools',
       home: '/',
       langLabel: 'EN',
+      privacy: ['/privacy-policy.html', '개인정보처리방침'],
       groups: [
         {
           label: '초등 학습 도구',
@@ -38,6 +39,7 @@
       brand: 'Quick-Tools',
       home: '/en/',
       langLabel: '한국어',
+      privacy: ['/en/privacy-policy.html', 'Privacy Policy'],
       groups: [
         {
           label: 'Elementary Learning Tools',
@@ -113,7 +115,8 @@
   // 이 스크립트는 <body> 맨 앞에서 실행되어 아직 나머지 내용이 파싱되기 전이므로,
   // 문서 파싱이 끝난 뒤(DOMContentLoaded)에 넣어야 진짜 맨 아래에 붙는다.
   function appendFooter() {
-    document.body.insertAdjacentHTML('beforeend', '<footer class="site-copyright">© barofam</footer>');
+    const footerHtml = `<footer class="site-copyright">© barofam<span class="copyright-sep">·</span><a class="copyright-link" href="${c.privacy[0]}">${c.privacy[1]}</a></footer>`;
+    document.body.insertAdjacentHTML('beforeend', footerHtml);
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', appendFooter);
