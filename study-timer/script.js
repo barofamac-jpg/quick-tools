@@ -14,6 +14,7 @@ const R_INNER = 100;
 const studyInput = document.getElementById('studyInput');
 const breakInput = document.getElementById('breakInput');
 const repeatCheck = document.getElementById('repeatCheck');
+const alarmBtn = document.getElementById('alarmBtn');
 const toggleBtn = document.getElementById('toggleBtn');
 const resetBtn = document.getElementById('resetBtn');
 const phaseLabel = document.getElementById('phaseLabel');
@@ -48,8 +49,12 @@ function formatMMSS(totalSec) {
  * 입력창의 공부/쉬는 시간, 반복 여부를 읽어 내부 상태(초 단위)로 반영한다.
  */
 function readSettings() {
-  const studyMin = clamp(Number(studyInput.value) || 50, 1, 999);
-  const breakMin = clamp(Number(breakInput.value) || 10, 1, 999);
+  // 칸을 비우면 기본값으로 되돌리고, 값이 있으면 그 값을 쓴다.
+  // 공부 시간은 최소 1분, 쉬는 시간은 0분(쉬지 않고 공부만)까지 허용한다.
+  const studyStr = studyInput.value.trim();
+  const studyMin = clamp(studyStr === '' ? 50 : Number(studyStr) || 0, 1, 999);
+  const breakStr = breakInput.value.trim();
+  const breakMin = clamp(breakStr === '' ? 10 : Number(breakStr) || 0, 0, 999);
   studySeconds = studyMin * 60;
   breakSeconds = breakMin * 60;
   totalSeconds = studySeconds + breakSeconds;
@@ -187,12 +192,121 @@ function updateStatusText() {
   timeLabel.textContent = formatMMSS(remainInPhase);
 }
 
+// 알람 소리는 파일 없이 브라우저가 직접 만드는 짧은 전자음(Web Audio)으로 낸다.
+// AudioContext는 사용자의 첫 클릭(시작 버튼) 이후에 만들어야 소리가 나므로 지연 생성한다.
+let audioCtx = null;
+
 /**
- * 1초마다 호출되어 경과 시간을 늘리고, 반복 여부에 따라 종료 또는 순환 처리한다.
+ * AudioContext를 (없으면 만들어) 돌려준다. 브라우저가 정지시킨 경우 다시 깨운다.
+ */
+function getAudioCtx() {
+  if (!audioCtx) {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return null; // 아주 오래된 브라우저 대비
+    audioCtx = new AudioCtx();
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
+/**
+ * 여러 개의 음(音)을 순서대로 재생한다.
+ *
+ * [notes] { freq: 주파수(Hz), start: 시작 시각(초), dur: 길이(초) } 배열
+ */
+function playTones(notes) {
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+  notes.forEach((n) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = n.freq;
+    // 딸깍거림 없이 부드럽게 켜고 끄기 위해 소리 크기를 짧게 올렸다 내린다.
+    gain.gain.setValueAtTime(0.0001, now + n.start);
+    gain.gain.exponentialRampToValueAtTime(0.3, now + n.start + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + n.start + n.dur);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(now + n.start);
+    osc.stop(now + n.start + n.dur + 0.02);
+  });
+}
+
+/**
+ * 상황에 맞는 알람을 재생한다. 알람 체크가 꺼져 있으면 아무 소리도 내지 않는다.
+ *
+ * [kind] 'study' = 공부 끝(쉬는 시간으로), 'break' = 쉬는 시간 끝(다시 공부로)
+ */
+function playAlarm(kind) {
+  if (!alarmOn) return;
+  if (kind === 'study') {
+    // 공부 끝 → 쉬어요: 부드럽게 내려가는 두 음 (딩~ 동~)
+    playTones([
+      { freq: 880, start: 0, dur: 0.25 },
+      { freq: 660, start: 0.28, dur: 0.35 },
+    ]);
+  } else {
+    // 쉬는 시간 끝 → 다시 집중!: 경쾌하게 올라가는 세 음
+    playTones([
+      { freq: 660, start: 0, dur: 0.16 },
+      { freq: 880, start: 0.2, dur: 0.16 },
+      { freq: 1046, start: 0.4, dur: 0.28 },
+    ]);
+  }
+}
+
+// 알람 on/off 상태 (기본 켜짐)
+let alarmOn = true;
+
+// 종 아이콘: 켜짐(종) / 꺼짐(종에 사선 = 음소거)
+const BELL_ON_SVG = `
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+  </svg>`;
+const BELL_OFF_SVG = `
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+    <line x1="3" y1="3" x2="21" y2="21" />
+  </svg>`;
+
+/**
+ * 현재 알람 상태에 맞춰 버튼 아이콘과 설명(툴팁/접근성 라벨)을 갱신한다.
+ */
+function renderAlarmBtn() {
+  alarmBtn.innerHTML = alarmOn ? BELL_ON_SVG : BELL_OFF_SVG;
+  alarmBtn.classList.toggle('is-off', !alarmOn);
+  const label = alarmOn ? '알람 소리 켜짐 (누르면 끔)' : '알람 소리 꺼짐 (누르면 켬)';
+  alarmBtn.title = label;
+  alarmBtn.setAttribute('aria-label', label);
+  alarmBtn.setAttribute('aria-pressed', String(alarmOn));
+}
+
+// 버튼을 누를 때마다 알람을 켜고 끈다.
+alarmBtn.addEventListener('click', () => {
+  alarmOn = !alarmOn;
+  renderAlarmBtn();
+});
+
+/**
+ * 1초마다 호출되어 경과 시간을 늘리고, 단계 전환 시 알람을 울리며,
+ * 반복 여부에 따라 종료 또는 순환 처리한다.
  */
 function tick() {
   elapsedSeconds++;
+
+  // 공부 시간이 막 끝났고 뒤에 쉬는 시간이 있으면 '공부 끝' 알람을 울린다.
+  // (쉬는 시간이 0이면 여기서 울리지 않고, 아래 사이클 종료에서 처리한다.)
+  if (breakSeconds > 0 && elapsedSeconds === studySeconds) {
+    playAlarm('study');
+  }
+
   if (elapsedSeconds >= totalSeconds) {
+    // 한 사이클이 끝난 순간: 쉬는 시간이 있었으면 '쉬는 시간 끝' 알람,
+    // 없었으면(쉬는 시간 0) 방금 공부가 끝난 것이므로 '공부 끝' 알람을 울린다.
+    playAlarm(breakSeconds > 0 ? 'break' : 'study');
     if (repeatCheck.checked) {
       elapsedSeconds = 0;
     } else {
@@ -280,6 +394,7 @@ resetBtn.addEventListener('click', resetTimer);
 readSettings();
 updateStatusText();
 render();
+renderAlarmBtn();
 
 /**
  * 할 일 목록

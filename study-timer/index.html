@@ -60,7 +60,7 @@
           <label for="studyInput">공부 시간(분)</label>
           <input type="number" id="studyInput" min="1" max="180" value="50" />
           <label for="breakInput">쉬는 시간(분)</label>
-          <input type="number" id="breakInput" min="1" max="180" value="10" />
+          <input type="number" id="breakInput" min="0" max="180" value="10" />
         </div>
         <div class="lock-row">
           <label class="lock-label">
@@ -73,7 +73,10 @@
           <canvas id="timerCanvas" width="280" height="280"></canvas>
           <div class="timer-status">
             <div class="phase-label" id="phaseLabel">시작을 눌러주세요</div>
-            <div class="time-label" id="timeLabel">50:00</div>
+            <div class="time-row">
+              <div class="time-label" id="timeLabel">50:00</div>
+              <button type="button" id="alarmBtn" class="alarm-btn"></button>
+            </div>
           </div>
         </div>
 

@@ -14,6 +14,7 @@ const R_INNER = 100;
 const studyInput = document.getElementById('studyInput');
 const breakInput = document.getElementById('breakInput');
 const repeatCheck = document.getElementById('repeatCheck');
+const alarmBtn = document.getElementById('alarmBtn');
 const toggleBtn = document.getElementById('toggleBtn');
 const resetBtn = document.getElementById('resetBtn');
 const phaseLabel = document.getElementById('phaseLabel');
@@ -48,8 +49,12 @@ function formatMMSS(totalSec) {
  * Reads the study/break minutes and repeat setting from the inputs into internal state (seconds).
  */
 function readSettings() {
-  const studyMin = clamp(Number(studyInput.value) || 50, 1, 999);
-  const breakMin = clamp(Number(breakInput.value) || 10, 1, 999);
+  // An empty field falls back to its default; a typed value is used as-is.
+  // Study time is at least 1 minute; break time may be 0 (study only, no break).
+  const studyStr = studyInput.value.trim();
+  const studyMin = clamp(studyStr === '' ? 50 : Number(studyStr) || 0, 1, 999);
+  const breakStr = breakInput.value.trim();
+  const breakMin = clamp(breakStr === '' ? 10 : Number(breakStr) || 0, 0, 999);
   studySeconds = studyMin * 60;
   breakSeconds = breakMin * 60;
   totalSeconds = studySeconds + breakSeconds;
@@ -188,13 +193,121 @@ function updateStatusText() {
   timeLabel.textContent = formatMMSS(remainInPhase);
 }
 
+// The alarm is a short synthesized beep (Web Audio) — no sound file needed.
+// The AudioContext must be created after the user's first click (Start), so create it lazily.
+let audioCtx = null;
+
 /**
- * Called every second: advances elapsed time, and either finishes or loops
- * depending on the repeat setting.
+ * Returns the AudioContext (creating it if needed) and resumes it if the browser suspended it.
+ */
+function getAudioCtx() {
+  if (!audioCtx) {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return null; // very old browsers
+    audioCtx = new AudioCtx();
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
+/**
+ * Plays a sequence of tones.
+ *
+ * [notes] array of { freq: Hz, start: seconds, dur: seconds }
+ */
+function playTones(notes) {
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+  notes.forEach((n) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = n.freq;
+    // Ramp the volume up and down quickly to avoid clicks.
+    gain.gain.setValueAtTime(0.0001, now + n.start);
+    gain.gain.exponentialRampToValueAtTime(0.3, now + n.start + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + n.start + n.dur);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(now + n.start);
+    osc.stop(now + n.start + n.dur + 0.02);
+  });
+}
+
+/**
+ * Plays the alarm for the given transition. Silent when the alarm checkbox is off.
+ *
+ * [kind] 'study' = study ended (going to break), 'break' = break ended (back to study)
+ */
+function playAlarm(kind) {
+  if (!alarmOn) return;
+  if (kind === 'study') {
+    // Study ended -> time to rest: a gentle descending two-note chime.
+    playTones([
+      { freq: 880, start: 0, dur: 0.25 },
+      { freq: 660, start: 0.28, dur: 0.35 },
+    ]);
+  } else {
+    // Break ended -> back to focus: an upbeat rising three-note beep.
+    playTones([
+      { freq: 660, start: 0, dur: 0.16 },
+      { freq: 880, start: 0.2, dur: 0.16 },
+      { freq: 1046, start: 0.4, dur: 0.28 },
+    ]);
+  }
+}
+
+// Alarm on/off state (on by default)
+let alarmOn = true;
+
+// Bell icons: on (bell) / off (bell with a slash = muted)
+const BELL_ON_SVG = `
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+  </svg>`;
+const BELL_OFF_SVG = `
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+    <line x1="3" y1="3" x2="21" y2="21" />
+  </svg>`;
+
+/**
+ * Updates the button icon and its tooltip/accessibility label for the current alarm state.
+ */
+function renderAlarmBtn() {
+  alarmBtn.innerHTML = alarmOn ? BELL_ON_SVG : BELL_OFF_SVG;
+  alarmBtn.classList.toggle('is-off', !alarmOn);
+  const label = alarmOn ? 'Alarm on (tap to mute)' : 'Alarm off (tap to unmute)';
+  alarmBtn.title = label;
+  alarmBtn.setAttribute('aria-label', label);
+  alarmBtn.setAttribute('aria-pressed', String(alarmOn));
+}
+
+// Toggle the alarm on/off each time the button is pressed.
+alarmBtn.addEventListener('click', () => {
+  alarmOn = !alarmOn;
+  renderAlarmBtn();
+});
+
+/**
+ * Called every second: advances elapsed time, sounds the alarm on phase changes,
+ * and either finishes or loops depending on the repeat setting.
  */
 function tick() {
   elapsedSeconds++;
+
+  // Study phase just ended and a break follows -> play the "study ended" alarm.
+  // (When the break is 0 this is skipped here and handled at cycle end below.)
+  if (breakSeconds > 0 && elapsedSeconds === studySeconds) {
+    playAlarm('study');
+  }
+
   if (elapsedSeconds >= totalSeconds) {
+    // A cycle just ended: if there was a break, play the "break ended" alarm;
+    // if not (break 0), study just ended, so play the "study ended" alarm.
+    playAlarm(breakSeconds > 0 ? 'break' : 'study');
     if (repeatCheck.checked) {
       elapsedSeconds = 0;
     } else {
@@ -282,6 +395,7 @@ resetBtn.addEventListener('click', resetTimer);
 readSettings();
 updateStatusText();
 render();
+renderAlarmBtn();
 
 /**
  * To-do list

@@ -187,6 +187,43 @@ body {
   font-weight: 700;
   color: #333;
   font-variant-numeric: tabular-nums;
+  /* 손글씨 폰트라 숫자 폭이 매초 달라져 옆 버튼이 흔들리므로, 폭을 고정하고 가운데 정렬한다 */
+  min-width: 6ch;
+  text-align: center;
+}
+
+/* 시간 표시 + 알람 on/off 아이콘 버튼을 나란히 놓는다 */
+.time-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.alarm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--purple);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.alarm-btn:hover {
+  background: #f7f2fb;
+  border-color: var(--purple);
+}
+/* 알람이 꺼진 상태는 회색으로 흐리게 표시한다 */
+.alarm-btn.is-off {
+  color: #bbb;
+}
+.alarm-btn.is-off:hover {
+  border-color: #bbb;
+  background: #f6f6f6;
 }
 
 .button-row {
