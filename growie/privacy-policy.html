@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8598062581426278" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
@@ -13,16 +13,18 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic",
+                   "Noto Sans SC", "Hiragino Sans", sans-serif;
       color: #222;
       line-height: 1.7;
+      -webkit-text-size-adjust: 100%;
     }
     .container {
       max-width: 680px;
       margin: 0 auto;
       padding: 60px 20px 100px;
     }
-    a { color: #6c7cff; }
+    a { color: #6c7cff; word-break: break-all; }
     h1 {
       font-size: 24px;
       margin: 0 0 8px;
@@ -47,6 +49,7 @@
       font-size: 14px;
       color: #444;
     }
+    ul { padding-left: 20px; }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -57,80 +60,485 @@
       text-align: left;
       padding: 8px 6px;
       border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+    /* 언어 선택 바 */
+    .langbar {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .langbar button {
+      flex: 1 1 auto;
+      min-width: 68px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      border: 1px solid #e2e4ee;
+      border-radius: 8px;
+      background: #fff;
+      color: #888;
+    }
+    .langbar button[aria-selected="true"] {
+      border-color: #6c7cff;
+      background: #6c7cff;
+      color: #fff;
+      font-weight: 600;
+    }
+    .lang[hidden] { display: none; }
+    /* 기기에만 저장된다는 핵심 안내 강조 */
+    .highlight {
+      background: #f2f4ff;
+      border-left: 3px solid #6c7cff;
+      padding: 10px 12px;
+      border-radius: 0 6px 6px 0;
+      margin: 10px 0 0;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: May 26, 2026</p>
 
-    <p>Growie ("the App") values your privacy and complies with applicable global privacy laws and regulations, including COPPA and GDPR.</p>
+    <nav class="langbar" role="tablist">
+      <button role="tab" data-lang="ko" aria-selected="true">한국어</button>
+      <button role="tab" data-lang="en" aria-selected="false">English</button>
+      <button role="tab" data-lang="ja" aria-selected="false">日本語</button>
+      <button role="tab" data-lang="zh" aria-selected="false">中文</button>
+    </nav>
 
-    <section>
-      <h2>1. Information We Collect</h2>
-      <p>The App collects minimal information to provide services, and sensitive data is stored only on your device.</p>
-      <ul>
-        <li><strong>Information you provide directly (stored locally on device):</strong> Child's name, date of birth, gender, height and weight records, memos, country information.</li>
-        <li><strong>Information collected automatically (third-party SDKs):</strong> App usage statistics (Firebase Analytics), advertising identifier (Google AdMob).</li>
-      </ul>
-    </section>
+    <!-- ==================== 한국어 ==================== -->
+    <div class="lang" id="ko">
+      <h1>개인정보처리방침</h1>
+      <p class="updated">시행일: 2026년 7월 26일</p>
+      <p>Growie(이하 "앱")는 이용자의 개인정보를 소중히 여기며, 「개인정보 보호법」 등 관련 법령을 준수합니다.</p>
 
-    <section>
-      <h2>2. How We Use Your Information</h2>
-      <p>Collected information is used strictly for the following purposes:</p>
-      <ul>
-        <li>Providing child growth tracking and statistical analysis.</li>
-        <li>Providing peer growth percentile comparisons.</li>
-        <li>Improving app services, stabilizing performance, and analyzing errors.</li>
-        <li>Delivering personalized advertisements (Google AdMob).</li>
-      </ul>
-    </section>
+      <section>
+        <h2>1. 수집하는 정보</h2>
+        <p><strong>(1) 이용자가 직접 입력하는 정보 — 기기에만 저장됩니다</strong></p>
+        <ul>
+          <li>아이의 이름(별칭), 생년월일, 성별, 키·체중 기록, 메모, 프로필 사진</li>
+        </ul>
+        <p class="highlight">이 정보는 이용자 기기 내부의 앱 전용 저장 공간에만 보관되며, <strong>당사 서버로 전송되지 않습니다. 당사는 이 정보를 열람할 수 없습니다.</strong></p>
+        <p style="margin-top:16px"><strong>(2) 자동으로 수집되는 정보 — 서비스 개선 목적</strong></p>
+        <ul>
+          <li>앱 사용 통계(화면 조회, 기능 사용 횟수), 앱 버전, 기기 언어·지역 설정</li>
+          <li>앱 설정값(단위계, 성장 참조 기준), 등록한 아이의 연령대 구간 및 인원수 구간</li>
+          <li>오류 및 성능 정보(앱 실행 속도, 비정상 종료)</li>
+          <li>수집 도구: Firebase Analytics, Firebase Performance Monitoring (Google LLC)</li>
+        </ul>
+        <p>앱은 <strong>광고를 게재하지 않으며, 광고 식별자를 수집하지 않습니다.</strong></p>
+      </section>
 
-    <section>
-      <h2>3. Data Retention and Destruction</h2>
-      <ul>
-        <li><strong>Local Data:</strong> Growth record data entered by the user is stored locally on your device only and is permanently deleted when the App is uninstalled.</li>
-        <li><strong>Automatically Collected Data:</strong> Analytical and advertising data collected via Firebase and AdMob are retained and destroyed in accordance with Google's respective privacy policies.</li>
-      </ul>
-    </section>
+      <section>
+        <h2>2. 이용 목적</h2>
+        <ul>
+          <li>아이 성장 기록 관리 및 성장 백분위수 분석 기능 제공</li>
+          <li>앱 기능 개선, 오류 분석, 성능 안정화</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>4. Third-Party Services</h2>
-      <p>The App utilizes third-party services to enhance user experience and serve ads. We do not sell or share your personal information with unauthorized third parties.</p>
-      <table>
-        <tr><th>Service</th><th>Purpose</th><th>Privacy Policy Link</th></tr>
-        <tr><td>Firebase Analytics (Google)</td><td>App usage and error analysis</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
-        <tr><td>Google AdMob</td><td>Delivering personalized ads</td><td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td></tr>
-      </table>
-    </section>
+      <section>
+        <h2>3. 보유 및 파기</h2>
+        <ul>
+          <li><strong>기기 내 저장 정보:</strong> 앱에서 삭제하거나 앱을 기기에서 삭제하면 즉시 파기됩니다.</li>
+          <li><strong>자동 수집 정보:</strong> 수집일로부터 최대 14개월 보관 후 자동 삭제됩니다.</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>5. Children's Privacy (COPPA Compliance)</h2>
-      <ul>
-        <li>The App is designed for use by parents or legal guardians to track their children's growth.</li>
-        <li>The App does not knowingly collect personal information directly from children under the age of 13 (or the applicable age in your jurisdiction). Children under 13 are prohibited from creating accounts or inputting data directly.</li>
-        <li>If we become aware that a child under 13 has provided us with personal information without parental consent, we will take immediate steps to delete such information from our records.</li>
-      </ul>
-    </section>
+      <section>
+        <h2>4. 처리위탁 및 제3자 제공</h2>
+        <p>당사는 이용자의 개인정보를 판매하거나 제3자에게 제공하지 않습니다. 다만 아래 업무를 위탁합니다.</p>
+        <table>
+          <tr><th>수탁자</th><th>위탁 업무</th><th>보유기간</th></tr>
+          <tr><td>Google LLC</td><td>앱 사용 통계 분석 (Firebase Analytics)</td><td>최대 14개월</td></tr>
+          <tr><td>Google LLC</td><td>성능·오류 모니터링 (Firebase Performance)</td><td>Google 정책에 따름</td></tr>
+        </table>
+      </section>
 
-    <section>
-      <h2>6. Your Rights and Choices</h2>
-      <p>You (and your legal guardian) can modify or delete your data at any time within the App. You may also contact us via email to request access, correction, or erasure of your personal information.</p>
-    </section>
+      <section>
+        <h2>5. 개인정보의 국외 이전</h2>
+        <p>위 1-(2)의 자동 수집 정보는 아래와 같이 국외에서 처리됩니다.</p>
+        <ul>
+          <li>이전받는 자: Google LLC (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>)</li>
+          <li>이전 국가: 미국</li>
+          <li>이전 항목·목적·보유기간: 위 1-(2), 2항, 3항과 같음</li>
+        </ul>
+        <p>이전을 원하지 않으시면 앱 이용을 중단하고 앱을 삭제하실 수 있습니다.</p>
+      </section>
 
-    <section>
-      <h2>7. Changes to This Policy</h2>
-      <p>This Privacy Policy may be updated periodically. Any changes will be notified to users through in-app announcements.</p>
-    </section>
+      <section>
+        <h2>6. 아동의 개인정보</h2>
+        <ul>
+          <li>앱은 <strong>부모 또는 법정대리인이 아이의 성장을 기록하기 위한 도구</strong>입니다.</li>
+          <li>당사는 만 14세 미만 아동으로부터 개인정보를 직접 수집하지 않습니다. (미국 거주 이용자는 COPPA에 따라 만 13세 미만)</li>
+          <li>아이에 관한 정보는 보호자가 입력하며, 보호자의 기기 내부에만 저장됩니다.</li>
+          <li>아동이 직접 개인정보를 제공한 사실이 확인되면 지체 없이 파기합니다.</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>8. Contact Us</h2>
-      <p>For any privacy-related inquiries, please contact us at:</p>
-      <ul>
-        <li>Email: baro.fam.ac@gmail.com</li>
-      </ul>
-    </section>
+      <section>
+        <h2>7. 이용자의 권리와 행사 방법</h2>
+        <ul>
+          <li><strong>열람·정정·삭제:</strong> 앱 내에서 언제든지 직접 하실 수 있습니다.</li>
+          <li><strong>전체 삭제:</strong> 앱을 기기에서 삭제하면 모든 기록이 파기됩니다.</li>
+          <li><strong>자동 수집 정보 관련 문의:</strong> 아래 연락처로 요청하실 수 있습니다.</li>
+          <li>대한민국 이용자는 개인정보침해신고센터(<a href="https://privacy.kisa.or.kr" target="_blank" rel="noopener">privacy.kisa.or.kr</a>, 국번없이 118)에 신고하실 수 있습니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>8. 앱 접근권한 안내</h2>
+        <table>
+          <tr><th>권한</th><th>구분</th><th>용도</th></tr>
+          <tr><td>알림</td><td>선택</td><td>성장 기록 리마인더 발송</td></tr>
+        </table>
+        <p>선택 권한은 허용하지 않아도 앱의 기본 기능을 모두 이용하실 수 있으며, 기기 설정에서 언제든 변경할 수 있습니다.</p>
+      </section>
+
+      <section>
+        <h2>9. 개인정보 보호책임자</h2>
+        <ul>
+          <li>성명: 배희정</li>
+          <li>연락처: <a href="mailto:baro.fam.ac@gmail.com">baro.fam.ac@gmail.com</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>10. 방침의 변경</h2>
+        <p>이 방침이 변경되는 경우 앱 내 공지 또는 본 페이지를 통해 변경 내용과 시행일을 안내합니다.</p>
+      </section>
+    </div>
+
+    <!-- ==================== English ==================== -->
+    <div class="lang" id="en" hidden>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Effective date: July 26, 2026</p>
+      <p>Growie ("the App") respects your privacy and complies with applicable data protection laws.</p>
+
+      <section>
+        <h2>1. Information We Handle</h2>
+        <p><strong>(1) Information you enter — stored on your device only</strong></p>
+        <ul>
+          <li>Child's name (nickname), date of birth, gender, height and weight records, memos, profile photo</li>
+        </ul>
+        <p class="highlight">This information is stored solely in the App's private storage on your device. <strong>It is never transmitted to our servers, and we cannot access it.</strong></p>
+        <p style="margin-top:16px"><strong>(2) Information collected automatically — to improve the service</strong></p>
+        <ul>
+          <li>Usage statistics (screen views, feature usage counts), app version, device language and region settings</li>
+          <li>App preferences (unit system, growth reference standard), age range and count range of registered children</li>
+          <li>Error and performance data (startup time, crashes)</li>
+          <li>Collected via: Firebase Analytics, Firebase Performance Monitoring (Google LLC)</li>
+        </ul>
+        <p>The App <strong>does not display advertisements and does not collect advertising identifiers.</strong></p>
+      </section>
+
+      <section>
+        <h2>2. Purpose of Use</h2>
+        <ul>
+          <li>Providing child growth tracking and growth percentile analysis</li>
+          <li>Improving app features, analyzing errors, and stabilizing performance</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Retention and Deletion</h2>
+        <ul>
+          <li><strong>On-device data:</strong> Deleted immediately when you remove it in the App or uninstall the App.</li>
+          <li><strong>Automatically collected data:</strong> Retained for up to 14 months from collection, then automatically deleted.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. Processors and Third Parties</h2>
+        <p>We do not sell your personal information or provide it to third parties. We use the following service providers:</p>
+        <table>
+          <tr><th>Provider</th><th>Purpose</th><th>Retention</th></tr>
+          <tr><td>Google LLC</td><td>Usage analytics (Firebase Analytics)</td><td>Up to 14 months</td></tr>
+          <tr><td>Google LLC</td><td>Performance and error monitoring (Firebase Performance)</td><td>Per Google's policy</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>5. International Transfers</h2>
+        <p>The automatically collected data described in 1-(2) is processed outside your country:</p>
+        <ul>
+          <li>Recipient: Google LLC (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>)</li>
+          <li>Destination: United States</li>
+          <li>Data, purpose and retention: as described in sections 1-(2), 2 and 3</li>
+        </ul>
+        <p>If you do not wish this to occur, you may stop using and uninstall the App.</p>
+      </section>
+
+      <section>
+        <h2>6. Children's Privacy</h2>
+        <ul>
+          <li>The App is a tool <strong>for parents and legal guardians</strong> to record their child's growth.</li>
+          <li>We do not knowingly collect personal information directly from children under 13 (or the applicable age in your jurisdiction).</li>
+          <li>Information about a child is entered by the guardian and remains on the guardian's device.</li>
+          <li>If we learn that a child has directly provided personal information, we will delete it without delay.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>7. Your Rights</h2>
+        <ul>
+          <li><strong>Access, correction, deletion:</strong> Available directly within the App at any time.</li>
+          <li><strong>Full deletion:</strong> Uninstalling the App permanently deletes all records.</li>
+          <li><strong>Questions about automatically collected data:</strong> Contact us using the details below.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>8. App Permissions</h2>
+        <table>
+          <tr><th>Permission</th><th>Type</th><th>Purpose</th></tr>
+          <tr><td>Notifications</td><td>Optional</td><td>Sending growth record reminders</td></tr>
+        </table>
+        <p>All core features remain available if you decline optional permissions. You can change them at any time in your device settings.</p>
+      </section>
+
+      <section>
+        <h2>9. Contact</h2>
+        <ul>
+          <li>Privacy officer: Huijeong Bae</li>
+          <li>Email: <a href="mailto:baro.fam.ac@gmail.com">baro.fam.ac@gmail.com</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>10. Changes to This Policy</h2>
+        <p>If this policy changes, we will announce the changes and their effective date in the App or on this page.</p>
+      </section>
+    </div>
+
+    <!-- ==================== 日本語 ==================== -->
+    <div class="lang" id="ja" hidden>
+      <h1>プライバシーポリシー</h1>
+      <p class="updated">施行日: 2026年7月26日</p>
+      <p>Growie(以下「本アプリ」)は、利用者のプライバシーを尊重し、個人情報の保護に関する法律その他の関連法令を遵守します。</p>
+
+      <section>
+        <h2>1. 取り扱う情報</h2>
+        <p><strong>(1) 利用者が入力する情報 — 端末内にのみ保存されます</strong></p>
+        <ul>
+          <li>お子さまの名前(ニックネーム)、生年月日、性別、身長・体重の記録、メモ、プロフィール写真</li>
+        </ul>
+        <p class="highlight">これらの情報は端末内のアプリ専用領域にのみ保存され、<strong>当社のサーバーへ送信されることはなく、当社が閲覧することもできません。</strong></p>
+        <p style="margin-top:16px"><strong>(2) 自動的に収集される情報 — サービス改善のため</strong></p>
+        <ul>
+          <li>利用統計(画面表示、機能の利用回数)、アプリのバージョン、端末の言語・地域設定</li>
+          <li>アプリ設定(単位系、成長参照基準)、登録されたお子さまの年齢層区分および人数区分</li>
+          <li>エラーおよびパフォーマンス情報(起動速度、異常終了)</li>
+          <li>収集ツール: Firebase Analytics、Firebase Performance Monitoring (Google LLC)</li>
+        </ul>
+        <p>本アプリは<strong>広告を配信せず、広告識別子を収集しません。</strong></p>
+      </section>
+
+      <section>
+        <h2>2. 利用目的</h2>
+        <ul>
+          <li>お子さまの成長記録の管理およびパーセンタイル分析機能の提供</li>
+          <li>アプリ機能の改善、エラー分析、パフォーマンスの安定化</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. 保有および削除</h2>
+        <ul>
+          <li><strong>端末内の情報:</strong> アプリ内で削除した場合、またはアプリをアンインストールした場合に直ちに削除されます。</li>
+          <li><strong>自動収集情報:</strong> 収集日から最大14か月保存された後、自動的に削除されます。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. 委託先および第三者提供</h2>
+        <p>当社は利用者の個人情報を販売せず、第三者に提供しません。以下の業務を委託しています。</p>
+        <table>
+          <tr><th>委託先</th><th>業務内容</th><th>保存期間</th></tr>
+          <tr><td>Google LLC</td><td>利用統計の分析 (Firebase Analytics)</td><td>最大14か月</td></tr>
+          <tr><td>Google LLC</td><td>パフォーマンス・エラー監視 (Firebase Performance)</td><td>Googleの方針による</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>5. 外国への情報の移転</h2>
+        <ul>
+          <li>移転先: Google LLC (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>)</li>
+          <li>移転先の国: アメリカ合衆国</li>
+          <li>移転する情報・目的・保存期間: 上記1-(2)、2、3のとおり</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>6. お子さまの個人情報</h2>
+        <ul>
+          <li>本アプリは<strong>保護者がお子さまの成長を記録するためのツール</strong>です。</li>
+          <li>当社はお子さまから直接個人情報を収集することはありません。</li>
+          <li>お子さまに関する情報は保護者が入力し、保護者の端末内にのみ保存されます。</li>
+          <li>お子さまが直接個人情報を提供したことが判明した場合、速やかに削除します。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>7. 利用者の権利</h2>
+        <ul>
+          <li><strong>開示・訂正・削除:</strong> アプリ内でいつでも行えます。</li>
+          <li><strong>全件削除:</strong> アプリをアンインストールするとすべての記録が削除されます。</li>
+          <li><strong>自動収集情報に関するお問い合わせ:</strong> 下記の連絡先までご連絡ください。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>8. アプリの権限について</h2>
+        <table>
+          <tr><th>権限</th><th>区分</th><th>用途</th></tr>
+          <tr><td>通知</td><td>任意</td><td>成長記録のリマインダー送信</td></tr>
+        </table>
+        <p>任意の権限を許可しなくても、基本機能はすべてご利用いただけます。端末の設定でいつでも変更できます。</p>
+      </section>
+
+      <section>
+        <h2>9. お問い合わせ</h2>
+        <ul>
+          <li>個人情報保護責任者: Huijeong Bae</li>
+          <li>メール: <a href="mailto:baro.fam.ac@gmail.com">baro.fam.ac@gmail.com</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>10. 本ポリシーの変更</h2>
+        <p>本ポリシーを変更する場合は、アプリ内のお知らせまたは本ページにて変更内容と施行日をお知らせします。</p>
+      </section>
+    </div>
+
+    <!-- ==================== 中文 ==================== -->
+    <div class="lang" id="zh" hidden>
+      <h1>隐私政策</h1>
+      <p class="updated">生效日期：2026年7月26日</p>
+      <p>Growie（以下简称"本应用"）重视用户隐私，并遵守适用的个人信息保护法律法规。</p>
+
+      <section>
+        <h2>1. 我们处理的信息</h2>
+        <p><strong>（1）您主动填写的信息 — 仅存储在您的设备上</strong></p>
+        <ul>
+          <li>孩子的姓名（昵称）、出生日期、性别、身高体重记录、备注、头像照片</li>
+        </ul>
+        <p class="highlight">上述信息仅保存在设备本地的应用专属存储空间内，<strong>不会上传至我们的服务器，我们无法查看这些信息。</strong></p>
+        <p style="margin-top:16px"><strong>（2）自动收集的信息 — 用于改进服务</strong></p>
+        <ul>
+          <li>使用统计（页面浏览、功能使用次数）、应用版本、设备语言与地区设置</li>
+          <li>应用设置（单位制、生长参照标准）、已添加孩子的年龄区间及人数区间</li>
+          <li>错误与性能信息（启动速度、异常退出）</li>
+          <li>收集工具：Firebase Analytics、Firebase Performance Monitoring（Google LLC）</li>
+        </ul>
+        <p>本应用<strong>不展示广告，也不收集广告标识符。</strong></p>
+      </section>
+
+      <section>
+        <h2>2. 使用目的</h2>
+        <ul>
+          <li>提供儿童成长记录管理及生长百分位分析功能</li>
+          <li>改进应用功能、分析错误、提升性能稳定性</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. 保存与删除</h2>
+        <ul>
+          <li><strong>设备本地信息：</strong>在应用内删除或卸载应用后立即删除。</li>
+          <li><strong>自动收集信息：</strong>自收集之日起最长保存14个月，之后自动删除。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. 委托处理与第三方</h2>
+        <p>我们不会出售您的个人信息，也不会向第三方提供。我们委托以下服务商处理相关业务：</p>
+        <table>
+          <tr><th>服务商</th><th>业务内容</th><th>保存期限</th></tr>
+          <tr><td>Google LLC</td><td>使用统计分析（Firebase Analytics）</td><td>最长14个月</td></tr>
+          <tr><td>Google LLC</td><td>性能与错误监控（Firebase Performance）</td><td>依据 Google 政策</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>5. 信息的跨境处理</h2>
+        <p>第1条第（2）项所述的自动收集信息将在境外处理：</p>
+        <ul>
+          <li>接收方：Google LLC（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>）</li>
+          <li>接收国家：美国</li>
+          <li>信息种类、目的与保存期限：同第1条第（2）项、第2条、第3条</li>
+        </ul>
+        <p>如您不同意上述跨境处理，可停止使用并卸载本应用。</p>
+      </section>
+
+      <section>
+        <h2>6. 儿童个人信息</h2>
+        <ul>
+          <li>本应用是<strong>供父母或监护人记录孩子成长的工具</strong>。</li>
+          <li>本应用中与孩子相关的信息均由<strong>监护人本人填写，并仅保存于监护人的设备中</strong>，我们不会收集。</li>
+          <li>我们不会直接向儿童收集个人信息。如发现儿童自行提供了个人信息，将立即删除。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>7. 您的权利</h2>
+        <ul>
+          <li><strong>查阅、更正、删除：</strong>可随时在应用内直接操作。</li>
+          <li><strong>全部删除：</strong>卸载应用即可永久删除全部记录。</li>
+          <li><strong>关于自动收集信息的咨询：</strong>请通过下方联系方式与我们联系。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>8. 应用权限说明</h2>
+        <table>
+          <tr><th>权限</th><th>类型</th><th>用途</th></tr>
+          <tr><td>通知</td><td>可选</td><td>发送成长记录提醒</td></tr>
+        </table>
+        <p>即使拒绝可选权限，您仍可使用本应用的全部核心功能，并可随时在设备设置中更改。</p>
+      </section>
+
+      <section>
+        <h2>9. 联系我们</h2>
+        <ul>
+          <li>个人信息保护负责人：Huijeong Bae</li>
+          <li>邮箱：<a href="mailto:baro.fam.ac@gmail.com">baro.fam.ac@gmail.com</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>10. 政策更新</h2>
+        <p>本政策如有变更，我们将通过应用内公告或本页面告知变更内容及生效日期。</p>
+      </section>
+    </div>
+
   </div>
+
+  <script>
+    // 언어 버튼으로 해당 언어 블록만 표시한다.
+    // 최초 진입 시에는 브라우저(앱 웹뷰)의 언어를 따르고, 지원하지 않는 언어는 영어로 표시한다.
+    var LANGS = ['ko', 'en', 'ja', 'zh'];
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('.langbar button'));
+
+    function selectLang(lang) {
+      LANGS.forEach(function (l) {
+        document.getElementById(l).hidden = (l !== lang);
+      });
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-selected', String(b.dataset.lang === lang));
+      });
+      document.documentElement.lang = lang;
+      window.scrollTo(0, 0);
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { selectLang(b.dataset.lang); });
+    });
+
+    var browserLang = (navigator.language || 'ko').toLowerCase().split('-')[0];
+    selectLang(LANGS.indexOf(browserLang) >= 0 ? browserLang : 'en');
+  </script>
 </body>
 </html>
