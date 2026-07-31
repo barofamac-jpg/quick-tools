@@ -88,6 +88,16 @@
       font-weight: 600;
     }
     .lang[hidden] { display: none; }
+    /* 아랍어(RTL) 전용 보정.
+       기본 스타일은 왼쪽 기준이라 아랍어에서 목록 들여쓰기와 표 정렬,
+       강조 박스의 세로선이 반대쪽에 붙는다. 해당 블록 안에서만 뒤집는다. */
+    [dir="rtl"] ul { padding-left: 0; padding-right: 20px; }
+    [dir="rtl"] th, [dir="rtl"] td { text-align: right; }
+    [dir="rtl"] .highlight {
+      border-left: none;
+      border-right: 3px solid #6c7cff;
+      border-radius: 6px 0 0 6px;
+    }
     /* 기기에만 저장된다는 핵심 안내 강조 */
     .highlight {
       background: #f2f4ff;
@@ -106,6 +116,8 @@
       <button role="tab" data-lang="ko" aria-selected="false">한국어</button>
       <button role="tab" data-lang="ja" aria-selected="false">日本語</button>
       <button role="tab" data-lang="zh" aria-selected="false">中文</button>
+      <button role="tab" data-lang="id" aria-selected="false">Indonesia</button>
+      <button role="tab" data-lang="ar" aria-selected="false">العربية</button>
     </nav>
 
     <!-- ==================== 한국어 ==================== -->
@@ -121,16 +133,19 @@
           <li>아이의 이름(별칭), 생년월일, 성별, 키·체중 기록, 메모, 프로필 사진</li>
         </ul>
         <p class="highlight">이 정보는 이용자 기기 내부의 앱 전용 저장 공간에만 보관되며, <strong>당사 서버로 전송되지 않습니다. 당사는 이 정보를 열람할 수 없습니다.</strong></p>
-        <p style="margin-top:16px"><strong>(2) 자동으로 수집되는 정보 — 서비스 개선 목적</strong></p>
+        <p style="margin-top:16px"><strong>(2) 자동으로 수집되는 정보 — 서비스 개선 및 광고 목적</strong></p>
         <ul>
           <li>앱 사용 통계(화면 조회, 기능 사용 횟수), 앱 버전, 기기 언어·지역 설정</li>
           <li>앱 설정값(단위계, 성장 참조 기준), 등록한 아이의 연령대 구간 및 인원수 구간</li>
           <li>오류 및 성능 정보(앱 실행 속도, 비정상 종료)</li>
           <li>앱 설치별로 부여되는 익명 식별자(앱 인스턴스 ID) — 개인을 특정할 수 없으며 다른 앱과 공유되지 않습니다</li>
-          <li>광고 식별자 — 통계 분석 목적으로만 사용하며 광고에는 사용하지 않습니다</li>
-          <li>수집 도구: Firebase Analytics, Firebase Performance Monitoring (Google LLC)</li>
+          <li>광고 식별자(Android 광고 ID) — 광고 게재·성과 측정 및 통계 분석에 사용됩니다</li>
+          <li>광고 요청에 수반되는 정보 — 기기 종류, 운영체제 버전, IP 주소로 추정되는 대략적인 위치(국가·지역 수준)</li>
+          <li>수집 도구: Firebase Analytics, Firebase Performance Monitoring, Google AdMob (Google LLC)</li>
         </ul>
-        <p>앱은 <strong>광고를 게재하지 않습니다.</strong> 분석 도구가 통계 목적으로 기기의 광고 식별자에 접근할 수 있으나, 광고 노출이나 맞춤형 광고에 사용하지 않으며 광고 파트너와 공유하지 않습니다. 광고 식별자는 기기 설정에서 언제든지 재설정하거나 맞춤 광고를 끌 수 있습니다.</p>
+        <p>앱은 <strong>광고를 게재합니다.</strong> 광고는 Google AdMob을 통해 제공되며, 광고를 표시하고 성과를 측정하기 위해 기기의 광고 식별자가 사용됩니다.</p>
+        <p>이용자는 기기 설정에서 언제든지 광고 식별자를 재설정하거나 <strong>맞춤 광고를 끌 수 있습니다</strong>(Android: 설정 &gt; 개인 정보 보호 &gt; 광고). 맞춤 광고를 끄더라도 광고는 계속 표시되며, 관심사와 관련성이 낮은 광고가 표시됩니다.</p>
+        <p>Google이 광고 목적으로 데이터를 처리하는 방식은 <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google 파트너 사이트 정책</a>을 참고하시기 바랍니다.</p>
       </section>
 
       <section>
@@ -138,6 +153,7 @@
         <ul>
           <li>아이 성장 기록 관리 및 성장 백분위수 분석 기능 제공</li>
           <li>앱 기능 개선, 오류 분석, 성능 안정화</li>
+          <li>광고 게재 및 광고 성과 측정 (앱을 무료로 제공하기 위한 운영 재원 확보)</li>
         </ul>
       </section>
 
@@ -151,12 +167,14 @@
 
       <section>
         <h2>4. 처리위탁 및 제3자 제공</h2>
-        <p>당사는 이용자의 개인정보를 판매하거나 제3자에게 제공하지 않습니다. 다만 아래 업무를 위탁합니다.</p>
+        <p>당사는 이용자의 개인정보를 판매하지 않습니다. 아래 업무를 위탁하거나 광고 게재를 위해 제공합니다.</p>
         <table>
-          <tr><th>수탁자</th><th>위탁 업무</th><th>보유기간</th></tr>
+          <tr><th>수탁자·제공받는 자</th><th>업무 내용</th><th>보유기간</th></tr>
           <tr><td>Google LLC</td><td>앱 사용 통계 분석 (Firebase Analytics)</td><td>최대 14개월</td></tr>
           <tr><td>Google LLC</td><td>성능·오류 모니터링 (Firebase Performance)</td><td>Google 정책에 따름</td></tr>
+          <tr><td>Google LLC</td><td>광고 게재 및 성과 측정 (Google AdMob) — 광고 식별자, 기기 정보, 대략적인 위치</td><td>Google 정책에 따름</td></tr>
         </table>
+        <p>광고 게재와 관련하여 Google은 단순 수탁자가 아니라 <strong>자체 개인정보처리방침에 따라 독립적으로 데이터를 처리</strong>합니다. 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 개인정보처리방침</a>을 확인하시기 바랍니다.</p>
       </section>
 
       <section>
@@ -177,6 +195,8 @@
           <li>당사는 만 14세 미만 아동으로부터 개인정보를 직접 수집하지 않습니다. (미국 거주 이용자는 COPPA에 따라 만 13세 미만)</li>
           <li>아이에 관한 정보는 보호자가 입력하며, 보호자의 기기 내부에만 저장됩니다.</li>
           <li>아동이 직접 개인정보를 제공한 사실이 확인되면 지체 없이 파기합니다.</li>
+          <li>앱은 <strong>만 18세 이상 성인(보호자)을 대상</strong>으로 제공되며, 아동을 대상으로 하는 서비스가 아닙니다. 광고 역시 아동을 대상으로 게재하지 않습니다.</li>
+          <li>광고에 사용되는 광고 식별자는 <strong>앱을 사용하는 보호자 기기</strong>의 것이며, 아이에 관해 입력한 정보는 광고 목적으로 사용되거나 광고 파트너에게 제공되지 않습니다.</li>
         </ul>
       </section>
 
@@ -226,16 +246,19 @@
           <li>Child's name (nickname), date of birth, gender, height and weight records, memos, profile photo</li>
         </ul>
         <p class="highlight">This information is stored solely in the App's private storage on your device. <strong>It is never transmitted to our servers, and we cannot access it.</strong></p>
-        <p style="margin-top:16px"><strong>(2) Information collected automatically — to improve the service</strong></p>
+        <p style="margin-top:16px"><strong>(2) Information collected automatically — to improve the service and to serve ads</strong></p>
         <ul>
           <li>Usage statistics (screen views, feature usage counts), app version, device language and region settings</li>
           <li>App preferences (unit system, growth reference standard), age range and count range of registered children</li>
           <li>Error and performance data (startup time, crashes)</li>
           <li>An anonymous per-installation identifier (app instance ID) — it cannot identify you personally and is not shared with other apps</li>
-          <li>Advertising identifier — used for statistical analysis only, never for advertising</li>
-          <li>Collected via: Firebase Analytics, Firebase Performance Monitoring (Google LLC)</li>
+          <li>Advertising identifier (Android Advertising ID) — used to serve and measure ads, and for statistical analysis</li>
+          <li>Information sent with ad requests — device type, operating system version, and approximate location (country or region level) inferred from your IP address</li>
+          <li>Collected via: Firebase Analytics, Firebase Performance Monitoring, Google AdMob (Google LLC)</li>
         </ul>
-        <p>The App <strong>does not display advertisements.</strong> Our analytics tool may access your device's advertising identifier for statistical purposes. It is never used to serve or personalize ads, and is never shared with advertising partners. You can reset the advertising identifier or opt out of personalized ads at any time in your device settings.</p>
+        <p>The App <strong>displays advertisements.</strong> Ads are served through Google AdMob, which uses your device's advertising identifier to show ads and measure their performance.</p>
+        <p>You can reset your advertising identifier or <strong>opt out of personalized ads</strong> at any time in your device settings (Android: Settings &gt; Privacy &gt; Ads). Opting out does not remove ads; you will still see ads, but they will be less relevant to your interests.</p>
+        <p>For details on how Google processes data for advertising, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use our services</a>.</p>
       </section>
 
       <section>
@@ -243,6 +266,7 @@
         <ul>
           <li>Providing child growth tracking and growth percentile analysis</li>
           <li>Improving app features, analyzing errors, and stabilizing performance</li>
+          <li>Serving ads and measuring ad performance (to fund the App and keep it free)</li>
         </ul>
       </section>
 
@@ -256,12 +280,14 @@
 
       <section>
         <h2>4. Processors and Third Parties</h2>
-        <p>We do not sell your personal information or provide it to third parties. We use the following service providers:</p>
+        <p>We do not sell your personal information. We use the following service providers and share data for advertising as described below:</p>
         <table>
-          <tr><th>Provider</th><th>Purpose</th><th>Retention</th></tr>
+          <tr><th>Provider / Recipient</th><th>Purpose</th><th>Retention</th></tr>
           <tr><td>Google LLC</td><td>Usage analytics (Firebase Analytics)</td><td>Up to 14 months</td></tr>
           <tr><td>Google LLC</td><td>Performance and error monitoring (Firebase Performance)</td><td>Per Google's policy</td></tr>
+          <tr><td>Google LLC</td><td>Serving and measuring ads (Google AdMob) — advertising identifier, device information, approximate location</td><td>Per Google's policy</td></tr>
         </table>
+        <p>For advertising, Google acts not merely as our processor but as an <strong>independent controller that processes data under its own privacy policy</strong>. See the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> for details.</p>
       </section>
 
       <section>
@@ -282,6 +308,8 @@
           <li>We do not knowingly collect personal information directly from children under 13 (or the applicable age in your jurisdiction).</li>
           <li>Information about a child is entered by the guardian and remains on the guardian's device.</li>
           <li>If we learn that a child has directly provided personal information, we will delete it without delay.</li>
+          <li>The App is <strong>intended for adults aged 18 and over (parents and guardians)</strong> and is not directed to children. Our ads are likewise not directed to children.</li>
+          <li>The advertising identifier used for ads belongs to <strong>the guardian's device</strong>. Information entered about a child is never used for advertising or shared with advertising partners.</li>
         </ul>
       </section>
 
@@ -330,16 +358,19 @@
           <li>お子さまの名前(ニックネーム)、生年月日、性別、身長・体重の記録、メモ、プロフィール写真</li>
         </ul>
         <p class="highlight">これらの情報は端末内のアプリ専用領域にのみ保存され、<strong>当社のサーバーへ送信されることはなく、当社が閲覧することもできません。</strong></p>
-        <p style="margin-top:16px"><strong>(2) 自動的に収集される情報 — サービス改善のため</strong></p>
+        <p style="margin-top:16px"><strong>(2) 自動的に収集される情報 — サービス改善および広告配信のため</strong></p>
         <ul>
           <li>利用統計(画面表示、機能の利用回数)、アプリのバージョン、端末の言語・地域設定</li>
           <li>アプリ設定(単位系、成長参照基準)、登録されたお子さまの年齢層区分および人数区分</li>
           <li>エラーおよびパフォーマンス情報(起動速度、異常終了)</li>
           <li>アプリのインストールごとに付与される匿名の識別子(アプリインスタンスID) — 個人を特定できず、他のアプリと共有されません</li>
-          <li>広告識別子 — 統計分析の目的でのみ使用し、広告には使用しません</li>
-          <li>収集ツール: Firebase Analytics、Firebase Performance Monitoring (Google LLC)</li>
+          <li>広告識別子(Android 広告 ID) — 広告の配信・効果測定および統計分析に使用します</li>
+          <li>広告リクエストに伴う情報 — 端末の種類、OS のバージョン、IP アドレスから推定されるおおよその位置(国・地域レベル)</li>
+          <li>収集ツール: Firebase Analytics、Firebase Performance Monitoring、Google AdMob (Google LLC)</li>
         </ul>
-        <p>本アプリは<strong>広告を配信しません。</strong>分析ツールが統計目的で端末の広告識別子にアクセスすることがありますが、広告の配信やパーソナライズには使用せず、広告パートナーと共有することもありません。広告識別子は端末の設定でいつでもリセットでき、パーソナライズ広告をオフにすることもできます。</p>
+        <p>本アプリは<strong>広告を配信します。</strong>広告は Google AdMob を通じて提供され、広告の表示と効果測定のために端末の広告識別子が使用されます。</p>
+        <p>広告識別子は端末の設定でいつでもリセットでき、<strong>パーソナライズ広告をオフにする</strong>こともできます(Android: 設定 &gt; プライバシー &gt; 広告)。オフにしても広告の表示自体は続き、興味関心との関連性が低い広告が表示されます。</p>
+        <p>Google が広告目的でデータを処理する方法については、<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google のサービスを使用するサイトやアプリから収集した情報の Google による使用</a>をご覧ください。</p>
       </section>
 
       <section>
@@ -347,6 +378,7 @@
         <ul>
           <li>お子さまの成長記録の管理およびパーセンタイル分析機能の提供</li>
           <li>アプリ機能の改善、エラー分析、パフォーマンスの安定化</li>
+          <li>広告の配信および広告効果の測定(アプリを無料で提供するための運営資金の確保)</li>
         </ul>
       </section>
 
@@ -360,12 +392,14 @@
 
       <section>
         <h2>4. 委託先および第三者提供</h2>
-        <p>当社は利用者の個人情報を販売せず、第三者に提供しません。以下の業務を委託しています。</p>
+        <p>当社は利用者の個人情報を販売しません。以下の業務を委託し、また広告配信のために情報を提供しています。</p>
         <table>
-          <tr><th>委託先</th><th>業務内容</th><th>保存期間</th></tr>
+          <tr><th>委託先・提供先</th><th>業務内容</th><th>保存期間</th></tr>
           <tr><td>Google LLC</td><td>利用統計の分析 (Firebase Analytics)</td><td>最大14か月</td></tr>
           <tr><td>Google LLC</td><td>パフォーマンス・エラー監視 (Firebase Performance)</td><td>Googleの方針による</td></tr>
+          <tr><td>Google LLC</td><td>広告の配信および効果測定 (Google AdMob) — 広告識別子、端末情報、おおよその位置</td><td>Googleの方針による</td></tr>
         </table>
+        <p>広告配信に関して、Google は単なる委託先ではなく<strong>自社のプライバシーポリシーに基づいて独立してデータを処理</strong>します。詳しくは <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー</a>をご確認ください。</p>
       </section>
 
       <section>
@@ -384,6 +418,8 @@
           <li>当社はお子さまから直接個人情報を収集することはありません。</li>
           <li>お子さまに関する情報は保護者が入力し、保護者の端末内にのみ保存されます。</li>
           <li>お子さまが直接個人情報を提供したことが判明した場合、速やかに削除します。</li>
+          <li>本アプリは<strong>18歳以上の成人(保護者)を対象</strong>としており、お子さま向けのサービスではありません。広告もお子さまを対象としたものではありません。</li>
+          <li>広告に使用される広告識別子は<strong>保護者の端末</strong>のものであり、お子さまに関して入力された情報が広告目的で使用されたり、広告パートナーに提供されたりすることはありません。</li>
         </ul>
       </section>
 
@@ -432,16 +468,19 @@
           <li>孩子的姓名（昵称）、出生日期、性别、身高体重记录、备注、头像照片</li>
         </ul>
         <p class="highlight">上述信息仅保存在设备本地的应用专属存储空间内，<strong>不会上传至我们的服务器，我们无法查看这些信息。</strong></p>
-        <p style="margin-top:16px"><strong>（2）自动收集的信息 — 用于改进服务</strong></p>
+        <p style="margin-top:16px"><strong>（2）自动收集的信息 — 用于改进服务及投放广告</strong></p>
         <ul>
           <li>使用统计（页面浏览、功能使用次数）、应用版本、设备语言与地区设置</li>
           <li>应用设置（单位制、生长参照标准）、已添加孩子的年龄区间及人数区间</li>
           <li>错误与性能信息（启动速度、异常退出）</li>
           <li>按安装分配的匿名标识符（应用实例 ID）— 无法识别个人身份，且不会与其他应用共享</li>
-          <li>广告标识符 — 仅用于统计分析，不用于广告</li>
-          <li>收集工具：Firebase Analytics、Firebase Performance Monitoring（Google LLC）</li>
+          <li>广告标识符（Android 广告 ID）— 用于投放广告、衡量广告效果及统计分析</li>
+          <li>随广告请求发送的信息 — 设备型号、操作系统版本，以及根据 IP 地址推断的大致位置（国家或地区级别）</li>
+          <li>收集工具：Firebase Analytics、Firebase Performance Monitoring、Google AdMob（Google LLC）</li>
         </ul>
-        <p>本应用<strong>不展示广告。</strong>分析工具可能出于统计目的访问设备的广告标识符，但不会用于投放或个性化广告，也不会与广告合作伙伴共享。您可以随时在设备设置中重置广告标识符或关闭个性化广告。</p>
+        <p>本应用<strong>会展示广告。</strong>广告通过 Google AdMob 提供，并使用设备的广告标识符来展示广告和衡量广告效果。</p>
+        <p>您可以随时在设备设置中重置广告标识符或<strong>关闭个性化广告</strong>（Android：设置 &gt; 隐私 &gt; 广告）。关闭后广告仍会继续展示，只是与您兴趣的相关性降低。</p>
+        <p>有关 Google 如何为广告目的处理数据，请参阅 <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google 如何使用来自使用我们服务的网站或应用的信息</a>。</p>
       </section>
 
       <section>
@@ -449,6 +488,7 @@
         <ul>
           <li>提供儿童成长记录管理及生长百分位分析功能</li>
           <li>改进应用功能、分析错误、提升性能稳定性</li>
+          <li>投放广告及衡量广告效果（用于维持应用免费提供的运营资金）</li>
         </ul>
       </section>
 
@@ -462,12 +502,14 @@
 
       <section>
         <h2>4. 委托处理与第三方</h2>
-        <p>我们不会出售您的个人信息，也不会向第三方提供。我们委托以下服务商处理相关业务：</p>
+        <p>我们不会出售您的个人信息。我们委托以下服务商处理相关业务，并为投放广告而提供相关信息：</p>
         <table>
-          <tr><th>服务商</th><th>业务内容</th><th>保存期限</th></tr>
+          <tr><th>服务商 / 接收方</th><th>业务内容</th><th>保存期限</th></tr>
           <tr><td>Google LLC</td><td>使用统计分析（Firebase Analytics）</td><td>最长14个月</td></tr>
           <tr><td>Google LLC</td><td>性能与错误监控（Firebase Performance）</td><td>依据 Google 政策</td></tr>
+          <tr><td>Google LLC</td><td>投放广告及衡量效果（Google AdMob）— 广告标识符、设备信息、大致位置</td><td>依据 Google 政策</td></tr>
         </table>
+        <p>就广告投放而言，Google 并非仅为受托方，而是<strong>依据其自身隐私政策独立处理数据的控制者</strong>。详情请参阅 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 隐私权政策</a>。</p>
       </section>
 
       <section>
@@ -487,6 +529,8 @@
           <li>本应用是<strong>供父母或监护人记录孩子成长的工具</strong>。</li>
           <li>本应用中与孩子相关的信息均由<strong>监护人本人填写，并仅保存于监护人的设备中</strong>，我们不会收集。</li>
           <li>我们不会直接向儿童收集个人信息。如发现儿童自行提供了个人信息，将立即删除。</li>
+          <li>本应用<strong>面向 18 周岁以上的成年人（父母或监护人）</strong>提供，并非面向儿童的服务。广告同样不针对儿童投放。</li>
+          <li>用于广告的广告标识符属于<strong>监护人的设备</strong>。有关孩子的填写信息不会用于广告目的，也不会提供给广告合作伙伴。</li>
         </ul>
       </section>
 
@@ -522,12 +566,238 @@
       </section>
     </div>
 
+    <!-- ==================== Bahasa Indonesia ==================== -->
+    <div class="lang" id="id" hidden>
+      <h1>Kebijakan Privasi</h1>
+      <p class="updated">Tanggal berlaku: 27 Juli 2026</p>
+      <p>Growie ("Aplikasi") menghormati privasi Anda dan mematuhi peraturan perlindungan data yang berlaku.</p>
+
+      <section>
+        <h2>1. Informasi yang Kami Kelola</h2>
+        <p><strong>(1) Informasi yang Anda masukkan — hanya disimpan di perangkat Anda</strong></p>
+        <ul>
+          <li>Nama anak (nama panggilan), tanggal lahir, jenis kelamin, catatan tinggi dan berat badan, memo, foto profil</li>
+        </ul>
+        <p class="highlight">Informasi ini hanya disimpan di penyimpanan privat Aplikasi pada perangkat Anda. <strong>Informasi ini tidak pernah dikirim ke server kami, dan kami tidak dapat mengaksesnya.</strong></p>
+        <p style="margin-top:16px"><strong>(2) Informasi yang dikumpulkan secara otomatis — untuk meningkatkan layanan dan menayangkan iklan</strong></p>
+        <ul>
+          <li>Statistik penggunaan (tampilan layar, jumlah penggunaan fitur), versi aplikasi, pengaturan bahasa dan wilayah perangkat</li>
+          <li>Preferensi aplikasi (sistem satuan, standar acuan pertumbuhan), rentang usia dan rentang jumlah anak yang terdaftar</li>
+          <li>Informasi kesalahan dan performa (kecepatan mulai, penghentian tidak normal)</li>
+          <li>Pengenal anonim per pemasangan (ID instans aplikasi) — tidak dapat mengidentifikasi Anda secara pribadi dan tidak dibagikan dengan aplikasi lain</li>
+          <li>Pengenal iklan (Android Advertising ID) — digunakan untuk menayangkan dan mengukur iklan, serta untuk analisis statistik</li>
+          <li>Informasi yang dikirim bersama permintaan iklan — jenis perangkat, versi sistem operasi, dan perkiraan lokasi (tingkat negara atau wilayah) yang disimpulkan dari alamat IP Anda</li>
+          <li>Dikumpulkan melalui: Firebase Analytics, Firebase Performance Monitoring, Google AdMob (Google LLC)</li>
+        </ul>
+        <p>Aplikasi ini <strong>menayangkan iklan.</strong> Iklan disediakan melalui Google AdMob, yang menggunakan pengenal iklan perangkat Anda untuk menampilkan iklan dan mengukur performanya.</p>
+        <p>Anda dapat menyetel ulang pengenal iklan atau <strong>menonaktifkan iklan yang dipersonalisasi</strong> kapan saja di pengaturan perangkat (Android: Setelan &gt; Privasi &gt; Iklan). Menonaktifkannya tidak menghilangkan iklan; iklan tetap tampil, tetapi kurang relevan dengan minat Anda.</p>
+        <p>Untuk detail tentang cara Google memproses data untuk periklanan, lihat <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Cara Google menggunakan informasi dari situs atau aplikasi yang menggunakan layanan kami</a>.</p>
+      </section>
+
+      <section>
+        <h2>2. Tujuan Penggunaan</h2>
+        <ul>
+          <li>Menyediakan pencatatan pertumbuhan anak dan analisis persentil pertumbuhan</li>
+          <li>Meningkatkan fitur aplikasi, menganalisis kesalahan, dan menstabilkan performa</li>
+          <li>Menayangkan iklan dan mengukur performa iklan (untuk mendanai Aplikasi agar tetap gratis)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Penyimpanan dan Penghapusan</h2>
+        <ul>
+          <li><strong>Data di perangkat:</strong> Dihapus segera setelah Anda menghapusnya di Aplikasi atau mencopot pemasangan Aplikasi.</li>
+          <li><strong>Data yang dikumpulkan otomatis:</strong> Disimpan hingga 14 bulan sejak pengumpulan, lalu dihapus secara otomatis.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. Pemroses dan Pihak Ketiga</h2>
+        <p>Kami tidak menjual informasi pribadi Anda. Kami menggunakan penyedia layanan berikut dan membagikan data untuk periklanan sebagaimana dijelaskan di bawah ini:</p>
+        <table>
+          <tr><th>Penyedia / Penerima</th><th>Tujuan</th><th>Penyimpanan</th></tr>
+          <tr><td>Google LLC</td><td>Analitik penggunaan (Firebase Analytics)</td><td>Hingga 14 bulan</td></tr>
+          <tr><td>Google LLC</td><td>Pemantauan performa dan kesalahan (Firebase Performance)</td><td>Sesuai kebijakan Google</td></tr>
+          <tr><td>Google LLC</td><td>Penayangan dan pengukuran iklan (Google AdMob) — pengenal iklan, informasi perangkat, perkiraan lokasi</td><td>Sesuai kebijakan Google</td></tr>
+        </table>
+        <p>Untuk periklanan, Google bertindak bukan hanya sebagai pemroses kami, melainkan sebagai <strong>pengendali independen yang memproses data berdasarkan kebijakan privasinya sendiri</strong>. Lihat <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Kebijakan Privasi Google</a> untuk detailnya.</p>
+      </section>
+
+      <section>
+        <h2>5. Transfer Internasional</h2>
+        <p>Data yang dikumpulkan secara otomatis sebagaimana dijelaskan pada bagian 1-(2) diproses di luar negara Anda:</p>
+        <ul>
+          <li>Penerima: Google LLC (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>)</li>
+          <li>Negara tujuan: Amerika Serikat</li>
+          <li>Data, tujuan, dan penyimpanan: sebagaimana dijelaskan pada bagian 1-(2), 2, dan 3</li>
+        </ul>
+        <p>Jika Anda tidak menghendaki hal ini, Anda dapat berhenti menggunakan dan mencopot pemasangan Aplikasi.</p>
+      </section>
+
+      <section>
+        <h2>6. Privasi Anak</h2>
+        <ul>
+          <li>Aplikasi ini adalah alat <strong>bagi orang tua dan wali sah</strong> untuk mencatat pertumbuhan anak mereka.</li>
+          <li>Kami tidak dengan sengaja mengumpulkan informasi pribadi secara langsung dari anak di bawah usia 13 tahun (atau usia yang berlaku di yurisdiksi Anda).</li>
+          <li>Informasi tentang anak dimasukkan oleh wali dan tetap berada di perangkat wali.</li>
+          <li>Jika kami mengetahui bahwa seorang anak telah memberikan informasi pribadi secara langsung, kami akan menghapusnya tanpa penundaan.</li>
+          <li>Aplikasi ini <strong>ditujukan untuk orang dewasa berusia 18 tahun ke atas (orang tua dan wali)</strong> dan bukan ditujukan untuk anak-anak. Iklan kami juga tidak ditujukan untuk anak-anak.</li>
+          <li>Pengenal iklan yang digunakan untuk iklan adalah milik <strong>perangkat wali</strong>. Informasi yang dimasukkan tentang anak tidak pernah digunakan untuk periklanan atau dibagikan dengan mitra periklanan.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>7. Hak Anda</h2>
+        <ul>
+          <li><strong>Akses, koreksi, penghapusan:</strong> Tersedia langsung di dalam Aplikasi kapan saja.</li>
+          <li><strong>Penghapusan menyeluruh:</strong> Mencopot pemasangan Aplikasi akan menghapus semua catatan secara permanen.</li>
+          <li><strong>Pertanyaan tentang data yang dikumpulkan otomatis:</strong> Hubungi kami melalui detail di bawah ini.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>8. Izin Aplikasi</h2>
+        <table>
+          <tr><th>Izin</th><th>Jenis</th><th>Tujuan</th></tr>
+          <tr><td>Notifikasi</td><td>Opsional</td><td>Mengirim pengingat pencatatan pertumbuhan</td></tr>
+        </table>
+        <p>Semua fitur utama tetap tersedia jika Anda menolak izin opsional. Anda dapat mengubahnya kapan saja di pengaturan perangkat.</p>
+      </section>
+
+      <section>
+        <h2>9. Kontak</h2>
+        <ul>
+          <li>Petugas privasi: Huijeong Bae</li>
+          <li>Email: <a href="mailto:baro.fam.ac@gmail.com">baro.fam.ac@gmail.com</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>10. Perubahan Kebijakan Ini</h2>
+        <p>Jika kebijakan ini berubah, kami akan mengumumkan perubahan tersebut beserta tanggal berlakunya di dalam Aplikasi atau di halaman ini.</p>
+      </section>
+    </div>
+
+    <!-- ==================== العربية ==================== -->
+    <div class="lang" id="ar" dir="rtl" hidden>
+      <h1>سياسة الخصوصية</h1>
+      <p class="updated">تاريخ السريان: 27 يوليو 2026</p>
+      <p>تحترم Growie (‏"التطبيق") خصوصيتك وتلتزم بقوانين حماية البيانات المعمول بها.</p>
+
+      <section>
+        <h2>1. المعلومات التي نتعامل معها</h2>
+        <p><strong>(1) المعلومات التي تُدخلها — تُخزَّن على جهازك فقط</strong></p>
+        <ul>
+          <li>اسم الطفل (اللقب)، وتاريخ الميلاد، والجنس، وسجلات الطول والوزن، والملاحظات، وصورة الملف الشخصي</li>
+        </ul>
+        <p class="highlight">تُخزَّن هذه المعلومات حصريًا في مساحة التخزين الخاصة بالتطبيق على جهازك. <strong>ولا تُرسَل أبدًا إلى خوادمنا، ولا يمكننا الاطّلاع عليها.</strong></p>
+        <p style="margin-top:16px"><strong>(2) المعلومات التي تُجمَع تلقائيًا — لتحسين الخدمة وعرض الإعلانات</strong></p>
+        <ul>
+          <li>إحصاءات الاستخدام (مشاهدات الشاشة، عدد مرات استخدام الميزات)، وإصدار التطبيق، وإعدادات لغة الجهاز والمنطقة</li>
+          <li>إعدادات التطبيق (نظام الوحدات، ومعيار النمو المرجعي)، والفئة العمرية وعدد الأطفال المسجَّلين</li>
+          <li>معلومات الأخطاء والأداء (سرعة بدء التشغيل، والإغلاق غير الطبيعي)</li>
+          <li>معرّف مجهول لكل عملية تثبيت (معرّف نسخة التطبيق) — لا يمكنه تحديد هويتك شخصيًا ولا يُشارَك مع تطبيقات أخرى</li>
+          <li>معرّف الإعلانات (معرّف إعلانات Android) — يُستخدَم لعرض الإعلانات وقياس أدائها وللتحليل الإحصائي</li>
+          <li>المعلومات المُرسَلة مع طلبات الإعلانات — نوع الجهاز، وإصدار نظام التشغيل، والموقع التقريبي (على مستوى الدولة أو المنطقة) المستنتَج من عنوان IP الخاص بك</li>
+          <li>تُجمَع عبر: Firebase Analytics، وFirebase Performance Monitoring، وGoogle AdMob (‏Google LLC)</li>
+        </ul>
+        <p>يعرض التطبيق <strong>إعلانات.</strong> تُقدَّم الإعلانات عبر Google AdMob الذي يستخدم معرّف الإعلانات الخاص بجهازك لعرض الإعلانات وقياس أدائها.</p>
+        <p>يمكنك إعادة تعيين معرّف الإعلانات أو <strong>إيقاف الإعلانات المخصّصة</strong> في أي وقت من إعدادات جهازك (‏Android: الإعدادات &gt; الخصوصية &gt; الإعلانات). ولا يؤدي الإيقاف إلى إزالة الإعلانات؛ إذ ستظل تظهر لك الإعلانات لكنها ستكون أقل صلة باهتماماتك.</p>
+        <p>لمعرفة تفاصيل كيفية معالجة Google للبيانات لأغراض الإعلانات، يُرجى الاطّلاع على <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">كيفية استخدام Google للمعلومات من المواقع أو التطبيقات التي تستخدم خدماتنا</a>.</p>
+      </section>
+
+      <section>
+        <h2>2. أغراض الاستخدام</h2>
+        <ul>
+          <li>توفير إدارة سجلات نمو الطفل وتحليل النسب المئوية للنمو</li>
+          <li>تحسين ميزات التطبيق، وتحليل الأخطاء، وتثبيت الأداء</li>
+          <li>عرض الإعلانات وقياس أدائها (لتمويل التطبيق وإبقائه مجانيًا)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. الاحتفاظ والحذف</h2>
+        <ul>
+          <li><strong>البيانات المخزَّنة على الجهاز:</strong> تُحذف فورًا عند حذفها داخل التطبيق أو عند إلغاء تثبيت التطبيق.</li>
+          <li><strong>البيانات المجمَّعة تلقائيًا:</strong> يُحتفظ بها لمدة تصل إلى 14 شهرًا من تاريخ الجمع، ثم تُحذف تلقائيًا.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. المعالِجون والأطراف الثالثة</h2>
+        <p>نحن لا نبيع معلوماتك الشخصية. ونستعين بمزوّدي الخدمات التالين، ونشارك البيانات لأغراض الإعلانات على النحو الموضّح أدناه:</p>
+        <table>
+          <tr><th>المزوّد / الجهة المستلِمة</th><th>الغرض</th><th>مدة الاحتفاظ</th></tr>
+          <tr><td>Google LLC</td><td>تحليلات الاستخدام (Firebase Analytics)</td><td>حتى 14 شهرًا</td></tr>
+          <tr><td>Google LLC</td><td>مراقبة الأداء والأخطاء (Firebase Performance)</td><td>وفقًا لسياسة Google</td></tr>
+          <tr><td>Google LLC</td><td>عرض الإعلانات وقياسها (Google AdMob) — معرّف الإعلانات، ومعلومات الجهاز، والموقع التقريبي</td><td>وفقًا لسياسة Google</td></tr>
+        </table>
+        <p>فيما يخص الإعلانات، لا تعمل Google بصفتها معالِجًا لدينا فحسب، بل بصفتها <strong>متحكّمًا مستقلًا يعالج البيانات وفقًا لسياسة الخصوصية الخاصة به</strong>. يُرجى الاطّلاع على <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">سياسة خصوصية Google</a> لمزيد من التفاصيل.</p>
+      </section>
+
+      <section>
+        <h2>5. عمليات النقل الدولية</h2>
+        <p>تُعالَج البيانات المجمَّعة تلقائيًا الموضّحة في البند 1-(2) خارج بلدك:</p>
+        <ul>
+          <li>الجهة المستلِمة: Google LLC (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>)</li>
+          <li>بلد الوجهة: الولايات المتحدة</li>
+          <li>البيانات والغرض ومدة الاحتفاظ: كما هو موضّح في البنود 1-(2) و2 و3</li>
+        </ul>
+        <p>إذا كنت لا ترغب في ذلك، فيمكنك التوقف عن استخدام التطبيق وإلغاء تثبيته.</p>
+      </section>
+
+      <section>
+        <h2>6. خصوصية الأطفال</h2>
+        <ul>
+          <li>التطبيق أداة <strong>للآباء والأوصياء القانونيين</strong> لتسجيل نمو أطفالهم.</li>
+          <li>نحن لا نجمع عن علم معلومات شخصية مباشرةً من الأطفال دون سن 13 عامًا (أو السن المعمول به في نطاق ولايتك القضائية).</li>
+          <li>يُدخل الوصي المعلومات المتعلقة بالطفل، وتبقى هذه المعلومات على جهاز الوصي.</li>
+          <li>إذا علمنا أن طفلًا قدّم معلومات شخصية مباشرةً، فسنحذفها دون تأخير.</li>
+          <li>التطبيق <strong>مخصّص للبالغين من سن 18 عامًا فأكثر (الآباء والأوصياء)</strong> وليس موجّهًا للأطفال. كذلك فإن إعلاناتنا ليست موجّهة للأطفال.</li>
+          <li>معرّف الإعلانات المستخدَم للإعلانات يخصّ <strong>جهاز الوصي</strong>. ولا تُستخدَم المعلومات المُدخَلة عن الطفل لأغراض الإعلانات ولا تُشارَك مع شركاء الإعلانات.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>7. حقوقك</h2>
+        <ul>
+          <li><strong>الاطّلاع والتصحيح والحذف:</strong> متاحة مباشرةً داخل التطبيق في أي وقت.</li>
+          <li><strong>الحذف الكامل:</strong> يؤدي إلغاء تثبيت التطبيق إلى حذف جميع السجلات نهائيًا.</li>
+          <li><strong>الاستفسارات حول البيانات المجمَّعة تلقائيًا:</strong> تواصل معنا عبر بيانات الاتصال أدناه.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>8. أذونات التطبيق</h2>
+        <table>
+          <tr><th>الإذن</th><th>النوع</th><th>الغرض</th></tr>
+          <tr><td>الإشعارات</td><td>اختياري</td><td>إرسال تذكيرات بتسجيل النمو</td></tr>
+        </table>
+        <p>تظل جميع الميزات الأساسية متاحة إذا رفضت الأذونات الاختيارية، ويمكنك تغييرها في أي وقت من إعدادات جهازك.</p>
+      </section>
+
+      <section>
+        <h2>9. التواصل</h2>
+        <ul>
+          <li>مسؤول الخصوصية: Huijeong Bae</li>
+          <li>البريد الإلكتروني: <a href="mailto:baro.fam.ac@gmail.com">baro.fam.ac@gmail.com</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>10. تغييرات هذه السياسة</h2>
+        <p>في حال تغيّرت هذه السياسة، سنُعلن عن التغييرات وتاريخ سريانها داخل التطبيق أو على هذه الصفحة.</p>
+      </section>
+    </div>
+
   </div>
 
   <script>
     // 언어 버튼으로 해당 언어 블록만 표시한다.
     // 최초 진입 시에는 브라우저(앱 웹뷰)의 언어를 따르고, 지원하지 않는 언어는 영어로 표시한다.
-    var LANGS = ['ko', 'en', 'ja', 'zh'];
+    var LANGS = ['ko', 'en', 'ja', 'zh', 'id', 'ar'];
+    // 오른쪽에서 왼쪽으로 읽는 언어. 선택 시 페이지 전체 방향을 바꾼다.
+    var RTL_LANGS = ['ar'];
     var buttons = Array.prototype.slice.call(document.querySelectorAll('.langbar button'));
 
     function selectLang(lang) {
@@ -538,6 +808,8 @@
         b.setAttribute('aria-selected', String(b.dataset.lang === lang));
       });
       document.documentElement.lang = lang;
+      // 언어 선택 바까지 함께 뒤집어야 아랍어에서 자연스럽게 읽힌다.
+      document.documentElement.dir = RTL_LANGS.indexOf(lang) >= 0 ? 'rtl' : 'ltr';
       window.scrollTo(0, 0);
     }
 
