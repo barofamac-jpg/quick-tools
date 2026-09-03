@@ -85,6 +85,20 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/fraction-game/" />
   </url>
   <url>
+    <loc>https://quick-tools.barofam.com/arithmetic-worksheet/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/arithmetic-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/arithmetic-worksheet/" />
+  </url>
+  <url>
+    <loc>https://quick-tools.barofam.com/en/arithmetic-worksheet/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quick-tools.barofam.com/arithmetic-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://quick-tools.barofam.com/en/arithmetic-worksheet/" />
+  </url>
+  <url>
     <loc>https://quick-tools.barofam.com/image-format-converter/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

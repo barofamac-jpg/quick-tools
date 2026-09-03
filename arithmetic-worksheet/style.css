@@ -1,0 +1,369 @@
+/**
+ * 초등 연산 문제 만들기 - 스타일
+ *
+ * 이 파일은 두 부분으로 나뉜다.
+ *  1) 사이트 틀(헤더·설정 패널·버튼): Quick Tools 공통 톤(Gaegu + 민트/블루)
+ *  2) 문제지 미리보기(.page 이하): 인쇄/PDF에서 깔끔하게 나오도록 흑백 위주로 유지
+ * 한국어판과 영어판(/en/arithmetic-worksheet/)이 이 파일 하나를 공통으로 쓴다.
+ */
+
+:root {
+  --yellow: #FFD93D;
+  --coral: #FF6B6B;
+  --mint: #6BCB77;
+  --blue: #4D96FF;
+  --purple: #C77DFF;
+  --orange: #FF9A3C;
+  --bg: #fef9f0;
+  --card: #ffffff;
+  --text: #2d2d2d;
+  --sub: #888;
+  --border: #e0d6c8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 광고 영역 */
+.ad-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+  margin: 16px auto;
+  max-width: 900px;
+  border: 1px dashed #d8cdb9;
+  border-radius: 12px;
+  background: #fffdf8;
+}
+.ad-label {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: #bbb;
+}
+
+/* ── 헤더 ────────────────────────────────── */
+.tools_header {
+  background: linear-gradient(135deg, #6BCB77 0%, #4D96FF 100%);
+  padding: 36px 20px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.tools_header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+}
+.tools_header::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -30px;
+  width: 220px; height: 220px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 50%;
+}
+.tools_header h1 {
+  font-family: 'Gaegu', cursive;
+  font-size: 2.6rem;
+  color: #fff;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.12);
+  position: relative; z-index: 1;
+}
+.tools_header p {
+  color: rgba(255,255,255,0.92);
+  font-size: 0.95rem;
+  margin-top: 6px;
+  position: relative; z-index: 1;
+}
+
+/* ── 본문 컨테이너 ───────────────────────── */
+.tools_main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 16px 0;
+}
+
+/* ── 설정 패널 ───────────────────────────── */
+.input-section {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  border: 2px solid var(--border);
+  margin-bottom: 28px;
+}
+.input-section h2 {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.control-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+/* 난이도 선택은 문구가 길어 한 줄 전체를 차지한다 */
+.form-group--wide { grid-column: 1 / -1; }
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--sub);
+  margin-bottom: 8px;
+}
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: #fafafa;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-group select:focus {
+  border-color: var(--mint);
+  box-shadow: 0 0 0 3px rgba(107,203,119,0.25);
+  background: #fff;
+}
+
+/* ── 버튼 그룹 ───────────────────────────── */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.btn-main {
+  flex: 1 1 100%;
+  background: linear-gradient(135deg, #6BCB77, #4D96FF);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-family: 'Gaegu', cursive;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(77,150,255,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-main:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(77,150,255,0.4); }
+.btn-main:active { transform: translateY(0); }
+
+/* PC에서는 보조 버튼 4개를 한 줄(4열 1행)에 나열한다. (모바일에서는 아래 미디어쿼리로 2열 2행) */
+.btn-sub {
+  flex: 1 1 calc(25% - 8px);
+  min-width: 0;
+  border: 2px solid var(--border);
+  background: #f7f7f7;
+  color: #666;
+  border-radius: 14px;
+  padding: 12px 8px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-sub:hover { transform: translateY(-2px); }
+.btn-check:hover  { background: #eafaee; border-color: var(--mint);   color: #2d9e40; }
+.btn-answer:hover { background: #f6eaff; border-color: var(--purple); color: #8e44ad; }
+.btn-print:hover  { background: #e8f1ff; border-color: var(--blue);   color: #2a6db5; }
+.btn-pdf:hover    { background: #fff0e0; border-color: var(--orange); color: #d9791f; }
+
+/* ── 문제지 미리보기 (여기서부터는 인쇄용 흑백 스타일) ── */
+.preview-container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* 화면 미리보기에서는 A4 한 장 느낌을 주도록 210×297mm 비율을 잡아 둔다.
+   실제 인쇄·PDF 저장에서는 아래 @media print 규칙이 이 고정 높이를 풀고
+   내용 높이에 맞춰 한 장에 담기게 한다. */
+.page {
+  background: #fff;
+  width: 210mm;
+  max-width: 100%;
+  min-height: 297mm;
+  padding: 15mm;
+  margin: 0 auto 20px auto;
+  box-sizing: border-box;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  position: relative;
+}
+
+.workbook-header {
+  text-align: center;
+  border-bottom: 2px solid #333;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+.workbook-header h2 {
+  margin: 0;
+  color: #222;
+  font-size: 22px;
+}
+
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 15px;
+  border: 1px solid #333;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 25px;
+}
+.problem-item {
+  font-size: 17px;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+}
+.problem-num {
+  color: #222;
+  min-width: 32px;
+  font-size: 17px;
+  font-weight: bold;
+}
+.operator {
+  color: #222;
+  padding: 0 4px;
+  font-size: 17px;
+}
+.answer-input {
+  width: 95px;
+  height: 34px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  background: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.answer-input.correct {
+  border-color: #27AE60;
+  background: #E8F8F5;
+  color: #1f8f4d;
+}
+.answer-input.wrong {
+  border-color: #E74C3C;
+  background: #FDEDEC;
+  color: #c0392b;
+}
+
+.answer-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+.answer-table th, .answer-table td {
+  border: 1px solid #333;
+  padding: 7px;
+}
+.answer-table th {
+  background: #f2f2f2;
+  color: #222;
+  font-size: 15px;
+}
+
+/* 웹 화면에서 정답표는 기본 숨김, 토글로 표시.
+   인쇄·PDF 저장은 모두 브라우저 인쇄 기능(@media print)을 쓰므로
+   그때는 아래 인쇄 규칙이 정답표를 항상 새 페이지에 포함시킨다. */
+.answer-page-container { display: none; }
+.answer-page-container.show { display: block; }
+
+/* 버튼 아래 안내 문구 */
+.btn-hint {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--sub);
+  line-height: 1.6;
+}
+
+/* ── 푸터 ────────────────────────────────── */
+.tools_footer {
+  text-align: center;
+  padding: 40px 20px 20px;
+  font-size: 0.8rem;
+  color: #bbb;
+}
+
+/* ── 반응형 ──────────────────────────────── */
+@media (max-width: 720px) {
+  .tools_header h1 { font-size: 2rem; }
+  .control-grid { grid-template-columns: 1fr; }
+  /* 모바일에서는 보조 버튼을 2열 2행으로 배치한다 */
+  .btn-sub { flex: 1 1 calc(50% - 5px); white-space: normal; }
+  /* 모바일 미리보기에서는 A4 고정 폭·높이를 풀고 화면 폭에 맞춘다 */
+  .page { width: 100%; min-height: 0; padding: 10mm 8mm; }
+  .problem-grid { grid-template-columns: 1fr; }
+}
+
+/* ── 인쇄 ────────────────────────────────── */
+@media print {
+  /* 용지 여백은 브라우저가 확실히 지키는 10mm로 잡고, .page 자체 여백은 0으로 둔다.
+     (@page margin:0 은 일부 브라우저가 무시하고 기본 여백을 더해 두 겹이 되기 때문) */
+  @page { size: A4 portrait; margin: 10mm; }
+  body { background: #fff; }
+  /* 사이트 틀은 인쇄에서 모두 제거 */
+  .gnb, .ad-slot, .tools_header, .tools_footer, .site-copyright,
+  .no-print { display: none !important; }
+  .tools_main { padding: 0 !important; max-width: none !important; }
+  .preview-container { max-width: none !important; overflow: visible !important; }
+  .page {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+  /* 반응형 1단 규칙을 무시하고 인쇄에서도 2단을 유지한다 */
+  .problem-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 9px 22px !important;
+  }
+  .problem-item { padding: 2px 0 !important; }
+  .answer-input {
+    border: 1px solid #333 !important;
+    background: transparent !important;
+    height: 30px !important;
+  }
+  /* 정답표는 항상 포함하되 새 페이지에서 시작한다 */
+  .answer-page-container { display: block !important; }
+  .answer-page-container .page {
+    page-break-before: always;
+    break-before: page;
+  }
+}
