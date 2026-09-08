@@ -62,30 +62,20 @@
       border-bottom: 1px solid #eee;
       vertical-align: top;
     }
-    /* 언어 선택 바 */
+    /* 언어 선택 */
     .langbar {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
       margin-bottom: 24px;
     }
-    .langbar button {
-      flex: 1 1 auto;
-      min-width: 68px;
-      padding: 8px 10px;
-      font-size: 13px;
+    .langbar select {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 14px;
       font-family: inherit;
+      color: #222;
       cursor: pointer;
       border: 1px solid #e2e4ee;
       border-radius: 8px;
       background: #fff;
-      color: #888;
-    }
-    .langbar button[aria-selected="true"] {
-      border-color: #6c7cff;
-      background: #6c7cff;
-      color: #fff;
-      font-weight: 600;
     }
     .lang[hidden] { display: none; }
     /* 아랍어(RTL) 전용 보정.
@@ -111,13 +101,15 @@
 <body>
   <div class="container">
 
-    <nav class="langbar" role="tablist">
-      <button role="tab" data-lang="en" aria-selected="true">English</button>
-      <button role="tab" data-lang="ko" aria-selected="false">한국어</button>
-      <button role="tab" data-lang="ja" aria-selected="false">日本語</button>
-      <button role="tab" data-lang="zh" aria-selected="false">中文</button>
-      <button role="tab" data-lang="id" aria-selected="false">Indonesia</button>
-      <button role="tab" data-lang="ar" aria-selected="false">العربية</button>
+    <nav class="langbar">
+      <select id="lang-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ko">한국어</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+        <option value="id">Bahasa Indonesia</option>
+        <option value="ar">العربية</option>
+      </select>
     </nav>
 
     <!-- ==================== 한국어 ==================== -->
@@ -139,12 +131,12 @@
           <li>앱 설정값(단위계, 성장 참조 기준), 등록한 아이의 연령대 구간 및 인원수 구간</li>
           <li>오류 및 성능 정보(앱 실행 속도, 비정상 종료)</li>
           <li>앱 설치별로 부여되는 익명 식별자(앱 인스턴스 ID) — 개인을 특정할 수 없으며 다른 앱과 공유되지 않습니다</li>
-          <li>광고 식별자(Android 광고 ID) — 광고 게재·성과 측정 및 통계 분석에 사용됩니다</li>
+          <li>광고 식별자 — Android에서는 광고 ID가 광고 게재·성과 측정 및 통계 분석에 사용됩니다. iOS에서는 앱이 추적 권한(App Tracking Transparency)을 요청하지 않으므로 광고 식별자(IDFA)가 앱에 제공되지 않으며, 문맥 기반의 비개인화 광고만 게재됩니다</li>
           <li>광고 요청에 수반되는 정보 — 기기 종류, 운영체제 버전, IP 주소로 추정되는 대략적인 위치(국가·지역 수준)</li>
           <li>수집 도구: Firebase Analytics, Firebase Performance Monitoring, Google AdMob (Google LLC)</li>
         </ul>
-        <p>앱은 <strong>광고를 게재합니다.</strong> 광고는 Google AdMob을 통해 제공되며, 광고를 표시하고 성과를 측정하기 위해 기기의 광고 식별자가 사용됩니다.</p>
-        <p>이용자는 기기 설정에서 언제든지 광고 식별자를 재설정하거나 <strong>맞춤 광고를 끌 수 있습니다</strong>(Android: 설정 &gt; 개인 정보 보호 &gt; 광고). 맞춤 광고를 끄더라도 광고는 계속 표시되며, 관심사와 관련성이 낮은 광고가 표시됩니다.</p>
+        <p>앱은 <strong>광고를 게재합니다.</strong> 광고는 Google AdMob을 통해 제공됩니다. 광고를 표시하고 성과를 측정하기 위해 기기 정보가 사용되며, Android에서는 기기의 광고 식별자가 함께 사용됩니다.</p>
+        <p>이용자는 기기 설정에서 언제든지 광고 식별자를 재설정하거나 <strong>맞춤 광고를 끌 수 있습니다</strong>(Android: 설정 &gt; 개인 정보 보호 &gt; 광고). 맞춤 광고를 끄더라도 광고는 계속 표시되며, 관심사와 관련성이 낮은 광고가 표시됩니다. iOS에서는 앱이 추적을 요청하지 않으므로 별도 설정 없이 비개인화 광고만 표시됩니다.</p>
         <p>Google이 광고 목적으로 데이터를 처리하는 방식은 <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google 파트너 사이트 정책</a>을 참고하시기 바랍니다.</p>
       </section>
 
@@ -195,8 +187,8 @@
           <li>당사는 만 14세 미만 아동으로부터 개인정보를 직접 수집하지 않습니다. (미국 거주 이용자는 COPPA에 따라 만 13세 미만)</li>
           <li>아이에 관한 정보는 보호자가 입력하며, 보호자의 기기 내부에만 저장됩니다.</li>
           <li>아동이 직접 개인정보를 제공한 사실이 확인되면 지체 없이 파기합니다.</li>
-          <li>앱은 <strong>만 18세 이상 성인(보호자)을 대상</strong>으로 제공되며, 아동을 대상으로 하는 서비스가 아닙니다. 광고 역시 아동을 대상으로 게재하지 않습니다.</li>
-          <li>광고에 사용되는 광고 식별자는 <strong>앱을 사용하는 보호자 기기</strong>의 것이며, 아이에 관해 입력한 정보는 광고 목적으로 사용되거나 광고 파트너에게 제공되지 않습니다.</li>
+          <li>앱은 <strong>만 18세 이상 성인(보호자)을 대상</strong>으로 제공되며, 아동을 대상으로 하는 서비스가 아닙니다. <strong>표시되는 광고는 모두 전체 이용가(G) 등급으로 제한되며, 아동을 대상으로 맞춤화되지 않습니다.</strong></li>
+          <li>광고는 앱을 사용하는 <strong>보호자 기기</strong>를 기준으로 게재되며, 아이에 관해 입력한 정보(이름·생년월일·키·체중 등)는 광고 목적으로 사용되거나 광고 파트너에게 제공되지 않습니다.</li>
         </ul>
       </section>
 
@@ -252,12 +244,12 @@
           <li>App preferences (unit system, growth reference standard), age range and count range of registered children</li>
           <li>Error and performance data (startup time, crashes)</li>
           <li>An anonymous per-installation identifier (app instance ID) — it cannot identify you personally and is not shared with other apps</li>
-          <li>Advertising identifier (Android Advertising ID) — used to serve and measure ads, and for statistical analysis</li>
+          <li>Advertising identifier — on Android, the Advertising ID is used to serve and measure ads and for statistical analysis. On iOS, the app does not request tracking permission (App Tracking Transparency), so the advertising identifier (IDFA) is not made available to the app, and only contextual, non-personalized ads are shown</li>
           <li>Information sent with ad requests — device type, operating system version, and approximate location (country or region level) inferred from your IP address</li>
           <li>Collected via: Firebase Analytics, Firebase Performance Monitoring, Google AdMob (Google LLC)</li>
         </ul>
-        <p>The App <strong>displays advertisements.</strong> Ads are served through Google AdMob, which uses your device's advertising identifier to show ads and measure their performance.</p>
-        <p>You can reset your advertising identifier or <strong>opt out of personalized ads</strong> at any time in your device settings (Android: Settings &gt; Privacy &gt; Ads). Opting out does not remove ads; you will still see ads, but they will be less relevant to your interests.</p>
+        <p>The App <strong>displays advertisements.</strong> Ads are served through Google AdMob. Device information is used to show ads and measure their performance, and on Android your device's advertising identifier is also used.</p>
+        <p>You can reset your advertising identifier or <strong>opt out of personalized ads</strong> at any time in your device settings (Android: Settings &gt; Privacy &gt; Ads). Opting out does not remove ads; you will still see ads, but they will be less relevant to your interests. On iOS, because the app does not request tracking, only non-personalized ads are shown and no action is needed.</p>
         <p>For details on how Google processes data for advertising, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use our services</a>.</p>
       </section>
 
@@ -308,8 +300,8 @@
           <li>We do not knowingly collect personal information directly from children under 13 (or the applicable age in your jurisdiction).</li>
           <li>Information about a child is entered by the guardian and remains on the guardian's device.</li>
           <li>If we learn that a child has directly provided personal information, we will delete it without delay.</li>
-          <li>The App is <strong>intended for adults aged 18 and over (parents and guardians)</strong> and is not directed to children. Our ads are likewise not directed to children.</li>
-          <li>The advertising identifier used for ads belongs to <strong>the guardian's device</strong>. Information entered about a child is never used for advertising or shared with advertising partners.</li>
+          <li>The App is <strong>intended for adults aged 18 and over (parents and guardians)</strong> and is not directed to children. <strong>All ads shown are restricted to a general (G) content rating and are not targeted at children.</strong></li>
+          <li>Ads are shown based on <strong>the guardian's device</strong> that runs the App. Information entered about a child (name, date of birth, height, weight, etc.) is never used for advertising or shared with advertising partners.</li>
         </ul>
       </section>
 
@@ -364,12 +356,12 @@
           <li>アプリ設定(単位系、成長参照基準)、登録されたお子さまの年齢層区分および人数区分</li>
           <li>エラーおよびパフォーマンス情報(起動速度、異常終了)</li>
           <li>アプリのインストールごとに付与される匿名の識別子(アプリインスタンスID) — 個人を特定できず、他のアプリと共有されません</li>
-          <li>広告識別子(Android 広告 ID) — 広告の配信・効果測定および統計分析に使用します</li>
+          <li>広告識別子 — Android では広告 ID が広告の配信・効果測定および統計分析に使用されます。iOS ではアプリがトラッキング許可(App Tracking Transparency)を要求しないため、広告識別子(IDFA)はアプリに提供されず、コンテキストに基づく非パーソナライズ広告のみが配信されます</li>
           <li>広告リクエストに伴う情報 — 端末の種類、OS のバージョン、IP アドレスから推定されるおおよその位置(国・地域レベル)</li>
           <li>収集ツール: Firebase Analytics、Firebase Performance Monitoring、Google AdMob (Google LLC)</li>
         </ul>
-        <p>本アプリは<strong>広告を配信します。</strong>広告は Google AdMob を通じて提供され、広告の表示と効果測定のために端末の広告識別子が使用されます。</p>
-        <p>広告識別子は端末の設定でいつでもリセットでき、<strong>パーソナライズ広告をオフにする</strong>こともできます(Android: 設定 &gt; プライバシー &gt; 広告)。オフにしても広告の表示自体は続き、興味関心との関連性が低い広告が表示されます。</p>
+        <p>本アプリは<strong>広告を配信します。</strong>広告は Google AdMob を通じて提供されます。広告の表示と効果測定のために端末情報が使用され、Android では端末の広告識別子も併せて使用されます。</p>
+        <p>広告識別子は端末の設定でいつでもリセットでき、<strong>パーソナライズ広告をオフにする</strong>こともできます(Android: 設定 &gt; プライバシー &gt; 広告)。オフにしても広告の表示自体は続き、興味関心との関連性が低い広告が表示されます。iOS ではアプリがトラッキングを要求しないため、特別な設定なしに非パーソナライズ広告のみが表示されます。</p>
         <p>Google が広告目的でデータを処理する方法については、<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google のサービスを使用するサイトやアプリから収集した情報の Google による使用</a>をご覧ください。</p>
       </section>
 
@@ -418,8 +410,8 @@
           <li>当社はお子さまから直接個人情報を収集することはありません。</li>
           <li>お子さまに関する情報は保護者が入力し、保護者の端末内にのみ保存されます。</li>
           <li>お子さまが直接個人情報を提供したことが判明した場合、速やかに削除します。</li>
-          <li>本アプリは<strong>18歳以上の成人(保護者)を対象</strong>としており、お子さま向けのサービスではありません。広告もお子さまを対象としたものではありません。</li>
-          <li>広告に使用される広告識別子は<strong>保護者の端末</strong>のものであり、お子さまに関して入力された情報が広告目的で使用されたり、広告パートナーに提供されたりすることはありません。</li>
+          <li>本アプリは<strong>18歳以上の成人(保護者)を対象</strong>としており、お子さま向けのサービスではありません。<strong>表示される広告はすべて全年齢向け(G)レーティングに制限され、お子さまを対象にパーソナライズされることはありません。</strong></li>
+          <li>広告はアプリを使用する<strong>保護者の端末</strong>を基準に配信され、お子さまに関して入力された情報(名前・生年月日・身長・体重など)が広告目的で使用されたり、広告パートナーに提供されたりすることはありません。</li>
         </ul>
       </section>
 
@@ -474,12 +466,12 @@
           <li>应用设置（单位制、生长参照标准）、已添加孩子的年龄区间及人数区间</li>
           <li>错误与性能信息（启动速度、异常退出）</li>
           <li>按安装分配的匿名标识符（应用实例 ID）— 无法识别个人身份，且不会与其他应用共享</li>
-          <li>广告标识符（Android 广告 ID）— 用于投放广告、衡量广告效果及统计分析</li>
+          <li>广告标识符 — 在 Android 上，广告 ID 用于投放广告、衡量广告效果及统计分析。在 iOS 上，应用不请求跟踪权限（App Tracking Transparency），因此广告标识符（IDFA）不会提供给应用，仅展示基于上下文的非个性化广告</li>
           <li>随广告请求发送的信息 — 设备型号、操作系统版本，以及根据 IP 地址推断的大致位置（国家或地区级别）</li>
           <li>收集工具：Firebase Analytics、Firebase Performance Monitoring、Google AdMob（Google LLC）</li>
         </ul>
-        <p>本应用<strong>会展示广告。</strong>广告通过 Google AdMob 提供，并使用设备的广告标识符来展示广告和衡量广告效果。</p>
-        <p>您可以随时在设备设置中重置广告标识符或<strong>关闭个性化广告</strong>（Android：设置 &gt; 隐私 &gt; 广告）。关闭后广告仍会继续展示，只是与您兴趣的相关性降低。</p>
+        <p>本应用<strong>会展示广告。</strong>广告通过 Google AdMob 提供。展示广告和衡量广告效果会使用设备信息，在 Android 上还会使用设备的广告标识符。</p>
+        <p>您可以随时在设备设置中重置广告标识符或<strong>关闭个性化广告</strong>（Android：设置 &gt; 隐私 &gt; 广告）。关闭后广告仍会继续展示，只是与您兴趣的相关性降低。在 iOS 上，由于应用不请求跟踪，无需任何设置即仅展示非个性化广告。</p>
         <p>有关 Google 如何为广告目的处理数据，请参阅 <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google 如何使用来自使用我们服务的网站或应用的信息</a>。</p>
       </section>
 
@@ -529,8 +521,8 @@
           <li>本应用是<strong>供父母或监护人记录孩子成长的工具</strong>。</li>
           <li>本应用中与孩子相关的信息均由<strong>监护人本人填写，并仅保存于监护人的设备中</strong>，我们不会收集。</li>
           <li>我们不会直接向儿童收集个人信息。如发现儿童自行提供了个人信息，将立即删除。</li>
-          <li>本应用<strong>面向 18 周岁以上的成年人（父母或监护人）</strong>提供，并非面向儿童的服务。广告同样不针对儿童投放。</li>
-          <li>用于广告的广告标识符属于<strong>监护人的设备</strong>。有关孩子的填写信息不会用于广告目的，也不会提供给广告合作伙伴。</li>
+          <li>本应用<strong>面向 18 周岁以上的成年人（父母或监护人）</strong>提供，并非面向儿童的服务。<strong>所展示的广告均限制为全年龄（G）内容分级，且不会针对儿童进行个性化。</strong></li>
+          <li>广告基于使用本应用的<strong>监护人设备</strong>投放，有关孩子的填写信息（姓名、出生日期、身高、体重等）不会用于广告目的，也不会提供给广告合作伙伴。</li>
         </ul>
       </section>
 
@@ -585,12 +577,12 @@
           <li>Preferensi aplikasi (sistem satuan, standar acuan pertumbuhan), rentang usia dan rentang jumlah anak yang terdaftar</li>
           <li>Informasi kesalahan dan performa (kecepatan mulai, penghentian tidak normal)</li>
           <li>Pengenal anonim per pemasangan (ID instans aplikasi) — tidak dapat mengidentifikasi Anda secara pribadi dan tidak dibagikan dengan aplikasi lain</li>
-          <li>Pengenal iklan (Android Advertising ID) — digunakan untuk menayangkan dan mengukur iklan, serta untuk analisis statistik</li>
+          <li>Pengenal iklan — di Android, Advertising ID digunakan untuk menayangkan dan mengukur iklan serta untuk analisis statistik. Di iOS, aplikasi tidak meminta izin pelacakan (App Tracking Transparency), sehingga pengenal iklan (IDFA) tidak tersedia bagi aplikasi, dan hanya iklan non-personalisasi berbasis konteks yang ditampilkan</li>
           <li>Informasi yang dikirim bersama permintaan iklan — jenis perangkat, versi sistem operasi, dan perkiraan lokasi (tingkat negara atau wilayah) yang disimpulkan dari alamat IP Anda</li>
           <li>Dikumpulkan melalui: Firebase Analytics, Firebase Performance Monitoring, Google AdMob (Google LLC)</li>
         </ul>
-        <p>Aplikasi ini <strong>menayangkan iklan.</strong> Iklan disediakan melalui Google AdMob, yang menggunakan pengenal iklan perangkat Anda untuk menampilkan iklan dan mengukur performanya.</p>
-        <p>Anda dapat menyetel ulang pengenal iklan atau <strong>menonaktifkan iklan yang dipersonalisasi</strong> kapan saja di pengaturan perangkat (Android: Setelan &gt; Privasi &gt; Iklan). Menonaktifkannya tidak menghilangkan iklan; iklan tetap tampil, tetapi kurang relevan dengan minat Anda.</p>
+        <p>Aplikasi ini <strong>menayangkan iklan.</strong> Iklan disediakan melalui Google AdMob. Informasi perangkat digunakan untuk menampilkan iklan dan mengukur performanya, dan di Android pengenal iklan perangkat Anda juga digunakan.</p>
+        <p>Anda dapat menyetel ulang pengenal iklan atau <strong>menonaktifkan iklan yang dipersonalisasi</strong> kapan saja di pengaturan perangkat (Android: Setelan &gt; Privasi &gt; Iklan). Menonaktifkannya tidak menghilangkan iklan; iklan tetap tampil, tetapi kurang relevan dengan minat Anda. Di iOS, karena aplikasi tidak meminta pelacakan, hanya iklan non-personalisasi yang ditampilkan tanpa perlu pengaturan apa pun.</p>
         <p>Untuk detail tentang cara Google memproses data untuk periklanan, lihat <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Cara Google menggunakan informasi dari situs atau aplikasi yang menggunakan layanan kami</a>.</p>
       </section>
 
@@ -641,8 +633,8 @@
           <li>Kami tidak dengan sengaja mengumpulkan informasi pribadi secara langsung dari anak di bawah usia 13 tahun (atau usia yang berlaku di yurisdiksi Anda).</li>
           <li>Informasi tentang anak dimasukkan oleh wali dan tetap berada di perangkat wali.</li>
           <li>Jika kami mengetahui bahwa seorang anak telah memberikan informasi pribadi secara langsung, kami akan menghapusnya tanpa penundaan.</li>
-          <li>Aplikasi ini <strong>ditujukan untuk orang dewasa berusia 18 tahun ke atas (orang tua dan wali)</strong> dan bukan ditujukan untuk anak-anak. Iklan kami juga tidak ditujukan untuk anak-anak.</li>
-          <li>Pengenal iklan yang digunakan untuk iklan adalah milik <strong>perangkat wali</strong>. Informasi yang dimasukkan tentang anak tidak pernah digunakan untuk periklanan atau dibagikan dengan mitra periklanan.</li>
+          <li>Aplikasi ini <strong>ditujukan untuk orang dewasa berusia 18 tahun ke atas (orang tua dan wali)</strong> dan bukan ditujukan untuk anak-anak. <strong>Semua iklan yang ditampilkan dibatasi pada rating konten umum (G) dan tidak ditargetkan kepada anak-anak.</strong></li>
+          <li>Iklan ditampilkan berdasarkan <strong>perangkat wali</strong> yang menjalankan Aplikasi. Informasi yang dimasukkan tentang anak (nama, tanggal lahir, tinggi, berat, dll.) tidak pernah digunakan untuk periklanan atau dibagikan dengan mitra periklanan.</li>
         </ul>
       </section>
 
@@ -697,12 +689,12 @@
           <li>إعدادات التطبيق (نظام الوحدات، ومعيار النمو المرجعي)، والفئة العمرية وعدد الأطفال المسجَّلين</li>
           <li>معلومات الأخطاء والأداء (سرعة بدء التشغيل، والإغلاق غير الطبيعي)</li>
           <li>معرّف مجهول لكل عملية تثبيت (معرّف نسخة التطبيق) — لا يمكنه تحديد هويتك شخصيًا ولا يُشارَك مع تطبيقات أخرى</li>
-          <li>معرّف الإعلانات (معرّف إعلانات Android) — يُستخدَم لعرض الإعلانات وقياس أدائها وللتحليل الإحصائي</li>
+          <li>معرّف الإعلانات — على Android، يُستخدَم معرّف الإعلانات لعرض الإعلانات وقياس أدائها وللتحليل الإحصائي. على iOS، لا يطلب التطبيق إذن التتبّع (App Tracking Transparency)، لذا لا يُتاح معرّف الإعلانات (IDFA) للتطبيق، ولا تُعرَض سوى إعلانات غير مخصّصة قائمة على السياق</li>
           <li>المعلومات المُرسَلة مع طلبات الإعلانات — نوع الجهاز، وإصدار نظام التشغيل، والموقع التقريبي (على مستوى الدولة أو المنطقة) المستنتَج من عنوان IP الخاص بك</li>
           <li>تُجمَع عبر: Firebase Analytics، وFirebase Performance Monitoring، وGoogle AdMob (‏Google LLC)</li>
         </ul>
-        <p>يعرض التطبيق <strong>إعلانات.</strong> تُقدَّم الإعلانات عبر Google AdMob الذي يستخدم معرّف الإعلانات الخاص بجهازك لعرض الإعلانات وقياس أدائها.</p>
-        <p>يمكنك إعادة تعيين معرّف الإعلانات أو <strong>إيقاف الإعلانات المخصّصة</strong> في أي وقت من إعدادات جهازك (‏Android: الإعدادات &gt; الخصوصية &gt; الإعلانات). ولا يؤدي الإيقاف إلى إزالة الإعلانات؛ إذ ستظل تظهر لك الإعلانات لكنها ستكون أقل صلة باهتماماتك.</p>
+        <p>يعرض التطبيق <strong>إعلانات.</strong> تُقدَّم الإعلانات عبر Google AdMob. تُستخدَم معلومات الجهاز لعرض الإعلانات وقياس أدائها، وعلى Android يُستخدَم أيضًا معرّف الإعلانات الخاص بجهازك.</p>
+        <p>يمكنك إعادة تعيين معرّف الإعلانات أو <strong>إيقاف الإعلانات المخصّصة</strong> في أي وقت من إعدادات جهازك (‏Android: الإعدادات &gt; الخصوصية &gt; الإعلانات). ولا يؤدي الإيقاف إلى إزالة الإعلانات؛ إذ ستظل تظهر لك الإعلانات لكنها ستكون أقل صلة باهتماماتك. وعلى iOS، بما أن التطبيق لا يطلب التتبّع، لا تُعرَض سوى إعلانات غير مخصّصة دون الحاجة إلى أي إعداد.</p>
         <p>لمعرفة تفاصيل كيفية معالجة Google للبيانات لأغراض الإعلانات، يُرجى الاطّلاع على <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">كيفية استخدام Google للمعلومات من المواقع أو التطبيقات التي تستخدم خدماتنا</a>.</p>
       </section>
 
@@ -753,8 +745,8 @@
           <li>نحن لا نجمع عن علم معلومات شخصية مباشرةً من الأطفال دون سن 13 عامًا (أو السن المعمول به في نطاق ولايتك القضائية).</li>
           <li>يُدخل الوصي المعلومات المتعلقة بالطفل، وتبقى هذه المعلومات على جهاز الوصي.</li>
           <li>إذا علمنا أن طفلًا قدّم معلومات شخصية مباشرةً، فسنحذفها دون تأخير.</li>
-          <li>التطبيق <strong>مخصّص للبالغين من سن 18 عامًا فأكثر (الآباء والأوصياء)</strong> وليس موجّهًا للأطفال. كذلك فإن إعلاناتنا ليست موجّهة للأطفال.</li>
-          <li>معرّف الإعلانات المستخدَم للإعلانات يخصّ <strong>جهاز الوصي</strong>. ولا تُستخدَم المعلومات المُدخَلة عن الطفل لأغراض الإعلانات ولا تُشارَك مع شركاء الإعلانات.</li>
+          <li>التطبيق <strong>مخصّص للبالغين من سن 18 عامًا فأكثر (الآباء والأوصياء)</strong> وليس موجّهًا للأطفال. <strong>وجميع الإعلانات المعروضة مقيَّدة بتصنيف محتوى عام (G) وغير موجَّهة للأطفال.</strong></li>
+          <li>تُعرَض الإعلانات بناءً على <strong>جهاز الوصي</strong> الذي يُشغّل التطبيق، ولا تُستخدَم المعلومات المُدخَلة عن الطفل (الاسم، تاريخ الميلاد، الطول، الوزن، إلخ) لأغراض الإعلانات ولا تُشارَك مع شركاء الإعلانات.</li>
         </ul>
       </section>
 
@@ -793,29 +785,24 @@
   </div>
 
   <script>
-    // 언어 버튼으로 해당 언어 블록만 표시한다.
+    // 언어 선택 박스로 해당 언어 블록만 표시한다.
     // 최초 진입 시에는 브라우저(앱 웹뷰)의 언어를 따르고, 지원하지 않는 언어는 영어로 표시한다.
     var LANGS = ['ko', 'en', 'ja', 'zh', 'id', 'ar'];
     // 오른쪽에서 왼쪽으로 읽는 언어. 선택 시 페이지 전체 방향을 바꾼다.
     var RTL_LANGS = ['ar'];
-    var buttons = Array.prototype.slice.call(document.querySelectorAll('.langbar button'));
+    var langSelect = document.getElementById('lang-select');
 
     function selectLang(lang) {
       LANGS.forEach(function (l) {
         document.getElementById(l).hidden = (l !== lang);
       });
-      buttons.forEach(function (b) {
-        b.setAttribute('aria-selected', String(b.dataset.lang === lang));
-      });
+      langSelect.value = lang;
       document.documentElement.lang = lang;
-      // 언어 선택 바까지 함께 뒤집어야 아랍어에서 자연스럽게 읽힌다.
       document.documentElement.dir = RTL_LANGS.indexOf(lang) >= 0 ? 'rtl' : 'ltr';
       window.scrollTo(0, 0);
     }
 
-    buttons.forEach(function (b) {
-      b.addEventListener('click', function () { selectLang(b.dataset.lang); });
-    });
+    langSelect.addEventListener('change', function () { selectLang(langSelect.value); });
 
     var browserLang = (navigator.language || 'ko').toLowerCase().split('-')[0];
     selectLang(LANGS.indexOf(browserLang) >= 0 ? browserLang : 'en');

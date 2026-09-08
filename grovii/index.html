@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8598062581426278" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grovii - 아이 키 성장 기록 · 또래 백분위 · 예상 키</title>
+  <meta name="description" content="아이의 키·몸무게를 기록하면 질병관리청·WHO·CDC 성장도표로 또래 백분위, BMI, 예상 성인 키를 계산해 주는 무료 앱입니다. 자녀 여러 명, 7개 언어 지원." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quick-tools.barofam.com/grovii/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quick-tools.barofam.com/grovii/" />
+  <meta property="og:title" content="Grovii - 아이 키 성장 기록 · 또래 백분위 · 예상 키" />
+  <meta property="og:description" content="아이의 키·몸무게를 기록하면 성장도표로 또래 백분위와 예상 성인 키를 계산해 주는 무료 앱." />
+  <meta property="og:image" content="https://quick-tools.barofam.com/grovii/img/2_percentile.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Grovii - 아이 키 성장 기록" />
+  <meta name="twitter:description" content="성장도표로 또래 백분위와 예상 성인 키를 계산해 주는 무료 앱." />
+  <meta name="twitter:image" content="https://quick-tools.barofam.com/grovii/img/2_percentile.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%236c7cff'/%3E%3Crect x='8' width='8' height='8' fill='%23222222'/%3E%3Crect y='8' width='8' height='8' fill='%23222222'/%3E%3C/svg%3E" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Grovii",
+    "operatingSystem": "Android, iOS",
+    "applicationCategory": "HealthApplication",
+    "description": "아이의 키·몸무게를 기록하면 질병관리청·WHO·CDC 성장도표로 또래 백분위, BMI, 예상 성인 키를 계산해 주는 무료 앱.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic",
+                   "Noto Sans SC", "Hiragino Sans", sans-serif;
+      color: #222;
+      line-height: 1.7;
+      background: #f7f8fc;
+      -webkit-text-size-adjust: 100%;
+    }
+    .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 100px; }
+    a { color: #6c7cff; }
+
+    /* 언어 선택 */
+    .langbar { margin-bottom: 28px; text-align: right; }
+    .langbar select {
+      padding: 8px 12px; font-size: 13px; font-family: inherit; color: #222;
+      cursor: pointer; border: 1px solid #e2e4ee; border-radius: 8px; background: #fff;
+    }
+
+    /* 히어로 */
+    .hero { text-align: center; padding: 8px 0 8px; }
+    .hero img.icon {
+      width: 84px; height: 84px; border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(108, 124, 255, 0.25);
+    }
+    .hero h1 { font-size: 26px; margin: 18px 0 6px; line-height: 1.35; }
+    .hero .sub { font-size: 15px; color: #555; margin: 0 auto; max-width: 30em; }
+
+    .stores { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 24px 0 8px; }
+    .stores a, .stores span {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 20px; border-radius: 50px; font-size: 15px; font-weight: 600;
+      text-decoration: none;
+    }
+    .stores a { background: #6c7cff; color: #fff; }
+    .stores a:hover { background: #5968f0; }
+    .stores span.soon { background: #e9ebf5; color: #9096ac; cursor: default; }
+    /* display 를 지정하면 [hidden] 속성이 무시되므로 명시적으로 숨긴다. */
+    .stores [hidden] { display: none; }
+    .lang[hidden] { display: none; }
+
+    /* 스크린샷 */
+    .shots { display: flex; gap: 14px; overflow-x: auto; padding: 24px 0 8px; scroll-snap-type: x mandatory; }
+    .shots img {
+      width: 220px; flex: 0 0 auto; border-radius: 16px;
+      border: 1px solid #e7e9f2; scroll-snap-align: center;
+    }
+
+    section.block { background: #fff; border-radius: 16px; padding: 22px 24px; margin-top: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    section.block h2 { font-size: 17px; margin: 0 0 14px; }
+
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .feature { background: #f7f8fc; border-radius: 12px; padding: 14px 16px; }
+    .feature .fi { font-size: 20px; }
+    .feature h3 { font-size: 14px; margin: 6px 0 4px; }
+    .feature p { font-size: 13px; color: #555; margin: 0; }
+
+    .std { font-size: 13.5px; color: #444; }
+    .std b { color: #222; }
+
+    .story { font-size: 14px; color: #444; }
+    .story p { margin: 0 0 10px; }
+
+    .faq p { font-size: 13.5px; color: #444; margin: 0 0 12px; }
+    .faq strong { color: #222; }
+
+    footer { text-align: center; font-size: 12.5px; color: #999; margin-top: 32px; }
+    footer a { color: #999; margin: 0 6px; }
+
+    [dir="rtl"] .langbar { text-align: left; }
+    [dir="rtl"] .features { direction: rtl; }
+
+    @media (max-width: 520px) {
+      .features { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <nav class="langbar">
+      <select id="lang-select" aria-label="Language">
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+      </select>
+    </nav>
+
+    <!-- ==================== 한국어 ==================== -->
+    <div class="lang" id="ko" hidden>
+      <div class="hero">
+        <img class="icon" src="img/icon.jpg" alt="Grovii 앱 아이콘" />
+        <h1>우리 아이, 또래 중 몇 %일까?<br />크면 몇 cm 될까?</h1>
+        <p class="sub">키·몸무게를 기록하면 <b>질병관리청·WHO·CDC 성장도표</b>로 또래 백분위, BMI, 예상 성인 키를 계산해 줍니다.</p>
+      </div>
+
+      <div class="stores">
+        <a href="https://play.google.com/store/apps/details?id=com.barofam.growie.app&referrer=utm_source%3Dgrovii_landing%26utm_medium%3Dweb%26utm_campaign%3Dsite">▶ Google Play</a>
+        <a href="#" data-ios hidden> App Store</a>
+        <span class="soon" data-ios-soon> App Store · 곧 출시</span>
+      </div>
+
+      <div class="shots">
+        <img src="img/1_home.jpg" alt="홈 화면 — 성장 요약" />
+        <img src="img/2_percentile.jpg" alt="또래 백분위 성장 곡선" />
+        <img src="img/3_predicted.jpg" alt="예상 성인 키" />
+      </div>
+
+      <section class="block">
+        <h2>이런 게 궁금할 때</h2>
+        <div class="features">
+          <div class="feature"><div class="fi">📊</div><h3>또래 백분위</h3><p>키·몸무게·BMI가 같은 개월 수 또래 중 어디쯤인지 곡선으로 보여줘요.</p></div>
+          <div class="feature"><div class="fi">📈</div><h3>예상 키</h3><p>성장 추세와 부모님 키로 예상 성인 키를 오차 범위와 함께 알려줘요.</p></div>
+          <div class="feature"><div class="fi">👨‍👩‍👧‍👦</div><h3>자녀 여러 명</h3><p>아이마다 프로필·기록·차트를 따로 관리해요.</p></div>
+          <div class="feature"><div class="fi">🔒</div><h3>내 기기에만 저장</h3><p>계정이 없어요. 아이 정보는 서버로 전송되지 않아요.</p></div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>믿을 수 있는 성장 기준</h2>
+        <p class="std">나라별 공식 성장도표를 골라 쓸 수 있어요 — <b>질병관리청(한국)</b>, WHO, <b>CDC(미국)</b>, 후생노동성(일본), 국가위생건강위원회(중국), UK90(영국). 나이는 성장도표와 동일하게 <b>만 개월 수</b>로 계산합니다.</p>
+      </section>
+
+      <section class="block story">
+        <h2>엄마가 만들었어요</h2>
+        <p>아이 검진 때마다 "또래보다 큰 걸까 작은 걸까" 가 궁금했어요. 성장도표를 직접 찾아보기는 번거롭고, 앱들은 기준이 제각각이더라고요.</p>
+        <p>그래서 공식 성장도표(LMS) 그대로 계산하고, 병원 결과와 맞는지 하나하나 확인해서 만들었습니다. 같은 고민을 하는 부모님께 도움이 되면 좋겠어요.</p>
+      </section>
+
+      <section class="block faq">
+        <h2>자주 묻는 질문</h2>
+        <p><strong>정말 무료인가요?</strong><br />네. 광고로 운영되며, 아이 정보는 광고에 사용되지 않아요.</p>
+        <p><strong>예상 키는 정확한가요?</strong><br />성장 추세 기반 참고용 추정치예요. 정확한 평가는 소아청소년과 전문의와 상담하세요.</p>
+        <p><strong>데이터는 어디에 저장되나요?</strong><br />이용자 기기에만 저장됩니다. 자세한 내용은 <a href="privacy-policy.html">개인정보처리방침</a>을 참고하세요.</p>
+        <p>더 궁금한 점은 <a href="support.html">고객 지원</a> 페이지를 확인하세요.</p>
+      </section>
+    </div>
+
+    <!-- ==================== English ==================== -->
+    <div class="lang" id="en">
+      <div class="hero">
+        <img class="icon" src="img/icon.jpg" alt="Grovii app icon" />
+        <h1>Where does your child stand<br />among peers? How tall will they be?</h1>
+        <p class="sub">Log height and weight, and Grovii uses <b>WHO, CDC and other official growth charts</b> to show peer percentiles, BMI and a predicted adult height.</p>
+      </div>
+
+      <div class="stores">
+        <a href="https://play.google.com/store/apps/details?id=com.barofam.growie.app&referrer=utm_source%3Dgrovii_landing%26utm_medium%3Dweb%26utm_campaign%3Dsite">▶ Google Play</a>
+        <a href="#" data-ios hidden> App Store</a>
+        <span class="soon" data-ios-soon> App Store · coming soon</span>
+      </div>
+
+      <div class="shots">
+        <img src="img/1_home.jpg" alt="Home screen — growth summary" />
+        <img src="img/2_percentile.jpg" alt="Peer percentile growth curve" />
+        <img src="img/3_predicted.jpg" alt="Predicted adult height" />
+      </div>
+
+      <section class="block">
+        <h2>What Grovii answers</h2>
+        <div class="features">
+          <div class="feature"><div class="fi">📊</div><h3>Peer percentile</h3><p>See where height, weight and BMI fall among children of the same age in months.</p></div>
+          <div class="feature"><div class="fi">📈</div><h3>Predicted height</h3><p>An estimated adult height from the growth trend and parents' heights, with a margin of error.</p></div>
+          <div class="feature"><div class="fi">👨‍👩‍👧‍👦</div><h3>Multiple children</h3><p>Each child gets its own profile, records and charts.</p></div>
+          <div class="feature"><div class="fi">🔒</div><h3>Stored on your device</h3><p>No account. Your child's data is never sent to our servers.</p></div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>Trusted growth standards</h2>
+        <p class="std">Choose the official growth chart you trust — <b>WHO</b>, <b>CDC (US)</b>, KDCA (Korea), MHLW (Japan), NHC (China), UK90 (UK). Age is counted in <b>completed months</b>, exactly like the charts themselves.</p>
+      </section>
+
+      <section class="block story">
+        <h2>Made by a parent</h2>
+        <p>At every check-up I wondered whether my child was big or small for their age. Looking up growth charts by hand is tedious, and the apps I tried all used different standards.</p>
+        <p>So I built one that computes straight from the official LMS growth data and checked it against real clinic results. I hope it helps other parents with the same question.</p>
+      </section>
+
+      <section class="block faq">
+        <h2>FAQ</h2>
+        <p><strong>Is it really free?</strong><br />Yes. It's ad-supported, and your child's data is never used for ads.</p>
+        <p><strong>Is the predicted height accurate?</strong><br />It's a reference estimate based on the growth trend. For an accurate assessment, see a pediatrician.</p>
+        <p><strong>Where is my data stored?</strong><br />On your device only. See the <a href="privacy-policy.html">Privacy Policy</a> for details.</p>
+        <p>For more, visit the <a href="support.html">Support</a> page.</p>
+      </section>
+    </div>
+
+    <footer>
+      <a href="privacy-policy.html">Privacy</a> ·
+      <a href="support.html">Support</a> ·
+      <a href="mailto:baro.fam.ac@gmail.com">baro.fam.ac@gmail.com</a>
+    </footer>
+
+  </div>
+
+  <script>
+    // iOS App Store 주소가 정해지면 아래 IOS_URL 에 넣으세요. (예: 'https://apps.apple.com/app/idXXXXXXXXXX')
+    // 비어 있으면 'App Store · 곧 출시' 안내가 표시되고, 값을 넣으면 클릭 가능한 버튼으로 바뀝니다.
+    // 유입 추적: Google Play 링크에는 referrer(utm) 가 이미 붙어 있고(→ Play Console 획득 보고서 / Firebase),
+    //          App Store 는 아래에서 캠페인 토큰 ct=grovii_landing 을 자동으로 붙입니다(→ App Store Connect 앱 분석).
+    var IOS_URL = '';
+
+    var LANGS = ['ko', 'en'];
+    var langSelect = document.getElementById('lang-select');
+
+    function selectLang(lang) {
+      LANGS.forEach(function (l) {
+        document.getElementById(l).hidden = (l !== lang);
+      });
+      langSelect.value = lang;
+      document.documentElement.lang = lang;
+      window.scrollTo(0, 0);
+    }
+    langSelect.addEventListener('change', function () { selectLang(langSelect.value); });
+
+    // iOS 버튼 표시 여부 + 캠페인 토큰(ct) 부착
+    if (IOS_URL) {
+      var iosHref = IOS_URL + (IOS_URL.indexOf('?') >= 0 ? '&' : '?') + 'ct=grovii_landing';
+      document.querySelectorAll('[data-ios]').forEach(function (a) {
+        a.href = iosHref; a.hidden = false;
+      });
+      document.querySelectorAll('[data-ios-soon]').forEach(function (s) { s.hidden = true; });
+    }
+
+    var browserLang = (navigator.language || 'ko').toLowerCase().split('-')[0];
+    selectLang(LANGS.indexOf(browserLang) >= 0 ? browserLang : 'en');
+  </script>
+</body>
+</html>
