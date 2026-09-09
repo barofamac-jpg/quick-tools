@@ -38,7 +38,7 @@
     body {
       margin: 0;
       font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic",
-                   "Noto Sans SC", "Hiragino Sans", sans-serif;
+                   "Noto Sans SC", "Hiragino Sans", "Noto Naskh Arabic", sans-serif;
       color: #222;
       line-height: 1.7;
       background: #f1f4f8; /* 마케팅 스크린샷 컷의 배경색과 동일 → 폰 목업이 페이지 위에 자연스럽게 얹힘 */
@@ -60,8 +60,9 @@
       width: 84px; height: 84px; border-radius: 20px;
       box-shadow: 0 6px 20px rgba(108, 124, 255, 0.25);
     }
-    .hero h1 { font-size: 26px; margin: 18px 0 6px; line-height: 1.35; }
-    .hero .sub { font-size: 15px; color: #555; margin: 0 auto; max-width: 30em; }
+    .hero h1 { font-size: 26px; margin: 18px 0 10px; line-height: 1.35; }
+    .hero .sub { font-size: 15px; color: #555; margin: 10px auto 0; max-width: 32em; }
+    .hero .sub.lead { color: #333; }
 
     .stores { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 24px 0 8px; }
     .stores a, .stores span {
@@ -113,6 +114,7 @@
 
     [dir="rtl"] .langbar { text-align: left; }
     [dir="rtl"] .features { direction: rtl; }
+    [dir="rtl"] .shots { direction: rtl; }
 
     @media (max-width: 520px) {
       .features { grid-template-columns: 1fr; }
@@ -127,6 +129,11 @@
       <select id="lang-select" aria-label="Language">
         <option value="ko">한국어</option>
         <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+        <option value="id">Bahasa Indonesia</option>
+        <option value="ar">العربية</option>
+        <option value="es">Español</option>
       </select>
     </nav>
 
@@ -135,15 +142,14 @@
       <div class="hero">
         <img class="icon" src="img/icon.jpg" alt="Grovii 앱 아이콘" />
         <h1>우리 아이, 또래 중 몇 %일까?<br />크면 몇 cm 될까?</h1>
-        <p class="sub">키·몸무게를 기록하면 <b>질병관리청·WHO·CDC 성장도표</b>로 또래 백분위, BMI, 예상 성인 키를 계산해 줍니다.</p>
+        <p class="sub lead">아이의 키와 몸무게를 기록하면 <b>공식 성장도표</b>를 기준으로 키·몸무게·BMI 백분위와 성장곡선, 그리고 예상 성인 키까지 한눈에 확인할 수 있어요.</p>
+        <p class="sub">아이의 성장을 기록하고, 조금씩 달라지는 모습을 만나보세요.</p>
       </div>
-
       <div class="stores">
-        <a href="https://play.google.com/store/apps/details?id=com.barofam.growie.app&referrer=utm_source%3Dgrovii_landing%26utm_medium%3Dweb%26utm_campaign%3Dsite">▶ Google Play</a>
+        <a class="play" href="#">▶ Google Play</a>
         <a href="#" data-ios hidden> App Store</a>
         <span class="soon" data-ios-soon> App Store · 곧 출시</span>
       </div>
-
       <div class="shots">
         <img src="img/shot_ko_1.jpg" alt="지금 우리 아이, 잘 자라고 있을까? — 홈 화면 성장 요약" />
         <img src="img/shot_ko_2.jpg" alt="그래프로 보는 직관적인 성장 변화 — 또래 백분위 곡선" />
@@ -152,7 +158,6 @@
         <img src="img/shot_ko_5.jpg" alt="부모키, 성장 추세로 예상 키 계산 및 분석 — 예상 성인 키" />
       </div>
       <p class="shots-hint">← 옆으로 넘겨 보세요 →</p>
-
       <section class="block">
         <h2>이런 게 궁금할 때</h2>
         <div class="features">
@@ -164,24 +169,26 @@
           <div class="feature"><div class="fi">🔒</div><h3>내 기기에만 저장</h3><p>계정이 없어요. 아이 정보는 서버로 전송되지 않아요.</p></div>
         </div>
       </section>
-
+      <section class="block story">
+        <h2>엄마가 만들었어요</h2>
+        <p>아이를 키우다 보면 별것 아닌 것 같은 숫자 하나에도 마음이 쓰일 때가 있어요.</p>
+        <p>"우리 아이, 잘 크고 있는 걸까?" "또래 아이들과 비교하면 어느 정도일까?" 검진을 다녀온 날이면 성장도표를 찾아보기도 하고, 지난 기록을 다시 들여다보기도 했어요.</p>
+        <p>그런데 막상 찾아보면 어렵고 복잡해서 필요한 정보를 한눈에 살펴보기가 쉽지 않았어요.</p>
+        <p>그래서 그냥, 제가 쓰고 싶은 걸 직접 만들어보기로 했어요. 공식 성장도표를 바탕으로 아이의 기록을 차곡차곡 남기고, 지금까지 얼마나 자랐는지 한눈에 볼 수 있도록요.</p>
+        <p>매일의 키가 특별해 보이지 않을 수도 있지만, 돌아보면 그 숫자 하나하나가 우리 아이가 자라온 시간이더라고요.</p>
+        <p>Grovii가 아이의 성장을 조금 더 편안한 마음으로 바라볼 수 있게 도와주는 작은 기록장이 되었으면 좋겠습니다.</p>
+        <p>같은 마음으로 아이를 키우는 모든 부모님께 도움이 되기를 바라요.</p>
+      </section>
       <section class="block">
         <h2>믿을 수 있는 성장 기준</h2>
         <p class="std">나라별 공식 성장도표를 골라 쓸 수 있어요 — <b>질병관리청(한국)</b>, WHO, <b>CDC(미국)</b>, 후생노동성(일본), 국가위생건강위원회(중국), UK90(영국). 나이는 성장도표와 동일하게 <b>만 개월 수</b>로 계산합니다.</p>
       </section>
-
-      <section class="block story">
-        <h2>엄마가 만들었어요</h2>
-        <p>아이 검진 때마다 "또래보다 큰 걸까 작은 걸까" 가 궁금했어요. 성장도표를 직접 찾아보기는 번거롭고, 앱들은 기준이 제각각이더라고요.</p>
-        <p>그래서 공식 성장도표(LMS) 그대로 계산하고, 병원 결과와 맞는지 하나하나 확인해서 만들었습니다. 같은 고민을 하는 부모님께 도움이 되면 좋겠어요.</p>
-      </section>
-
       <section class="block faq">
         <h2>자주 묻는 질문</h2>
-        <p><strong>정말 무료인가요?</strong><br />네. 광고로 운영되며, 아이 정보는 광고에 사용되지 않아요.</p>
-        <p><strong>예상 키는 정확한가요?</strong><br />성장 추세 기반 참고용 추정치예요. 정확한 평가는 소아청소년과 전문의와 상담하세요.</p>
-        <p><strong>데이터는 어디에 저장되나요?</strong><br />이용자 기기에만 저장됩니다. 자세한 내용은 <a href="privacy-policy.html">개인정보처리방침</a>을 참고하세요.</p>
-        <p>더 궁금한 점은 <a href="support.html">고객 지원</a> 페이지를 확인하세요.</p>
+        <p><strong>정말 무료인가요?</strong><br />네. Grovii는 무료로 사용할 수 있어요. 광고로 운영되며, 아이의 성장 정보는 광고에 사용하지 않습니다.</p>
+        <p><strong>예상 키는 정확한가요?</strong><br />예상 성인 키는 아이의 현재 성장 추세와 부모님의 키를 바탕으로 계산한 참고용 추정치예요. 아이의 성장이나 건강에 대한 정확한 판단이 필요한 경우에는 소아청소년과 전문의와 상담해 주세요.</p>
+        <p><strong>어떤 성장도표를 사용하나요?</strong><br />한국 질병관리청, WHO, CDC 등 공식 성장도표를 선택해서 사용할 수 있어요.</p>
+        <p><strong>아이의 정보는 안전한가요?</strong><br />회원가입이 필요하지 않고, 성장 기록은 사용자의 기기에만 저장됩니다. 자세한 내용은 <a href="privacy-policy.html">개인정보처리방침</a>을 참고하세요.</p>
       </section>
     </div>
 
@@ -190,15 +197,14 @@
       <div class="hero">
         <img class="icon" src="img/icon.jpg" alt="Grovii app icon" />
         <h1>Where does your child stand<br />among peers? How tall will they be?</h1>
-        <p class="sub">Log height and weight, and Grovii uses <b>WHO, CDC and other official growth charts</b> to show peer percentiles, BMI and a predicted adult height.</p>
+        <p class="sub lead">Log your child's height and weight, and see height, weight and BMI percentiles, the growth curve, and even a predicted adult height at a glance — all against <b>official growth charts</b>.</p>
+        <p class="sub">Record your child's growth, and watch how they change, little by little.</p>
       </div>
-
       <div class="stores">
-        <a href="https://play.google.com/store/apps/details?id=com.barofam.growie.app&referrer=utm_source%3Dgrovii_landing%26utm_medium%3Dweb%26utm_campaign%3Dsite">▶ Google Play</a>
+        <a class="play" href="#">▶ Google Play</a>
         <a href="#" data-ios hidden> App Store</a>
         <span class="soon" data-ios-soon> App Store · coming soon</span>
       </div>
-
       <div class="shots">
         <img src="img/shot_en_1.jpg" alt="Is my child growing well? — home screen growth summary" />
         <img src="img/shot_en_2.jpg" alt="Track growth changes with intuitive charts — peer percentile curve" />
@@ -207,7 +213,6 @@
         <img src="img/shot_en_5.jpg" alt="Predict adult height from parent height and growth trend" />
       </div>
       <p class="shots-hint">← swipe →</p>
-
       <section class="block">
         <h2>What Grovii answers</h2>
         <div class="features">
@@ -219,24 +224,301 @@
           <div class="feature"><div class="fi">🔒</div><h3>Stored on your device</h3><p>No account. Your child's data is never sent to our servers.</p></div>
         </div>
       </section>
-
+      <section class="block story">
+        <h2>Made by a parent</h2>
+        <p>When you're raising a child, sometimes even a small, ordinary number can weigh on your mind.</p>
+        <p>"Is my child growing well?" "How does that compare with other kids their age?" On the days after a check-up, I would look up growth charts, or go back through our old records.</p>
+        <p>But when I actually looked, it was hard and complicated — not easy to take in the information I needed at a glance.</p>
+        <p>So I decided to just build the thing I wanted to use myself. Something that keeps my child's records one by one, based on the official growth charts, and lets me see how much they've grown so far, all in one view.</p>
+        <p>A single day's height might not seem like much. But looking back, each of those numbers is time my child has spent growing.</p>
+        <p>I hope Grovii can be a small logbook that helps you look at your child's growth with a little more peace of mind.</p>
+        <p>And I hope it helps every parent raising a child with the same heart.</p>
+      </section>
       <section class="block">
         <h2>Trusted growth standards</h2>
         <p class="std">Choose the official growth chart you trust — <b>WHO</b>, <b>CDC (US)</b>, KDCA (Korea), MHLW (Japan), NHC (China), UK90 (UK). Age is counted in <b>completed months</b>, exactly like the charts themselves.</p>
       </section>
-
-      <section class="block story">
-        <h2>Made by a parent</h2>
-        <p>At every check-up I wondered whether my child was big or small for their age. Looking up growth charts by hand is tedious, and the apps I tried all used different standards.</p>
-        <p>So I built one that computes straight from the official LMS growth data and checked it against real clinic results. I hope it helps other parents with the same question.</p>
-      </section>
-
       <section class="block faq">
         <h2>FAQ</h2>
-        <p><strong>Is it really free?</strong><br />Yes. It's ad-supported, and your child's data is never used for ads.</p>
-        <p><strong>Is the predicted height accurate?</strong><br />It's a reference estimate based on the growth trend. For an accurate assessment, see a pediatrician.</p>
-        <p><strong>Where is my data stored?</strong><br />On your device only. See the <a href="privacy-policy.html">Privacy Policy</a> for details.</p>
-        <p>For more, visit the <a href="support.html">Support</a> page.</p>
+        <p><strong>Is it really free?</strong><br />Yes. Grovii is free to use. It's ad-supported, and your child's growth information is never used for ads.</p>
+        <p><strong>Is the predicted height accurate?</strong><br />The predicted adult height is a reference estimate calculated from your child's current growth trend and the parents' heights. If you need an accurate assessment of your child's growth or health, please consult a pediatrician.</p>
+        <p><strong>Which growth charts do you use?</strong><br />You can choose official growth charts such as Korea's KDCA, WHO and CDC.</p>
+        <p><strong>Is my child's data safe?</strong><br />No sign-up is required, and growth records are stored only on your device. See the <a href="privacy-policy.html">Privacy Policy</a> for details.</p>
+      </section>
+    </div>
+
+    <!-- ==================== 日本語 ==================== -->
+    <div class="lang" id="ja" hidden>
+      <div class="hero">
+        <img class="icon" src="img/icon.jpg" alt="Grovii アプリアイコン" />
+        <h1>うちの子は同年齢の中で何％？<br />大きくなったら何cm？</h1>
+        <p class="sub lead">お子さまの身長・体重を記録すると、<b>公式の成長曲線</b>をもとに身長・体重・BMIのパーセンタイルと成長曲線、そして予想身長までひと目で確認できます。</p>
+        <p class="sub">お子さまの成長を記録して、少しずつ変わっていく姿に出会ってください。</p>
+      </div>
+      <div class="stores">
+        <a class="play" href="#">▶ Google Play</a>
+        <a href="#" data-ios hidden> App Store</a>
+        <span class="soon" data-ios-soon> App Store · 近日公開</span>
+      </div>
+      <div class="shots">
+        <img src="img/shot_ja_1.jpg" alt="うちの子、ちゃんと育ってる？ — ホーム画面の成長サマリー" />
+        <img src="img/shot_ja_2.jpg" alt="グラフで見る、わかりやすい成長の変化 — パーセンタイル曲線" />
+        <img src="img/shot_ja_3.jpg" alt="年ごとに積み重なる成長の記録 — 記録一覧" />
+        <img src="img/shot_ja_4.jpg" alt="きょうだいまとめてひとつのアプリで — 複数のお子さまのプロフィール" />
+        <img src="img/shot_ja_5.jpg" alt="親の身長と成長傾向から予想身長を計算・分析" />
+      </div>
+      <p class="shots-hint">← スワイプ →</p>
+      <section class="block">
+        <h2>こんなときに</h2>
+        <div class="features">
+          <div class="feature"><div class="fi">📊</div><h3>グラフで見る成長の変化</h3><p>身長・体重・BMIが同月齢100人中の何番目かを曲線で表示。</p></div>
+          <div class="feature"><div class="fi">📈</div><h3>予想身長の計算・分析</h3><p>ご両親の身長と成長傾向から、予想身長を誤差幅つきで。</p></div>
+          <div class="feature"><div class="fi">📖</div><h3>年ごとに記録</h3><p>これまでの記録とどれだけ伸びたかが一目で。</p></div>
+          <div class="feature"><div class="fi">🏠</div><h3>ひと目でわかる成長サマリー</h3><p>ホーム画面で身長・体重・BMI・パーセンタイルをすぐ確認。</p></div>
+          <div class="feature"><div class="fi">👨‍👩‍👧‍👦</div><h3>きょうだいもひとつのアプリで</h3><p>お子さまごとにプロフィール・記録・グラフを管理。</p></div>
+          <div class="feature"><div class="fi">🔒</div><h3>端末内にのみ保存</h3><p>アカウント不要。お子さまの情報はサーバーに送信されません。</p></div>
+        </div>
+      </section>
+      <section class="block story">
+        <h2>母親がつくりました</h2>
+        <p>子どもを育てていると、なんでもないような数字ひとつに心が動くことがあります。</p>
+        <p>「うちの子、ちゃんと育っているのかな」「同年齢の子と比べてどのくらいだろう」。検診から帰った日は成長曲線を調べたり、これまでの記録を見返したりしていました。</p>
+        <p>でも実際に調べてみると難しくて複雑で、必要な情報をひと目で把握するのは簡単ではありませんでした。</p>
+        <p>それなら、自分が使いたいものを自分でつくってみようと思ったんです。公式の成長曲線をもとに、子どもの記録をひとつずつ残して、これまでどれだけ伸びたかをひと目で見られるように。</p>
+        <p>毎日の身長は特別に見えないかもしれません。でも振り返ると、その数字のひとつひとつが、子どもが育ってきた時間でした。</p>
+        <p>Grovii が、子どもの成長をもう少し穏やかな気持ちで見守れるように手伝う、小さな記録帳になればうれしいです。</p>
+        <p>同じ気持ちで子どもを育てるすべての親御さんの役に立ちますように。</p>
+      </section>
+      <section class="block">
+        <h2>信頼できる成長基準</h2>
+        <p class="std">国ごとの公式成長曲線を選べます — <b>厚生労働省(日本)</b>、WHO、<b>CDC(米国)</b>、疾病管理庁(韓国)、国家衛生健康委員会(中国)、UK90(英国)。年齢は成長曲線と同じく<b>満月齢</b>で計算します。</p>
+      </section>
+      <section class="block faq">
+        <h2>よくある質問</h2>
+        <p><strong>本当に無料ですか？</strong><br />はい。Grovii は無料で使えます。広告で運営しており、お子さまの成長情報を広告に使うことはありません。</p>
+        <p><strong>予想身長は正確ですか？</strong><br />予想身長は、お子さまの現在の成長傾向とご両親の身長をもとに計算した参考値です。お子さまの成長や健康について正確な判断が必要な場合は、小児科医にご相談ください。</p>
+        <p><strong>どの成長曲線を使いますか？</strong><br />韓国疾病管理庁、WHO、CDC などの公式成長曲線から選んで使えます。</p>
+        <p><strong>お子さまの情報は安全ですか？</strong><br />会員登録は不要で、成長記録はお使いの端末にのみ保存されます。詳しくは<a href="privacy-policy.html">プライバシーポリシー</a>をご覧ください。</p>
+      </section>
+    </div>
+
+    <!-- ==================== 中文 ==================== -->
+    <div class="lang" id="zh" hidden>
+      <div class="hero">
+        <img class="icon" src="img/icon.jpg" alt="Grovii 应用图标" />
+        <h1>我的孩子在同龄人中排第几？<br />长大能有多高？</h1>
+        <p class="sub lead">记录孩子的身高体重，就能以<b>官方生长曲线</b>为准，一屏看清身高、体重、BMI 百分位、生长曲线，以及预测成年身高。</p>
+        <p class="sub">记录孩子的成长，遇见他一点点变化的样子。</p>
+      </div>
+      <div class="stores">
+        <a class="play" href="#">▶ Google Play</a>
+        <a href="#" data-ios hidden> App Store</a>
+        <span class="soon" data-ios-soon> App Store · 即将上线</span>
+      </div>
+      <div class="shots">
+        <img src="img/shot_zh_1.jpg" alt="我的孩子，长得好吗？ — 主页成长概况" />
+        <img src="img/shot_zh_2.jpg" alt="用图表直观查看成长变化 — 百分位曲线" />
+        <img src="img/shot_zh_3.jpg" alt="按年份记录孩子的每一步成长 — 记录列表" />
+        <img src="img/shot_zh_4.jpg" alt="兄弟姐妹，一个 App 统一管理 — 多个孩子的资料" />
+        <img src="img/shot_zh_5.jpg" alt="用父母身高和成长趋势计算并分析预测身高" />
+      </div>
+      <p class="shots-hint">← 左右滑动 →</p>
+      <section class="block">
+        <h2>Grovii 能回答</h2>
+        <div class="features">
+          <div class="feature"><div class="fi">📊</div><h3>图表看懂成长变化</h3><p>身高、体重、BMI 在同月龄 100 人中排第几，用曲线呈现。</p></div>
+          <div class="feature"><div class="fi">📈</div><h3>预测身高计算与分析</h3><p>依据父母身高和成长趋势，给出带误差范围的预测成年身高。</p></div>
+          <div class="feature"><div class="fi">📖</div><h3>按年份归档</h3><p>过往记录和长高了多少，一目了然。</p></div>
+          <div class="feature"><div class="fi">🏠</div><h3>一屏看懂成长概况</h3><p>主页直接查看身高、体重、BMI 和百分位。</p></div>
+          <div class="feature"><div class="fi">👨‍👩‍👧‍👦</div><h3>多个孩子一个 App</h3><p>每个孩子独立的资料、记录和图表。</p></div>
+          <div class="feature"><div class="fi">🔒</div><h3>仅存于本机</h3><p>无需账号，孩子的信息不会上传到服务器。</p></div>
+        </div>
+      </section>
+      <section class="block story">
+        <h2>一位妈妈做的</h2>
+        <p>养孩子的时候，有时一个看似平常的数字也会让人挂在心上。</p>
+        <p>"我的孩子，长得好吗？""和同龄的孩子比，大概在什么位置？"体检回来的那天，我会去查生长曲线，也会翻看以前的记录。</p>
+        <p>可真去查的时候，又难又复杂，想一眼看清需要的信息并不容易。</p>
+        <p>于是我干脆决定，自己动手做一个自己想用的。以官方生长曲线为基础，把孩子的记录一点点留下来，让"到现在长了多少"一屏就能看明白。</p>
+        <p>每天的身高也许看起来没什么特别。可回过头看，那一个个数字，都是孩子成长的时光。</p>
+        <p>希望 Grovii 能成为一本小小的记录本，帮你用更从容的心情看待孩子的成长。</p>
+        <p>也希望它能帮到每一位怀着同样心情养育孩子的父母。</p>
+      </section>
+      <section class="block">
+        <h2>值得信赖的生长标准</h2>
+        <p class="std">可选择各国官方生长曲线 — <b>国家卫生健康委员会(中国)</b>、WHO、<b>CDC(美国)</b>、疾病管理厅(韩国)、厚生劳动省(日本)、UK90(英国)。年龄与生长曲线一致，按<b>足月龄</b>计算。</p>
+      </section>
+      <section class="block faq">
+        <h2>常见问题</h2>
+        <p><strong>真的免费吗？</strong><br />是的。Grovii 可以免费使用。通过广告运营，孩子的成长信息不会用于广告。</p>
+        <p><strong>预测身高准确吗？</strong><br />预测成年身高是根据孩子当前的成长趋势和父母身高计算的参考估算值。如需对孩子的成长或健康做准确判断，请咨询儿科医生。</p>
+        <p><strong>使用哪种生长曲线？</strong><br />可从韩国疾病管理厅、WHO、CDC 等官方生长曲线中选择使用。</p>
+        <p><strong>孩子的信息安全吗？</strong><br />无需注册，成长记录仅保存在用户的设备上。详见<a href="privacy-policy.html">隐私政策</a>。</p>
+      </section>
+    </div>
+
+    <!-- ==================== Bahasa Indonesia ==================== -->
+    <div class="lang" id="id" hidden>
+      <div class="hero">
+        <img class="icon" src="img/icon.jpg" alt="Ikon aplikasi Grovii" />
+        <h1>Anak saya ada di persentil berapa?<br />Nanti tingginya berapa?</h1>
+        <p class="sub lead">Catat tinggi dan berat anak Anda, lalu lihat persentil tinggi, berat, dan BMI, kurva pertumbuhan, bahkan perkiraan tinggi dewasa — semuanya berdasarkan <b>kurva pertumbuhan resmi</b>, dalam satu layar.</p>
+        <p class="sub">Catat pertumbuhan anak Anda, dan temui perubahannya sedikit demi sedikit.</p>
+      </div>
+      <div class="stores">
+        <a class="play" href="#">▶ Google Play</a>
+        <a href="#" data-ios hidden> App Store</a>
+        <span class="soon" data-ios-soon> App Store · segera hadir</span>
+      </div>
+      <div class="shots">
+        <img src="img/shot_id_1.jpg" alt="Apakah anak saya tumbuh dengan baik? — ringkasan pertumbuhan di layar utama" />
+        <img src="img/shot_id_2.jpg" alt="Pantau perubahan lewat grafik yang jelas — kurva persentil" />
+        <img src="img/shot_id_3.jpg" alt="Rekam setiap tahap penting, dari tahun ke tahun — daftar riwayat" />
+        <img src="img/shot_id_4.jpg" alt="Satu aplikasi untuk semua anak Anda — beberapa profil anak" />
+        <img src="img/shot_id_5.jpg" alt="Perkiraan tinggi dewasa dari tinggi orang tua dan tren pertumbuhan" />
+      </div>
+      <p class="shots-hint">← geser →</p>
+      <section class="block">
+        <h2>Yang bisa dijawab Grovii</h2>
+        <div class="features">
+          <div class="feature"><div class="fi">📊</div><h3>Perubahan pertumbuhan dalam grafik</h3><p>Lihat peringkat tinggi, berat, dan BMI di antara 100 anak seusia (dalam bulan).</p></div>
+          <div class="feature"><div class="fi">📈</div><h3>Perkiraan tinggi &amp; analisis</h3><p>Perkiraan tinggi dewasa dari tinggi orang tua dan tren pertumbuhan, dengan rentang galat.</p></div>
+          <div class="feature"><div class="fi">📖</div><h3>Tercatat rapi tiap tahun</h3><p>Semua catatan lama dan seberapa besar pertumbuhannya, sekilas.</p></div>
+          <div class="feature"><div class="fi">🏠</div><h3>Ringkasan pertumbuhan sekilas</h3><p>Tinggi, berat, BMI, dan persentil langsung di layar utama.</p></div>
+          <div class="feature"><div class="fi">👨‍👩‍👧‍👦</div><h3>Satu aplikasi untuk semua anak</h3><p>Tiap anak punya profil, catatan, dan grafik sendiri.</p></div>
+          <div class="feature"><div class="fi">🔒</div><h3>Tersimpan di perangkat Anda</h3><p>Tanpa akun. Data anak tidak pernah dikirim ke server kami.</p></div>
+        </div>
+      </section>
+      <section class="block story">
+        <h2>Dibuat oleh seorang ibu</h2>
+        <p>Saat membesarkan anak, kadang satu angka yang tampak biasa pun bisa terasa mengganjal di hati.</p>
+        <p>"Anak saya tumbuh dengan baik, tidak ya?" "Kalau dibandingkan dengan anak seusianya, kira-kira di mana?" Sepulang dari kontrol, saya mencari kurva pertumbuhan, atau membuka lagi catatan lama.</p>
+        <p>Tapi begitu benar-benar dicari, ternyata sulit dan rumit — tidak mudah melihat informasi yang saya butuhkan sekaligus.</p>
+        <p>Jadi saya putuskan untuk membuat sendiri hal yang ingin saya pakai. Berdasarkan kurva pertumbuhan resmi, menyimpan catatan anak satu per satu, dan menampilkan seberapa besar pertumbuhannya sampai sekarang dalam satu layar.</p>
+        <p>Tinggi badan tiap hari mungkin tampak biasa saja. Tapi kalau ditengok kembali, tiap angka itu adalah waktu tumbuhnya anak kita.</p>
+        <p>Semoga Grovii bisa menjadi buku catatan kecil yang membantu Anda memandang pertumbuhan anak dengan hati yang sedikit lebih tenang.</p>
+        <p>Semoga bermanfaat bagi semua orang tua yang membesarkan anak dengan hati yang sama.</p>
+      </section>
+      <section class="block">
+        <h2>Standar pertumbuhan tepercaya</h2>
+        <p class="std">Pilih kurva pertumbuhan resmi per negara — <b>WHO</b>, <b>CDC (AS)</b>, KDCA (Korea), MHLW (Jepang), NHC (Tiongkok), UK90 (Inggris). Usia dihitung dalam <b>bulan penuh</b>, sama seperti kurvanya.</p>
+      </section>
+      <section class="block faq">
+        <h2>Pertanyaan umum</h2>
+        <p><strong>Benar-benar gratis?</strong><br />Ya. Grovii bisa dipakai gratis. Didanai iklan, dan informasi pertumbuhan anak tidak pernah dipakai untuk iklan.</p>
+        <p><strong>Apakah perkiraan tingginya akurat?</strong><br />Perkiraan tinggi dewasa adalah estimasi acuan yang dihitung dari tren pertumbuhan anak saat ini dan tinggi orang tua. Jika Anda butuh penilaian akurat tentang pertumbuhan atau kesehatan anak, konsultasikan ke dokter anak.</p>
+        <p><strong>Kurva pertumbuhan mana yang dipakai?</strong><br />Anda dapat memilih kurva pertumbuhan resmi seperti KDCA Korea, WHO, dan CDC.</p>
+        <p><strong>Apakah data anak aman?</strong><br />Tidak perlu mendaftar, dan catatan pertumbuhan hanya disimpan di perangkat Anda. Lihat <a href="privacy-policy.html">Kebijakan Privasi</a> untuk detail.</p>
+      </section>
+    </div>
+
+    <!-- ==================== العربية ==================== -->
+    <div class="lang" id="ar" hidden>
+      <div class="hero">
+        <img class="icon" src="img/icon.jpg" alt="أيقونة تطبيق Grovii" />
+        <h1>أين يقف طفلي بين أقرانه؟<br />كم سيبلغ طوله عند البلوغ؟</h1>
+        <p class="sub lead">سجِّل طول ووزن طفلك، لترى مئين الطول والوزن ومؤشر كتلة الجسم، ومنحنى النمو، وحتى الطول المتوقع عند البلوغ — كل ذلك وفق <b>منحنيات النمو الرسمية</b>، في شاشة واحدة.</p>
+        <p class="sub">سجِّل نموّ طفلك، وتعرّف على ملامحه وهي تتغيّر شيئًا فشيئًا.</p>
+      </div>
+      <div class="stores">
+        <a class="play" href="#">▶ Google Play</a>
+        <a href="#" data-ios hidden> App Store</a>
+        <span class="soon" data-ios-soon> App Store · قريبًا</span>
+      </div>
+      <div class="shots">
+        <img src="img/shot_ar_1.jpg" alt="هل ينمو طفلي جيدًا؟ — ملخّص النمو في الشاشة الرئيسية" />
+        <img src="img/shot_ar_2.jpg" alt="تابِع تغيّرات النمو برسوم بيانية واضحة — منحنى المئين" />
+        <img src="img/shot_ar_3.jpg" alt="سجِّل كل مرحلة مهمة، عامًا بعد عام — قائمة السجل" />
+        <img src="img/shot_ar_4.jpg" alt="تطبيق واحد لكل أطفالك — ملفات متعددة للأطفال" />
+        <img src="img/shot_ar_5.jpg" alt="حساب الطول المتوقع من طول الوالدين واتجاه النمو" />
+      </div>
+      <p class="shots-hint">← اسحب →</p>
+      <section class="block">
+        <h2>ما الذي يوضّحه Grovii</h2>
+        <div class="features">
+          <div class="feature"><div class="fi">📊</div><h3>تغيّرات النمو في رسوم بيانية</h3><p>شاهِد ترتيب الطول والوزن ومؤشر كتلة الجسم بين 100 طفل بالعمر نفسه (بالأشهر).</p></div>
+          <div class="feature"><div class="fi">📈</div><h3>حساب وتحليل الطول المتوقع</h3><p>طول متوقع عند البلوغ من طول الوالدين واتجاه النمو، مع هامش خطأ.</p></div>
+          <div class="feature"><div class="fi">📖</div><h3>مؤرشَف سنة بعد سنة</h3><p>كل السجلات السابقة ومقدار النمو، في لمحة.</p></div>
+          <div class="feature"><div class="fi">🏠</div><h3>ملخّص النمو في لمحة</h3><p>الطول والوزن ومؤشر كتلة الجسم والمئين مباشرة على الشاشة الرئيسية.</p></div>
+          <div class="feature"><div class="fi">👨‍👩‍👧‍👦</div><h3>تطبيق واحد لكل أطفالك</h3><p>لكل طفل ملفه وسجلاته ورسومه البيانية.</p></div>
+          <div class="feature"><div class="fi">🔒</div><h3>مخزَّن على جهازك فقط</h3><p>بلا حساب. لا تُرسَل بيانات طفلك إلى خوادمنا أبدًا.</p></div>
+        </div>
+      </section>
+      <section class="block story">
+        <h2>صنعتْه أمّ</h2>
+        <p>حين تربّي طفلًا، قد يشغل بالَك أحيانًا رقمٌ يبدو عاديًا.</p>
+        <p>"هل ينمو طفلي جيدًا؟" "وأين موقعه مقارنةً بأقرانه؟" في اليوم الذي أعود فيه من الفحص، كنت أبحث في منحنيات النمو، وأعود إلى السجلات السابقة.</p>
+        <p>لكن حين أبحث فعلًا، أجده صعبًا ومعقّدًا، وليس من السهل أن أرى المعلومات التي أحتاجها دفعةً واحدة.</p>
+        <p>فقرّرت ببساطة أن أصنع بنفسي ما أودّ استخدامه. اعتمادًا على منحنيات النمو الرسمية، أحفظ سجلات طفلي واحدًا تلو الآخر، وأرى في شاشة واحدة كم نما حتى الآن.</p>
+        <p>قد لا يبدو طول يومٍ واحد شيئًا مميزًا. لكن حين أنظر إلى الوراء، أرى أن كل رقمٍ منها هو وقتٌ نما فيه طفلي.</p>
+        <p>أتمنّى أن يكون Grovii دفترًا صغيرًا يساعدك على النظر إلى نمو طفلك بقلبٍ أكثر طمأنينة.</p>
+        <p>وأتمنّى أن يفيد كل أمّ وأبٍ يربّون أطفالهم بالقلب نفسه.</p>
+      </section>
+      <section class="block">
+        <h2>معايير نمو موثوقة</h2>
+        <p class="std">اختَر منحنى النمو الرسمي حسب بلدك — <b>WHO</b>، و<b>CDC (الولايات المتحدة)</b>، وKDCA (كوريا)، وMHLW (اليابان)، وNHC (الصين)، وUK90 (المملكة المتحدة). يُحسب العمر <b>بالأشهر المكتملة</b>، تمامًا مثل المنحنيات.</p>
+      </section>
+      <section class="block faq">
+        <h2>أسئلة شائعة</h2>
+        <p><strong>هل هو مجاني فعلًا؟</strong><br />نعم. يمكن استخدام Grovii مجانًا. يعتمد على الإعلانات، ولا تُستخدَم معلومات نمو طفلك في الإعلانات.</p>
+        <p><strong>هل الطول المتوقع دقيق؟</strong><br />الطول المتوقع عند البلوغ تقدير استرشادي يُحسب من اتجاه نمو طفلك الحالي وطول الوالدين. وإذا احتجت إلى تقييم دقيق لنمو طفلك أو صحته، فاستشِر طبيب أطفال.</p>
+        <p><strong>ما منحنيات النمو المستخدَمة؟</strong><br />يمكنك الاختيار من منحنيات النمو الرسمية مثل KDCA الكورية وWHO وCDC.</p>
+        <p><strong>هل بيانات طفلي آمنة؟</strong><br />لا حاجة إلى إنشاء حساب، وتُخزَّن سجلات النمو على جهازك فقط. اطّلِع على <a href="privacy-policy.html">سياسة الخصوصية</a> للتفاصيل.</p>
+      </section>
+    </div>
+
+    <!-- ==================== Español ==================== -->
+    <div class="lang" id="es" hidden>
+      <div class="hero">
+        <img class="icon" src="img/icon.jpg" alt="Icono de la app Grovii" />
+        <h1>¿En qué percentil está mi hijo?<br />¿Cuánto medirá de adulto?</h1>
+        <p class="sub lead">Registra la altura y el peso de tu hijo, y consulta de un vistazo los percentiles de altura, peso e IMC, la curva de crecimiento e incluso una altura adulta prevista, todo según <b>curvas de crecimiento oficiales</b>.</p>
+        <p class="sub">Registra el crecimiento de tu hijo y descubre cómo cambia, poco a poco.</p>
+      </div>
+      <div class="stores">
+        <a class="play" href="#">▶ Google Play</a>
+        <a href="#" data-ios hidden> App Store</a>
+        <span class="soon" data-ios-soon> App Store · muy pronto</span>
+      </div>
+      <div class="shots">
+        <img src="img/shot_es_1.jpg" alt="¿Mi hijo está creciendo bien? — resumen de crecimiento en la pantalla de inicio" />
+        <img src="img/shot_es_2.jpg" alt="Sigue su crecimiento con gráficas claras — curva de percentiles" />
+        <img src="img/shot_es_3.jpg" alt="Un registro de cada logro, año tras año — lista de historial" />
+        <img src="img/shot_es_4.jpg" alt="Una sola app para todos tus hijos — varios perfiles de niños" />
+        <img src="img/shot_es_5.jpg" alt="Altura adulta prevista según la altura de los padres y el crecimiento" />
+      </div>
+      <p class="shots-hint">← desliza →</p>
+      <section class="block">
+        <h2>Lo que responde Grovii</h2>
+        <div class="features">
+          <div class="feature"><div class="fi">📊</div><h3>Cambios de crecimiento en gráficas</h3><p>Mira dónde se sitúan altura, peso e IMC entre 100 niños de la misma edad en meses.</p></div>
+          <div class="feature"><div class="fi">📈</div><h3>Altura prevista y análisis</h3><p>Altura adulta estimada según la altura de los padres y la tendencia, con margen de error.</p></div>
+          <div class="feature"><div class="fi">📖</div><h3>Archivado año tras año</h3><p>Todas las mediciones anteriores y cuánto ha crecido, de un vistazo.</p></div>
+          <div class="feature"><div class="fi">🏠</div><h3>Resumen de crecimiento de un vistazo</h3><p>Altura, peso, IMC y percentil directamente en la pantalla de inicio.</p></div>
+          <div class="feature"><div class="fi">👨‍👩‍👧‍👦</div><h3>Una sola app para todos tus hijos</h3><p>Cada niño tiene su perfil, registros y gráficas.</p></div>
+          <div class="feature"><div class="fi">🔒</div><h3>Guardado solo en tu dispositivo</h3><p>Sin cuenta. Los datos de tu hijo nunca se envían a nuestros servidores.</p></div>
+        </div>
+      </section>
+      <section class="block story">
+        <h2>Hecha por una madre</h2>
+        <p>Cuando crías a un hijo, a veces un número que parece cualquier cosa se te queda en la cabeza.</p>
+        <p>"¿Mi hijo está creciendo bien?" "Comparado con otros niños de su edad, ¿más o menos dónde está?" Los días que volvía de una revisión, buscaba las curvas de crecimiento o repasaba los registros anteriores.</p>
+        <p>Pero al buscarlo de verdad, era difícil y complicado: no era fácil ver de un vistazo la información que necesitaba.</p>
+        <p>Así que decidí, sin más, hacer yo misma lo que quería usar. Que, a partir de las curvas de crecimiento oficiales, fuera guardando los registros de mi hijo uno a uno y me dejara ver en una sola pantalla cuánto ha crecido hasta ahora.</p>
+        <p>La altura de un solo día puede no parecer gran cosa. Pero al mirar atrás, cada uno de esos números es tiempo que mi hijo ha pasado creciendo.</p>
+        <p>Ojalá Grovii pueda ser un pequeño cuaderno que te ayude a mirar el crecimiento de tu hijo con un poco más de calma.</p>
+        <p>Y ojalá le sirva a todos los padres y madres que crían con el mismo corazón.</p>
+      </section>
+      <section class="block">
+        <h2>Estándares de crecimiento fiables</h2>
+        <p class="std">Elige la curva de crecimiento oficial que prefieras — <b>OMS</b>, <b>CDC (EE. UU.)</b>, KDCA (Corea), MHLW (Japón), NHC (China), UK90 (Reino Unido). La edad se cuenta en <b>meses cumplidos</b>, igual que las curvas.</p>
+      </section>
+      <section class="block faq">
+        <h2>Preguntas frecuentes</h2>
+        <p><strong>¿Es realmente gratis?</strong><br />Sí. Grovii se puede usar gratis. Se financia con publicidad, y la información de crecimiento de tu hijo nunca se usa para anuncios.</p>
+        <p><strong>¿Es precisa la altura prevista?</strong><br />La altura adulta prevista es una estimación orientativa calculada a partir de la tendencia de crecimiento actual de tu hijo y la altura de los padres. Si necesitas una evaluación precisa del crecimiento o la salud de tu hijo, consulta a un pediatra.</p>
+        <p><strong>¿Qué curvas de crecimiento usa?</strong><br />Puedes elegir curvas de crecimiento oficiales como la KDCA de Corea, la OMS y los CDC.</p>
+        <p><strong>¿Están seguros los datos de mi hijo?</strong><br />No hace falta registrarse, y los registros de crecimiento se guardan solo en tu dispositivo. Consulta la <a href="privacy-policy.html">Política de Privacidad</a>.</p>
       </section>
     </div>
 
@@ -251,11 +533,13 @@
   <script>
     // iOS App Store 주소가 정해지면 아래 IOS_URL 에 넣으세요. (예: 'https://apps.apple.com/app/idXXXXXXXXXX')
     // 비어 있으면 'App Store · 곧 출시' 안내가 표시되고, 값을 넣으면 클릭 가능한 버튼으로 바뀝니다.
-    // 유입 추적: Google Play 링크에는 referrer(utm) 가 이미 붙어 있고(→ Play Console 획득 보고서 / Firebase),
-    //          App Store 는 아래에서 캠페인 토큰 ct=grovii_landing 을 자동으로 붙입니다(→ App Store Connect 앱 분석).
+    // 유입 추적: Google Play 링크에는 아래에서 referrer(utm) 를, App Store 에는 캠페인 토큰 ct=grovii_landing 을 붙입니다.
     var IOS_URL = '';
+    var PLAY_URL = 'https://play.google.com/store/apps/details?id=com.barofam.growie.app'
+      + '&referrer=utm_source%3Dgrovii_landing%26utm_medium%3Dweb%26utm_campaign%3Dsite';
 
-    var LANGS = ['ko', 'en'];
+    var LANGS = ['ko', 'en', 'ja', 'zh', 'id', 'ar', 'es'];
+    var RTL_LANGS = ['ar'];
     var langSelect = document.getElementById('lang-select');
 
     function selectLang(lang) {
@@ -264,20 +548,21 @@
       });
       langSelect.value = lang;
       document.documentElement.lang = lang;
+      document.documentElement.dir = RTL_LANGS.indexOf(lang) >= 0 ? 'rtl' : 'ltr';
       window.scrollTo(0, 0);
     }
     langSelect.addEventListener('change', function () { selectLang(langSelect.value); });
 
-    // iOS 버튼 표시 여부 + 캠페인 토큰(ct) 부착
+    // 스토어 링크 (utm/ct 부착)
+    document.querySelectorAll('a.play').forEach(function (a) { a.href = PLAY_URL; });
     if (IOS_URL) {
       var iosHref = IOS_URL + (IOS_URL.indexOf('?') >= 0 ? '&' : '?') + 'ct=grovii_landing';
-      document.querySelectorAll('[data-ios]').forEach(function (a) {
-        a.href = iosHref; a.hidden = false;
-      });
+      document.querySelectorAll('[data-ios]').forEach(function (a) { a.href = iosHref; a.hidden = false; });
       document.querySelectorAll('[data-ios-soon]').forEach(function (s) { s.hidden = true; });
     }
 
-    var browserLang = (navigator.language || 'ko').toLowerCase().split('-')[0];
+    // 브라우저 언어 기반 최초 표시, 지원하지 않으면 영어
+    var browserLang = (navigator.language || 'en').toLowerCase().split('-')[0];
     selectLang(LANGS.indexOf(browserLang) >= 0 ? browserLang : 'en');
   </script>
 </body>
