@@ -13,7 +13,7 @@
  * (quick-tools 공용 cookie-consent.js 와 동일한 정책, GA 속성만 다름)
  */
 
-const GA_ID = 'G-XXXXXXXXXX'; // TODO: Grovii 웹 데이터 스트림 측정 ID 로 교체
+const GA_ID = 'G-EJM7ELYDL1'; // Grovii 웹 데이터 스트림 (GA4)
 const CONSENT_KEY = 'groviiCookieConsent';
 const REGION_KEY = 'groviiRegionCheck';
 const GEO_TIMEOUT_MS = 3000;
